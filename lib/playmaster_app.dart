@@ -13,7 +13,7 @@ class PlaymasterApp extends StatelessWidget {
         enableLog: true,
         title: AppString.appName,
         getPages: AppRoutes.pages,
-        initialRoute: AppRoutes.splash,
+        initialRoute: AppRoutes.dashboardScreen,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           brightness: Brightness.dark,

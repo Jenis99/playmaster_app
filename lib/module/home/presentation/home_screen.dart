@@ -14,24 +14,22 @@ class HomeScreen extends StatelessWidget {
       appBar: homeAppBar(),
       body: Column(
         children: [
+          /// Game list
           SizedBox(
-            height: 300.h,
-            child: SingleChildScrollView(
-              child: Row(
-                children: List.generate(
-                    homeController.gameList.length,
-                    (index) => GameCard(
-                          gameModel: homeController.gameList[index],
-                        ).paddingSymmetric(horizontal: 10.w)),
-              ),
+            height: Get.height * 0.34,
+            child: ListView.builder(
+              itemCount: 5,
+              padding: EdgeInsets.symmetric(horizontal: 10.w),
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                final gameModel = homeController.gameList[index];
+                return GameCard(gameModel: gameModel);
+              },
             ),
           ),
-          // ListView.builder(
-          //   itemBuilder: (context, index) => GameCard(),
-          //   itemCount: 5,
-          //   shrinkWrap: true,
-          //   scrollDirection: Axis.horizontal,
-          // )
+
+          /// Top Games Tournaments
         ],
       ),
     );

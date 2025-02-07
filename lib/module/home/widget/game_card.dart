@@ -11,19 +11,19 @@ class GameCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 293.h,
+      margin: EdgeInsets.symmetric(horizontal: 5.w),
       decoration: BoxDecoration(color: AppColors.grey900Color2, borderRadius: BorderRadius.circular(4.r)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           /// Game image
-          ClipRRect(
-            borderRadius: BorderRadius.circular(4),
-            child: Image.asset(
-              gameModel.gameImg ?? "Game Image",
-              width: 293.w,
-              height: 140.h,
-            ),
+          CachedNetworkImg(
+            imgPath: gameModel.gameImg ?? "Game Image",
+            imgWidth: 293.w,
+            imgHeight: 140.h,
+            borderRadius: 4.r,
           ),
+
           16.h.verticalSpace,
 
           /// Game title
@@ -51,12 +51,14 @@ class GameCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               /// Entry fee
-              AppText(
-                text: gameModel.gameFee ?? "Game Fee",
-                fontWeight: FontWeight.w500,
-                color: AppColors.grey300Color,
-                fontSize: 12.sp,
-              ).paddingOnly(right: 10.h),
+              FittedBox(
+                child: AppText(
+                  text: gameModel.gameFee ?? "Game Fee",
+                  fontWeight: FontWeight.w500,
+                  color: AppColors.grey300Color,
+                  fontSize: 12.sp,
+                ).paddingOnly(right: 10.h),
+              ),
 
               /// Game start time
               AppText(
@@ -67,7 +69,7 @@ class GameCard extends StatelessWidget {
                 text: "Start at 12 Jun, 10:00pm",
               ),
             ],
-          ).paddingAll(12.h),
+          ).paddingOnly(top: 12.h, right: 12.h, left: 12.h),
         ],
       ),
     );

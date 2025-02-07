@@ -35,13 +35,14 @@ class _DashBoardScreenState extends State<DashBoardScreen> with WidgetsBindingOb
           child: Scaffold(
             backgroundColor: AppColors.appBackgroundClr,
             body: TabBarView(
+              physics: const NeverScrollableScrollPhysics(),
               controller: _dashBoardController.tabController,
               // physics: NeverScrollableScrollPhysics(),
               children: [
                 HomeScreen(),
-                MyMatchesScreen(),
-                FriendsScreen(),
-                ProfileScreen(),
+                const MyMatchesScreen(),
+                const FriendsScreen(),
+                const ProfileScreen(),
               ],
             ),
             bottomNavigationBar: Column(
