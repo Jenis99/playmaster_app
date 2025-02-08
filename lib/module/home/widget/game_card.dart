@@ -32,9 +32,7 @@ class GameCard extends StatelessWidget {
             fontWeight: FontWeight.w500,
             color: AppColors.whiteColor,
             fontSize: 16.sp,
-          ).paddingSymmetric(
-            horizontal: 12.w,
-          ),
+          ).paddingSymmetric(horizontal: 12.w),
 
           /// Price pool
           AppText(
@@ -42,7 +40,7 @@ class GameCard extends StatelessWidget {
             fontWeight: FontWeight.w500,
             color: AppColors.greenClr,
             fontSize: 14.sp,
-          ).paddingSymmetric(horizontal: 12.w, vertical: 16.h),
+          ).paddingSymmetric(horizontal: 12.w, vertical: 10.h),
 
           /// Dotted divider
           MySeparator(color: AppColors.grey700Color),

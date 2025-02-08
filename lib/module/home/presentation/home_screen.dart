@@ -1,6 +1,6 @@
 import 'package:playmaster_ui/dependency.dart';
-import 'package:playmaster_ui/module/home/controller/home_controller.dart';
-import 'package:playmaster_ui/module/home/widget/game_card.dart';
+import 'package:playmaster_ui/module/home/home.dart';
+import 'package:playmaster_ui/module/home/widget/last_minute_game_card.dart';
 import 'package:playmaster_ui/widgets/gradient_text.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -12,26 +12,72 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: homeAppBar(),
-      body: Column(
-        children: [
-          /// Game list
-          SizedBox(
-            height: Get.height * 0.34,
-            child: ListView.builder(
-              itemCount: 5,
-              padding: EdgeInsets.symmetric(horizontal: 10.w),
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                final gameModel = homeController.gameList[index];
-                return GameCard(gameModel: gameModel);
-              },
-            ),
-          ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            /// Game list
+            SizedBox(height: Get.height * 0.42, child: GameCarouselView()),
 
-          /// Top Games Tournaments
-        ],
+            /// Top Games Tournaments
+            tournamentTitle(title: AppString.topGamesTournament),
+            8.verticalSpace,
+            ListView.builder(
+              itemCount: homeController.topGameList.length,
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) => TopGameCard(
+                topGameModel: homeController.topGameList[index],
+              ),
+            ),
+
+            20.h.verticalSpace,
+
+            /// Last minutes
+            tournamentTitle(title: AppString.lastMinutes),
+            GridView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: homeController.gameList.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: .65,
+              ),
+              itemBuilder: (context, index) => LastMinuteGameCard(),
+            ),
+          ],
+        ).paddingSymmetric(horizontal: 16.w),
       ),
+    );
+  }
+
+  /// TournamentTitle title
+  Widget tournamentTitle({required String title, void Function()? onViewAll, bool isSingleTitle = false}) {
+    return Row(
+      mainAxisAlignment: isSingleTitle ? MainAxisAlignment.start : MainAxisAlignment.spaceBetween,
+      children: [
+        /// Game title
+        AppText(
+          text: title,
+          fontWeight: FontWeight.w600,
+          fontSize: 18.sp,
+          color: AppColors.whiteColor,
+        ),
+
+        /// View all
+        !isSingleTitle
+            ? GestureDetector(
+                onTap: onViewAll,
+                child: Container(
+                  color: AppColors.transparentClr,
+                  child: AppText(
+                    text: AppString.viewAll,
+                    color: AppColors.blue500Color,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              )
+            : const SizedBox.shrink(),
+      ],
     );
   }
 

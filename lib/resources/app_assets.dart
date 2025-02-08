@@ -5,8 +5,10 @@ class AppAssets {
   static const String appLogo = "$basePngPath/app_logo.png";
   static const String bottomBarShadow = "$basePngPath/bottom_bar_shadow.png";
   static const String walletIcon = "$basePngPath/wallet_icon.png";
-  static const String gameImage = "$basePngPath/game_img.png";
-  static const String gameSecondImage = "$basePngPath/game_img_2.png";
+
+  // Icon
+  static const String pcGameIcon = "$basePngPath/pc_game_icon.png";
+  static const String mobileGameIcon = "$basePngPath/mobile_game_icon.png";
 
   /// Dashboard icons
   static const String homeIcon = "$basePngPath/home_icon.png";
