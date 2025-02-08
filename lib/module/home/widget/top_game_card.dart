@@ -18,7 +18,7 @@ class TopGameCard extends StatelessWidget {
         imgPath: topGameModel.gameImg ?? "",
         borderRadius: 4.r,
         imgSize: 80.h,
-        fit: BoxFit.fitHeight,
+        // fit: BoxFit.fitHeight,
       ),
       // Game name
       title: AppText(

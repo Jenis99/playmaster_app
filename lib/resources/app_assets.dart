@@ -9,6 +9,7 @@ class AppAssets {
   // Icon
   static const String pcGameIcon = "$basePngPath/pc_game_icon.png";
   static const String mobileGameIcon = "$basePngPath/mobile_game_icon.png";
+  static const String rupeesIcon = "$basePngPath/rupees_currency_logo.png";
 
   /// Dashboard icons
   static const String homeIcon = "$basePngPath/home_icon.png";

@@ -17,11 +17,9 @@ class AppColors {
   static Color redColor = const Color(0xffC81E1E);
   static Color blue500Color = const Color(0xff3F83F8);
   static Color yellow400Clr = const Color(0xffE3A008);
-  static Color pink500Clr = const Color(0xffE3A008);
+  static Color pink500Clr = const Color(0xffE74694);
 
   // Gradient
-  static List<Color> appNameTextGradient = [
-    const Color(0xff4064AE),
-    const Color(0xffD4253B),
-  ];
+  static List<Color> appNameTextGradient = [const Color(0xff4064AE), const Color(0xffD4253B)];
+  static List<Color> gameTextGradientClr = [const Color(0xff4064AE), const Color(0xffD4253B)];
 }

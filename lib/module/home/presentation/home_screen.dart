@@ -1,7 +1,6 @@
 import 'package:playmaster_ui/dependency.dart';
 import 'package:playmaster_ui/module/home/home.dart';
 import 'package:playmaster_ui/module/home/widget/last_minute_game_card.dart';
-import 'package:playmaster_ui/widgets/gradient_text.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -11,12 +10,15 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: homeAppBar(),
+      appBar: const HomeAppBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
             /// Game list
-            SizedBox(height: Get.height * 0.42, child: GameCarouselView()),
+            SizedBox(height: Get.height * 0.42, child: const GameCarouselView()),
+
+            tournamentTitle(title: AppString.yourMatchIsLive, isSingleTitle: true),
+            liveGameCard(),
 
             /// Top Games Tournaments
             tournamentTitle(title: AppString.topGamesTournament),
@@ -37,12 +39,11 @@ class HomeScreen extends StatelessWidget {
             GridView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: homeController.gameList.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: .65,
+              itemCount: homeController.lastGameModelList.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: .56),
+              itemBuilder: (context, index) => LastMinuteGameCard(
+                lastMinGameModel: homeController.lastGameModelList[index],
               ),
-              itemBuilder: (context, index) => LastMinuteGameCard(),
             ),
           ],
         ).paddingSymmetric(horizontal: 16.w),
@@ -81,57 +82,49 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  AppBar homeAppBar() {
-    return AppBar(
-      backgroundColor: AppColors.appBackgroundClr,
-      title: Row(
-        children: [
-          Image.asset(
-            AppAssets.appLogo,
-            height: 24.h,
-            width: 24.h,
-          ),
-          GradientText(
-            gradient: LinearGradient(colors: AppColors.appNameTextGradient),
-            child: AppText(
-              text: AppString.appName.toUpperCase(),
-              fontWeight: FontWeight.w800,
-              fontStyle: FontStyle.italic,
-              fontSize: 18.sp,
-            ),
-          ),
-        ],
-      ),
-      actions: [
-        Container(
-          margin: EdgeInsets.only(right: 16.w),
-          decoration: BoxDecoration(
-            color: AppColors.grey800Color,
-            borderRadius: BorderRadius.circular(4.r),
-          ),
-          child: Row(
-            children: [
-              AppText(
-                text: "2000",
-                fontWeight: FontWeight.w500,
-                fontSize: 14.sp,
-                color: AppColors.whiteColor,
-              ).paddingOnly(
-                top: 4.h,
-                bottom: 4.h,
-                left: 12.w,
+  Widget liveGameCard() {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(4.r),
+      child: ListTile(
+        contentPadding: EdgeInsets.symmetric(horizontal: 8.w),
+        tileColor: AppColors.grey900Color2,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const AppText(text: AppString.valorantGameName),
+            Container(
+              padding: EdgeInsetsDirectional.symmetric(
+                horizontal: 6.w,
+                vertical: 2.h,
               ),
-              12.w.horizontalSpace,
-              Image.asset(
-                AppAssets.walletIcon,
-                height: 28.h,
-                width: 28.h,
-              )
-            ],
-          ),
-        )
-      ],
-      automaticallyImplyLeading: false,
-    );
+              decoration: BoxDecoration(color: AppColors.primaryColor, borderRadius: BorderRadius.circular(16.sp)),
+              child: AppText(
+                text: AppString.liveTag,
+                fontSize: 12.sp,
+              ),
+            ),
+          ],
+        ),
+        subtitle: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            CachedNetworkImg(
+              imgPath: AppAssets.rupeesIcon,
+              isAssetImg: true,
+              imgSize: 15.h,
+            ),
+
+            /// Entry fee
+            AppText(
+              fontSize: 12.sp,
+              color: AppColors.greenClr,
+              fontWeight: FontWeight.w500,
+              text: " 1000 Prize pool",
+            )
+          ],
+        ).paddingOnly(right: 8.w, top: 12.h),
+      ),
+    ).paddingSymmetric(vertical: 24.h);
   }
 }

@@ -18,9 +18,9 @@ class GradientProgressBar extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               gradient: gradient,
-              borderRadius: percent == 100
-                  ? const BorderRadius.all(Radius.circular(4))
-                  : const BorderRadius.only(bottomLeft: Radius.circular(4), topLeft: Radius.circular(4)),
+              // borderRadius: percent == 100
+              //     ? const BorderRadius.all(Radius.circular(4))
+              //     : const BorderRadius.only(bottomLeft: Radius.circular(4), topLeft: Radius.circular(4)),
             ),
             child: const SizedBox(height: 5.0),
           ),

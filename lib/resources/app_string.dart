@@ -45,6 +45,7 @@ class AppString {
   static const goToYoutubeLiveStream = "Go to YouTube live stream to join tournament.";
   static const loadingTag = "Loading";
   static const gameImage = "Loading";
+  static const valorantGameName = "Valorant - Unrank Medium Pool";
 
   // Tournaments status
   static const tournamentCompleted = "Tournament Completed";
