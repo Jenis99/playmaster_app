@@ -1,13 +1,27 @@
 class LastMinGameModel {
   String? gameImg;
   String? gameName;
+  String? gameCategory;
+  String? gamePoolSize;
+  String? startTime;
   int? pricePerTeam;
   int? pricePool;
   int? totalSlot;
   int? availableSlot;
   int? slotPercentage;
 
-  LastMinGameModel({this.gameImg, this.gameName, this.pricePerTeam, this.pricePool, this.totalSlot, this.availableSlot, this.slotPercentage});
+  LastMinGameModel({
+    this.gameImg,
+    this.gameName,
+    this.pricePerTeam,
+    this.pricePool,
+    this.totalSlot,
+    this.availableSlot,
+    this.slotPercentage,
+    this.gameCategory,
+    this.gamePoolSize,
+    this.startTime,
+  });
 
   LastMinGameModel.fromJson(Map<String, dynamic> json) {
     gameImg = json['gameImg'];
@@ -17,6 +31,9 @@ class LastMinGameModel {
     totalSlot = json['totalSlot'];
     availableSlot = json['availableSlot'];
     slotPercentage = json['slotPercentage'];
+    gameCategory = json['gameCategory'];
+    gamePoolSize = json['gamePoolSize'];
+    startTime = json['startTime'];
   }
 
   Map<String, dynamic> toJson() {
@@ -27,6 +44,8 @@ class LastMinGameModel {
     data['pricePool'] = pricePool;
     data['totalSlot'] = totalSlot;
     data['slotPercentage'] = slotPercentage;
+    data['gameCategory'] = gameCategory;
+    data['gamePoolSize'] = gamePoolSize;
     return data;
   }
 }

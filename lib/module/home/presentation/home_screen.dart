@@ -17,11 +17,11 @@ class HomeScreen extends StatelessWidget {
             /// Game list
             SizedBox(height: Get.height * 0.37, child: const GameCarouselView()),
 
-            tournamentTitle(title: AppString.yourMatchIsLive, isSingleTitle: true),
+            const TournamentTitle(title: AppString.yourMatchIsLive, isSingleTitle: true),
             liveGameCard(),
 
             /// Top Games Tournaments
-            tournamentTitle(title: AppString.topGamesTournament),
+            const TournamentTitle(title: AppString.topGamesTournament),
             8.verticalSpace,
             ListView.builder(
               itemCount: homeController.topGameList.length,
@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
             20.h.verticalSpace,
 
             /// Last minutes
-            tournamentTitle(title: AppString.lastMinutes),
+            const TournamentTitle(title: AppString.lastMinutes),
             20.h.verticalSpace,
             GridView.builder(
               shrinkWrap: true,
@@ -49,37 +49,6 @@ class HomeScreen extends StatelessWidget {
           ],
         ).paddingSymmetric(horizontal: 16.w),
       ),
-    );
-  }
-
-  /// TournamentTitle title
-  Widget tournamentTitle({required String title, void Function()? onViewAll, bool isSingleTitle = false}) {
-    return Row(
-      mainAxisAlignment: isSingleTitle ? MainAxisAlignment.start : MainAxisAlignment.spaceBetween,
-      children: [
-        /// Game title
-        AppText(
-          text: title,
-          fontWeight: FontWeight.w600,
-          fontSize: 18.sp,
-          color: AppColors.whiteColor,
-        ),
-
-        /// View all
-        !isSingleTitle
-            ? GestureDetector(
-                onTap: onViewAll,
-                child: Container(
-                  color: AppColors.transparentClr,
-                  child: AppText(
-                    text: AppString.viewAll,
-                    color: AppColors.blue500Color,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              )
-            : const SizedBox.shrink(),
-      ],
     );
   }
 

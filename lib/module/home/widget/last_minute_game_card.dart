@@ -64,11 +64,7 @@ class LastMinuteGameCard extends StatelessWidget {
           ).paddingOnly(right: 8.w, left: 8.w, bottom: 10.h),
 
           //Progress bar
-          GradientProgressBar(
-            percent: lastMinGameModel.slotPercentage ?? 50,
-            backgroundColor: AppColors.grey800Color,
-            gradient: LinearGradient(colors: AppColors.gameTextGradientClr),
-          ).paddingSymmetric(horizontal: 8.w),
+          GradientProgressBar(percent: lastMinGameModel.slotPercentage ?? 50).paddingSymmetric(horizontal: 8.w),
 
           AppText(
             maxLines: 1,

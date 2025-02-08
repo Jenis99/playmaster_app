@@ -3,10 +3,10 @@ import 'package:playmaster_ui/dependency.dart';
 class GradientProgressBar extends StatelessWidget {
   ///it can be anything between 0 to 100
   final int percent;
-  final LinearGradient gradient;
-  final Color backgroundColor;
+  final LinearGradient? gradient;
+  final Color? backgroundColor;
 
-  const GradientProgressBar({required this.percent, required this.gradient, required this.backgroundColor, super.key});
+  const GradientProgressBar({required this.percent, this.gradient, this.backgroundColor, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class GradientProgressBar extends StatelessWidget {
           fit: FlexFit.tight,
           child: Container(
             decoration: BoxDecoration(
-              gradient: gradient,
+              gradient: gradient ?? LinearGradient(colors: AppColors.gameTextGradientClr),
               // borderRadius: percent == 100
               //     ? const BorderRadius.all(Radius.circular(4))
               //     : const BorderRadius.only(bottomLeft: Radius.circular(4), topLeft: Radius.circular(4)),
@@ -30,7 +30,7 @@ class GradientProgressBar extends StatelessWidget {
           flex: 100 - percent,
           child: Container(
             decoration: BoxDecoration(
-              color: backgroundColor,
+              color: backgroundColor ?? AppColors.grey800Color,
               borderRadius: percent == 0
                   ? const BorderRadius.all(Radius.circular(4))
                   : const BorderRadius.only(bottomRight: Radius.circular(4), topRight: Radius.circular(4)),

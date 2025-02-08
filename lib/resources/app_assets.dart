@@ -5,6 +5,7 @@ class AppAssets {
   static const String appLogo = "$basePngPath/app_logo.png";
   static const String bottomBarShadow = "$basePngPath/bottom_bar_shadow.png";
   static const String walletIcon = "$basePngPath/wallet_icon.png";
+  static const String bottomSheetShadow = "$basePngPath/bottom_sheet_shadow.png";
 
   // Icon
   static const String pcGameIcon = "$basePngPath/pc_game_icon.png";

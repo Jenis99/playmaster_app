@@ -6,6 +6,21 @@ class HomeController extends GetxController {
   final CarouselSliderController carouselSliderController = CarouselSliderController();
   RxInt currentCarousel = 0.obs;
 
+  /// Home detail view
+  RxInt selectedGameType = 0.obs;
+  List<String> gameType = ["All Category", "Unrated", "Deathmatch", "Team Deathmatch"];
+  RxString selectedGameStartTime = "".obs;
+  List<String> gameStartTimeList = ["Any time", "1 hour", "2 hour", "5 hour", "1 day", "2 day", "3 day"];
+  RxString selectedPoolSize = "All Size".obs;
+  RxString selectedStartTime = "Any time".obs;
+
+  List<({String label, String name})> gamePoolSize = [
+    (label: "All Size", name: "All"),
+    (label: "Small Pool", name: "Small"),
+    (label: "Medium Pool", name: "Medium"),
+    (label: "Big Pool", name: "Big"),
+  ];
+
   List<GameModel> gameList = [
     GameModel(
         gameImg:
@@ -86,6 +101,7 @@ class HomeController extends GetxController {
             "https://s3-alpha-sig.figma.com/img/a99b/95b8/30274f57e0e2e22fdbc6edcf3763013d?Expires=1739750400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=Yz6MaYluspyJ83wBKR2WNCXZsVufyXFz1Rb~XWKpEdoFSjHiGT4H1fZGYKOO0zPby9mvQApBD2uWs4J-R2cZxsz2RHeK5e8UoyNs8n-o0ymvEMofODQMuZn5D8LmS8-WMTivOzCEmdSMEjS~UquMe-oSfjdPpM8ewuB1pol23n0BEtNTTzAaD2~rJSRFzBN4tNHL3YQlaDK-P8j~SHedG7KheOIZGrbzRUXoI6EyYE5lBwvW8~zWcnC5Ks~8extPmUD~B6MV8deQQQUsFVZS36eHkL5Ij8mjtgbKD5-of7~kzm3g-Df-iPwRjy~AQdmFPiA81tkxVhb2R6Hg8yRW7A__",
         gameName: "Valorant - Unrank Medium Pool",
         availableSlot: 1,
+        startTime: "Start at 12 Jun, 10:00pm",
         pricePerTeam: 600,
         pricePool: 1000,
         totalSlot: 2,
@@ -95,6 +111,7 @@ class HomeController extends GetxController {
             "https://s3-alpha-sig.figma.com/img/06d8/4742/74f667842f0ef905af842d5c6ffd27ef?Expires=1739750400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=ts-LPZw0Kw3OOKR-PKdNv-qt-dWDqlD2iNUewRlDJFdXiKJANKiKt3MkKox4JSrvb~Ir61~UTuEOrB4oQvaDH-y~p51UMEJqUgPcrKjXtGAlQSHlTJwLqR-~C1rn4KjAKGSmyMVOLrEg64FN4cRhZctWOAQ9w3REri037XsqceMvlpaA1g0CQ9sh5mv4b0e0YAxlGLVmgUdtVtkd6t8GPKEkRVOtSA-lHhQFkNn3p8W-QtMfW8w-XMMbJ1Pa9Msb8Oq7Tt9LIxYulcsisjj4tWROPg7IrFk2c6wgCPZ250CNrlt9yM2Velm28Ynq5aDHcI56ASLVhNz0L4S0tVlidg__",
         gameName: "BGMI - Erangel Map (Single) Big Pool",
         availableSlot: 85,
+        startTime: "Start at 12 Jun, 10:00pm",
         pricePerTeam: 550,
         pricePool: 10000,
         totalSlot: 100,
@@ -104,6 +121,7 @@ class HomeController extends GetxController {
             "https://s3-alpha-sig.figma.com/img/5eca/35d1/9881efa72f3c084bf55c8a7c619b3e8b?Expires=1739750400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=ZJRfR8VPD3FLiD7wGXg4DcYAfqu7FqON79yJCe~8AHq4aQ6eE1LEitJgNyV5IEf020I9r6s28tO8jee5EBUzcj6NV~K24G5EmR65KeeVwvpNneXn0JXGsNWrLyWXbuE9-CwUVUgGDMPhkJ0c4bFP7YpZ~uyyuznQDS35smW9Zg1ADQG~FNcuwdGC~FlTssqY-MovSk4iIC0Vf9kEvT2vxHXHlQtW1YWmSzrloroI5jSUFDNeuWXPVXqZKYE1Z8hss~1m786s345U2u3xEb9wji2la8Dax5NE5QAvBet8-YqCDEO8GeDtnkxd3-9BmhwaP48I-sMBPfmyWv4L6xnJGQ__",
         gameName: "Fall guys - Small pool match",
         availableSlot: 35,
+        startTime: "Start at 12 Jun, 10:00pm",
         pricePerTeam: 50,
         pricePool: 500,
         totalSlot: 50,
@@ -113,6 +131,7 @@ class HomeController extends GetxController {
             "https://s3-alpha-sig.figma.com/img/a99b/95b8/30274f57e0e2e22fdbc6edcf3763013d?Expires=1739750400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=Yz6MaYluspyJ83wBKR2WNCXZsVufyXFz1Rb~XWKpEdoFSjHiGT4H1fZGYKOO0zPby9mvQApBD2uWs4J-R2cZxsz2RHeK5e8UoyNs8n-o0ymvEMofODQMuZn5D8LmS8-WMTivOzCEmdSMEjS~UquMe-oSfjdPpM8ewuB1pol23n0BEtNTTzAaD2~rJSRFzBN4tNHL3YQlaDK-P8j~SHedG7KheOIZGrbzRUXoI6EyYE5lBwvW8~zWcnC5Ks~8extPmUD~B6MV8deQQQUsFVZS36eHkL5Ij8mjtgbKD5-of7~kzm3g-Df-iPwRjy~AQdmFPiA81tkxVhb2R6Hg8yRW7A__",
         gameName: "Valorant - Unrank Medium Pool",
         availableSlot: 1,
+        startTime: "Start at 12 Jun, 10:00pm",
         pricePerTeam: 600,
         pricePool: 1000,
         totalSlot: 2,
@@ -122,6 +141,7 @@ class HomeController extends GetxController {
             "https://s3-alpha-sig.figma.com/img/06d8/4742/74f667842f0ef905af842d5c6ffd27ef?Expires=1739750400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=ts-LPZw0Kw3OOKR-PKdNv-qt-dWDqlD2iNUewRlDJFdXiKJANKiKt3MkKox4JSrvb~Ir61~UTuEOrB4oQvaDH-y~p51UMEJqUgPcrKjXtGAlQSHlTJwLqR-~C1rn4KjAKGSmyMVOLrEg64FN4cRhZctWOAQ9w3REri037XsqceMvlpaA1g0CQ9sh5mv4b0e0YAxlGLVmgUdtVtkd6t8GPKEkRVOtSA-lHhQFkNn3p8W-QtMfW8w-XMMbJ1Pa9Msb8Oq7Tt9LIxYulcsisjj4tWROPg7IrFk2c6wgCPZ250CNrlt9yM2Velm28Ynq5aDHcI56ASLVhNz0L4S0tVlidg__",
         gameName: "BGMI - Erangel Map (Single) Big Pool",
         availableSlot: 85,
+        startTime: "Start at 12 Jun, 10:00pm",
         pricePerTeam: 550,
         pricePool: 10000,
         totalSlot: 100,
@@ -131,6 +151,7 @@ class HomeController extends GetxController {
             "https://s3-alpha-sig.figma.com/img/5eca/35d1/9881efa72f3c084bf55c8a7c619b3e8b?Expires=1739750400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=ZJRfR8VPD3FLiD7wGXg4DcYAfqu7FqON79yJCe~8AHq4aQ6eE1LEitJgNyV5IEf020I9r6s28tO8jee5EBUzcj6NV~K24G5EmR65KeeVwvpNneXn0JXGsNWrLyWXbuE9-CwUVUgGDMPhkJ0c4bFP7YpZ~uyyuznQDS35smW9Zg1ADQG~FNcuwdGC~FlTssqY-MovSk4iIC0Vf9kEvT2vxHXHlQtW1YWmSzrloroI5jSUFDNeuWXPVXqZKYE1Z8hss~1m786s345U2u3xEb9wji2la8Dax5NE5QAvBet8-YqCDEO8GeDtnkxd3-9BmhwaP48I-sMBPfmyWv4L6xnJGQ__",
         gameName: "Fall guys - Small pool match",
         availableSlot: 35,
+        startTime: "Start at 12 Jun, 10:00pm",
         pricePerTeam: 80,
         pricePool: 500,
         totalSlot: 35,
