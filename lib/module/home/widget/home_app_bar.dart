@@ -1,15 +1,16 @@
 import 'package:playmaster_ui/dependency.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const HomeAppBar({super.key, this.isAppLogo = true, this.titleText = ""});
+  const HomeAppBar({super.key, this.isAppLogo = true, this.titleText = "", this.appbarBgClr});
 
   final bool isAppLogo;
   final String titleText;
+  final Color? appbarBgClr;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: AppColors.appBackgroundClr,
+      backgroundColor: appbarBgClr ?? AppColors.appBackgroundClr,
       title: isAppLogo
           ? Row(
               children: [

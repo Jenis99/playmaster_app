@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             /// Game list
-            SizedBox(height: Get.height * 0.42, child: const GameCarouselView()),
+            SizedBox(height: Get.height * 0.37, child: const GameCarouselView()),
 
             tournamentTitle(title: AppString.yourMatchIsLive, isSingleTitle: true),
             liveGameCard(),
@@ -36,6 +36,7 @@ class HomeScreen extends StatelessWidget {
 
             /// Last minutes
             tournamentTitle(title: AppString.lastMinutes),
+            20.h.verticalSpace,
             GridView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
