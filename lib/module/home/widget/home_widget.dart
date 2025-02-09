@@ -4,4 +4,7 @@ export 'game_detail_widget/bottom_sheet_view.dart';
 export 'game_detail_widget/game_detail_card_tile.dart';
 export 'home_app_bar.dart';
 export 'top_game_card.dart';
+export 'tournament_detail_widgets/joined_player_tile.dart';
+export 'tournament_detail_widgets/prize_pool_tile.dart';
+export 'tournament_detail_widgets/tournament_detail_tile.dart';
 export 'tournament_title.dart';

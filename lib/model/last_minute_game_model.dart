@@ -1,8 +1,11 @@
+import 'package:playmaster_ui/dependency.dart';
+
 class LastMinGameModel {
   String? gameImg;
   String? gameName;
   String? gameCategory;
   String? gamePoolSize;
+  GameType? gameType;
   String? startTime;
   int? pricePerTeam;
   int? pricePool;
@@ -15,6 +18,7 @@ class LastMinGameModel {
     this.gameName,
     this.pricePerTeam,
     this.pricePool,
+    this.gameType,
     this.totalSlot,
     this.availableSlot,
     this.slotPercentage,
@@ -34,10 +38,11 @@ class LastMinGameModel {
     gameCategory = json['gameCategory'];
     gamePoolSize = json['gamePoolSize'];
     startTime = json['startTime'];
+    gameType = json['gameType'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['gameImg'] = gameImg;
     data['gameName'] = gameName;
     data['pricePerTeam'] = pricePerTeam;
@@ -46,6 +51,7 @@ class LastMinGameModel {
     data['slotPercentage'] = slotPercentage;
     data['gameCategory'] = gameCategory;
     data['gamePoolSize'] = gamePoolSize;
+    data['gameType'] = gameType;
     return data;
   }
 }

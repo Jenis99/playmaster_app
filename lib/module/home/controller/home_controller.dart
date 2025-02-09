@@ -14,11 +14,49 @@ class HomeController extends GetxController {
   RxString selectedPoolSize = "All Size".obs;
   RxString selectedStartTime = "Any time".obs;
 
+  List<({String icon, String name, String price})> rankPriceList = [
+    (icon: AppAssets.firstIcon, name: "1st Rank", price: "₹6,000"),
+    (icon: AppAssets.secondIcon, name: "2nd Rank", price: "₹2,000"),
+    (icon: AppAssets.thirdIcon, name: "3rd Rank", price: "₹1,000"),
+    (icon: AppAssets.fourthIcon, name: "4th Rank", price: "₹500"),
+  ];
   List<({String label, String name})> gamePoolSize = [
     (label: "All Size", name: "All"),
     (label: "Small Pool", name: "Small"),
     (label: "Medium Pool", name: "Medium"),
     (label: "Big Pool", name: "Big"),
+  ];
+  List<({String profileImg, String username, String userId})> joinedPlayerList = [
+    (
+      profileImg:
+          "https://s3-alpha-sig.figma.com/img/d50a/bc89/1f55bd7412aefcf6f5ea4006525b28f2?Expires=1739750400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=FinBdluw~~bs7IHlg7ucAEBFfXVsdgMFUI505rWlxHLIAm-JvUDZ-IgT-H9gmUyX5hCiUES7BZPyqVokaQ1Nkdjkc1CwVzCMfZAo8kaBeAyd67mvQjjzZV3ezzBYDc2sdTmjlJkcGyq6eq8IGIcOgHgYQ4AncAxgpA4owMEV1cg-2r2YNVGNIIzQtb7d-zvEcFLson2OvjTC9AIwMxKPF4PQQHnek2lSf7nmFAMWFvCP3ZFrNYv4MDN3LM36bObRK-wiAPbWH~GWPO98f~88xcGX8d93ARkBKaKX7wrbgQyE9lxiRH4P9N7J~T6jLR0cOhyDVOPzhT6UFrbH7eZV~Q__",
+      username: "Rickey Lueilwitz",
+      userId: "@rickey_99"
+    ),
+    (
+      profileImg:
+          "https://s3-alpha-sig.figma.com/img/af3b/5a95/f6ddfcd404b078a0e25fbdc60df812a0?Expires=1739750400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=BOPVBokIrAC9A7TGPgVy5ZsBMZooblVQfT~vHhfI0uVVN3pVmQhzatfZOK94HTIiHt4OX5mM-0m1BZ35jtWEhs0DQ-d5~ZvuhGFP-bG4oy0LFrFzRKIkEDyAmltBpZvHdyeRcSJZWCMe7cdoRcmgXxV1WdJDXbRa2t3nDPkkGtcvPOzLkFm-eYxCYh0tpCJLLbhXl~8ziP0xRPgjR2vvAI5l9TErRSnUZfiKLhx6MDj1tjhfuJuu5WtOxg6uIEpuZmwKx5FrasGYlACAEAKVlVUipXOsuLEzw3vxpX1aL1Czj1v5VU-4rIiuE5uuX1Y7XmEhsUpWLB0Jm2UbSUr7Vw__",
+      username: "Christian Berge",
+      userId: "@berge_christian",
+    ),
+    (
+      profileImg:
+          "https://s3-alpha-sig.figma.com/img/a2d4/0cad/30159fdd713b96eafeb2c75697e0aebe?Expires=1739750400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=KzA1ii0LilwiEXnbnLmnQxFcscW4r3cB19SCFzBSC15RNFzLVcVTM8ftPJq61x5cC1zw8AHsDM~4IUiB3HiSvW9z1HElL7n7YfvreUCLxEzLUuUjc2R0jI3pfMybZdBJ3Seo21U4v6DdG5vlS5Vh3LVRc06Tl0HEyGpIN8Vt0A80R6U1-DFeKlrBmoT6nIjv9DpUdIJhSu5hXv1eHbY1Jpy7OXFX~1SfNtb-VHOo7Xeb9wk3Xg5n0uArwBpne3wvBJ2zSxkDFqdytMomL8YRB2M4lbTvY0S4qIiApE6c8vXUGezfypWWvlDqrio3nScwFhrnExSKRRKLJ5wSANKwQg__",
+      username: "Angie Hegmann",
+      userId: "@angie_h44",
+    ),
+    (
+      profileImg:
+          "https://s3-alpha-sig.figma.com/img/cb23/2aff/cc4fc2f9e7ab5aa269e044ad10ba49b8?Expires=1739750400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=dwAttuzcuCOkcBGYfMTb9YYKSPly8KhbyEmZGJ3GjvARuigL~uBPOnwgYLY0P3WlZNlKxaWfCuz31rp5Z7yKuFo9UeLAAOCDqFLusB6RBaI~avWQD~SMfFy3hUNdpB4GrpPD0UPvWZu-Vhx9JWyTvrGFYnVqinbxIY3Om4bx9QQYrs8OlMLZn8Hr-aHcHYVRarNMUoQVaDIIub6cGwcT8KaAb0hZCqkd5JMq6WuECC7seBYDfjNZqrfZ-GOnpA~KPojpRlhE2ih0OIGKe7i~ANGydMlmXYaRpKIRp3XcwSLD3yeWdlGqPjHsALoQscN5gDXxL-5zg2q7Xg0eLK3V~A__",
+      username: "Bryan Cruickshank",
+      userId: "@bryan_hunter"
+    ),
+    (
+      profileImg:
+          "https://s3-alpha-sig.figma.com/img/f8d1/f54d/d29f57550fc5084b619217f4b9f32680?Expires=1739750400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=JOQPlU6xbZgadbUAbgouW40SP0dxtX6iFWP1g3AVnJLN1yVKJO-UtQx8Mc6ktUQmn1qpSiPiE0vSq-zpgmhvDehh4sMXiBbktcfs4iYKy2bm2oXeVG7nJW5mcpTbCI3sAjmqLQEtXmipN8bT6uh9mRVyiCg7AyFOn-FtkpTWUGFhfFdtcuQEW2TPfCevDjEU-m8u8ckbpDBgAsy~Cliq3HEqKCLtZV1xRx9Q7PM-gZ~00G0S7MJd4C1apfF8IVAY2E~XBlNfMzskSHDObmqOVYv5-9bgegWFp2iOUBjsu0DuONz4ZNHs05LWuHYY66BNO9pFyjTmfazKhPFcEDBCVg__",
+      username: "Darryl Mills",
+      userId: "@darryl_sniper"
+    ),
   ];
 
   List<GameModel> gameList = [
@@ -103,6 +141,7 @@ class HomeController extends GetxController {
         availableSlot: 1,
         startTime: "Start at 12 Jun, 10:00pm",
         pricePerTeam: 600,
+        gameType: GameType.pcGame,
         pricePool: 1000,
         totalSlot: 2,
         slotPercentage: 50),
@@ -112,6 +151,7 @@ class HomeController extends GetxController {
         gameName: "BGMI - Erangel Map (Single) Big Pool",
         availableSlot: 85,
         startTime: "Start at 12 Jun, 10:00pm",
+        gameType: GameType.mobileGame,
         pricePerTeam: 550,
         pricePool: 10000,
         totalSlot: 100,
@@ -122,6 +162,7 @@ class HomeController extends GetxController {
         gameName: "Fall guys - Small pool match",
         availableSlot: 35,
         startTime: "Start at 12 Jun, 10:00pm",
+        gameType: GameType.pcGame,
         pricePerTeam: 50,
         pricePool: 500,
         totalSlot: 50,
@@ -131,6 +172,7 @@ class HomeController extends GetxController {
             "https://s3-alpha-sig.figma.com/img/a99b/95b8/30274f57e0e2e22fdbc6edcf3763013d?Expires=1739750400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=Yz6MaYluspyJ83wBKR2WNCXZsVufyXFz1Rb~XWKpEdoFSjHiGT4H1fZGYKOO0zPby9mvQApBD2uWs4J-R2cZxsz2RHeK5e8UoyNs8n-o0ymvEMofODQMuZn5D8LmS8-WMTivOzCEmdSMEjS~UquMe-oSfjdPpM8ewuB1pol23n0BEtNTTzAaD2~rJSRFzBN4tNHL3YQlaDK-P8j~SHedG7KheOIZGrbzRUXoI6EyYE5lBwvW8~zWcnC5Ks~8extPmUD~B6MV8deQQQUsFVZS36eHkL5Ij8mjtgbKD5-of7~kzm3g-Df-iPwRjy~AQdmFPiA81tkxVhb2R6Hg8yRW7A__",
         gameName: "Valorant - Unrank Medium Pool",
         availableSlot: 1,
+        gameType: GameType.pcGame,
         startTime: "Start at 12 Jun, 10:00pm",
         pricePerTeam: 600,
         pricePool: 1000,
@@ -143,6 +185,7 @@ class HomeController extends GetxController {
         availableSlot: 85,
         startTime: "Start at 12 Jun, 10:00pm",
         pricePerTeam: 550,
+        gameType: GameType.mobileGame,
         pricePool: 10000,
         totalSlot: 100,
         slotPercentage: 70),
@@ -154,6 +197,7 @@ class HomeController extends GetxController {
         startTime: "Start at 12 Jun, 10:00pm",
         pricePerTeam: 80,
         pricePool: 500,
+        gameType: GameType.pcGame,
         totalSlot: 35,
         slotPercentage: 90),
   ];

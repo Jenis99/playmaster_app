@@ -1,9 +1,10 @@
 import 'package:playmaster_ui/dependency.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const HomeAppBar({super.key, this.isAppLogo = true, this.titleText = "", this.appbarBgClr});
+  const HomeAppBar({super.key, this.isAppLogo = true, this.titleText = "", this.appbarBgClr, this.isShowWallet = true});
 
   final bool isAppLogo;
+  final bool isShowWallet;
   final String titleText;
   final Color? appbarBgClr;
 
@@ -11,6 +12,8 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       surfaceTintColor: AppColors.transparentClr,
+      centerTitle: false,
+      titleSpacing: 0,
       backgroundColor: appbarBgClr ?? AppColors.appBackgroundClr,
       title: isAppLogo
           ? Row(
@@ -37,33 +40,34 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
               fontWeight: FontWeight.w700,
             ),
       actions: [
-        Container(
-          margin: EdgeInsets.only(right: 16.w),
-          decoration: BoxDecoration(
-            color: AppColors.grey800Color,
-            borderRadius: BorderRadius.circular(4.r),
-          ),
-          child: Row(
-            children: [
-              AppText(
-                text: "2000",
-                fontWeight: FontWeight.w500,
-                fontSize: 14.sp,
-                color: AppColors.whiteColor,
-              ).paddingOnly(
-                top: 4.h,
-                bottom: 4.h,
-                left: 12.w,
-              ),
-              12.w.horizontalSpace,
-              Image.asset(
-                AppAssets.walletIcon,
-                height: 28.h,
-                width: 28.h,
-              )
-            ],
-          ),
-        )
+        if (isShowWallet)
+          Container(
+            margin: EdgeInsets.only(right: 16.w),
+            decoration: BoxDecoration(
+              color: AppColors.grey800Color,
+              borderRadius: BorderRadius.circular(4.r),
+            ),
+            child: Row(
+              children: [
+                AppText(
+                  text: "2000",
+                  fontWeight: FontWeight.w500,
+                  fontSize: 14.sp,
+                  color: AppColors.whiteColor,
+                ).paddingOnly(
+                  top: 4.h,
+                  bottom: 4.h,
+                  left: 12.w,
+                ),
+                12.w.horizontalSpace,
+                Image.asset(
+                  AppAssets.walletIcon,
+                  height: 28.h,
+                  width: 28.h,
+                )
+              ],
+            ),
+          )
       ],
       automaticallyImplyLeading: !isAppLogo,
     );

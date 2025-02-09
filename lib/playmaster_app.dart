@@ -22,6 +22,7 @@ class PlaymasterApp extends StatelessWidget {
           disabledColor: AppColors.transparentClr,
           highlightColor: AppColors.transparentClr,
           scaffoldBackgroundColor: AppColors.appBackgroundClr,
+          appBarTheme: AppBarTheme(backgroundColor: AppColors.appBackgroundClr),
         ),
         initialBinding: AppBinding(),
         builder: (context, child) => Scaffold(

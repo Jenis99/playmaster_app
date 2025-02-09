@@ -1,5 +1,6 @@
 import 'package:playmaster_ui/dependency.dart';
 import 'package:playmaster_ui/model/model.dart';
+import 'package:playmaster_ui/module/home/home.dart';
 
 class TopGameCard extends StatelessWidget {
   const TopGameCard({super.key, required this.topGameModel});
@@ -8,7 +9,6 @@ class TopGameCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isPcGame = topGameModel.gameType == GameType.pcGame;
     return ListTile(
       onTap: () {},
       contentPadding: EdgeInsets.zero,
@@ -42,22 +42,7 @@ class TopGameCard extends StatelessWidget {
             color: AppColors.grey400Color,
           ),
           12.h.verticalSpace,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              CachedNetworkImg(
-                imgPath: isPcGame ? AppAssets.pcGameIcon : AppAssets.mobileGameIcon,
-                imgSize: 18.h,
-                isAssetImg: true,
-              ),
-              8.w.horizontalSpace,
-              AppText(
-                text: topGameModel.gameType?.getTitle(topGameModel.gameType ?? GameType.pcGame) ?? "",
-                color: isPcGame ? AppColors.yellow400Clr : AppColors.pink500Clr,
-              ),
-            ],
-          ),
+          GameTypeView(gameType: topGameModel.gameType ?? GameType.pcGame),
         ],
       ),
     );

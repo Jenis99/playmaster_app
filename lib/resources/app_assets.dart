@@ -7,14 +7,22 @@ class AppAssets {
   static const String bottomBarShadow = "$baseImagePath/bottom_bar_shadow.png";
   static const String bottomSheetShadow = "$baseImagePath/bottom_sheet_shadow.png";
 
-  // Icon
+  // Icons
   static const String pcGameIcon = "$baseIconPath/pc_game_icon.png";
   static const String appLogo = "$baseIconPath/app_logo.png";
   static const String walletIcon = "$baseIconPath/wallet_icon.png";
   static const String mobileGameIcon = "$baseIconPath/mobile_game_icon.png";
   static const String rupeesIcon = "$baseIconPath/rupees_currency_logo.png";
+  static const String prizePoolIcon = "$baseIconPath/prize_pool_icon.png";
+  static const String joinedUserIcon = "$baseIconPath/joined_player_icon.png";
 
-  /// Dashboard icons
+  /// Rank icon
+  static const String firstIcon = "$baseIconPath/1st_rank_icon.png";
+  static const String secondIcon = "$baseIconPath/2nd_rank_icon.png";
+  static const String thirdIcon = "$baseIconPath/3rd_rank_icon.png";
+  static const String fourthIcon = "$baseIconPath/4th_rank_icon.png";
+
+  /// Dashboard Tabs icons
   static const String homeIcon = "$baseIconPath/home_icon.png";
   static const String myMatchesIcon = "$baseIconPath/my_matches_icon.png";
   static const String friendsIcon = "$baseIconPath/friends_icon.png";
