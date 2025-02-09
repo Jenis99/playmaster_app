@@ -1,5 +1,6 @@
 import 'package:playmaster_ui/dependency.dart';
 import 'package:playmaster_ui/module/home/home.dart';
+import 'package:playmaster_ui/module/home/widget/game_detail_widget/bottom_sheet_view.dart';
 
 class GameDetailScreen extends StatelessWidget {
   GameDetailScreen({super.key, required this.gameTitle});
@@ -29,32 +30,18 @@ class GameDetailScreen extends StatelessWidget {
             children: [
               // Start in
               Obx(() => commonGameFilter(
+                context: context,
                     title: AppString.startIn,
                     filterValue: homeController.selectedStartTime.value,
-                    // onTap: () {
-                    //   showModalBottomSheet(
-                    //     backgroundColor: AppColors.appBackgroundClr,
-                    //     context: context,
-                    //     builder: (context) {
-                    //       return commonBottomView();
-                    //     },
-                    //   );
-                    // },
+                    isFromPool: false,
                   )),
 
               // Pool size
               Obx(() => commonGameFilter(
+                context: context,
                     title: AppString.poolSize,
+                    isFromPool: true,
                     filterValue: homeController.selectedPoolSize.value,
-                    // onTap: () {
-                    //   showModalBottomSheet(
-                    //     backgroundColor: AppColors.appBackgroundClr,
-                    //     context: context,
-                    //     builder: (context) {
-                    //       return commonBottomView();
-                    //     },
-                    //   );
-                    // },
                   )),
             ],
           ).paddingSymmetric(horizontal: 16.w),
@@ -74,76 +61,21 @@ class GameDetailScreen extends StatelessWidget {
     );
   }
 
-  /// Select Start time sheet
-  Widget commonBottomView(bool isFromPoolSize) {
-    return Column(
-      children: [
-        Container(
-          height: 4.h,
-          width: 50.h,
-          margin: EdgeInsetsDirectional.symmetric(vertical: 8.h),
-          decoration: BoxDecoration(
-            color: AppColors.appBackgroundClr,
-            borderRadius: BorderRadius.circular(100.r),
-          ),
-        ),
-        TournamentTitle(title: isFromPoolSize ? AppString.prizePool : AppString.startIn, subTitle: AppString.cancelTag)
-            .paddingSymmetric(horizontal: 16.w),
-        20.h.verticalSpace,
-        ListView.builder(
-          itemCount: isFromPoolSize ? homeController.gamePoolSize.length : homeController.gameStartTimeList.length,
-          itemBuilder: (context, index) {
-            return selectStartTimeBottomView(
-                title: isFromPoolSize ? homeController.gamePoolSize[index].label : homeController.gameStartTimeList[index]);
-          },
-          shrinkWrap: true,
-        ),
-      ],
-    );
-  }
-
-  /// Bottom sheet view
-  Widget selectStartTimeBottomView({required String title, String? subTitle, bool isFromPool = false}) {
+  /// Game filter category card
+  Widget commonGameFilter({required BuildContext context, required String title, required String filterValue, required bool isFromPool}) {
     return GestureDetector(
       onTap: () {
-        if (isFromPool) {
-          homeController.selectedPoolSize.value = title;
-        } else {
-          homeController.selectedStartTime.value = title;
-        }
+        showModalBottomSheet(
+          backgroundColor: AppColors.appBackgroundClr,
+          context: context,
+          builder: (context) {
+            return BottomSheetView(
+              homeController: homeController,
+              isFromPoolSize: isFromPool,
+            );
+          },
+        );
       },
-      child: Obx(
-        () => Container(
-            margin: EdgeInsetsDirectional.symmetric(vertical: 8.h),
-            padding: EdgeInsets.symmetric(
-              vertical: 3.h,
-            ),
-            decoration: BoxDecoration(
-              image: (isFromPool && homeController.selectedStartTime.value == title)
-                  ? const DecorationImage(
-                      fit: BoxFit.cover,
-                      image: AssetImage(AppAssets.bottomSheetShadow),
-                    )
-                  : null,
-            ),
-            child: Row(
-              mainAxisAlignment: homeController.selectedStartTime.value == title ? MainAxisAlignment.spaceBetween : MainAxisAlignment.start,
-              children: [
-                AppText(
-                  text: title,
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w500,
-                ),
-                if (homeController.selectedStartTime.value == title) Icon(Icons.check, size: 20.sp),
-              ],
-            ).paddingSymmetric(horizontal: 16.w, vertical: 5.h)),
-      ),
-    );
-  }
-
-  Widget commonGameFilter({required String title, required String filterValue, void Function()? onTap}) {
-    return GestureDetector(
-      onTap: onTap,
       child: Row(
         children: [
           RichText(
@@ -157,7 +89,7 @@ class GameDetailScreen extends StatelessWidget {
               // style: com  monStyle(),
               children: <TextSpan>[
                 TextSpan(
-                  text: " $filterValue",
+                  text: " ${isFromPool ? (filterValue.split(" ").first ?? "") : filterValue}",
                   style: TextStyle(
                     fontSize: 14.sp,
                     color: AppColors.whiteColor,
