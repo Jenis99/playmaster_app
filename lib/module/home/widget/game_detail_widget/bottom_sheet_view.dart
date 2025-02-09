@@ -12,12 +12,13 @@ class BottomSheetView extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
+        /// Title
         Container(
           height: 4.h,
           width: 50.h,
           margin: EdgeInsetsDirectional.symmetric(vertical: 8.h),
           decoration: BoxDecoration(
-            color: AppColors.appBackgroundClr,
+            color: AppColors.grey700Color,
             borderRadius: BorderRadius.circular(100.r),
           ),
         ),
@@ -28,6 +29,7 @@ class BottomSheetView extends StatelessWidget {
         ).paddingSymmetric(horizontal: 16.w),
         20.h.verticalSpace,
         ListView.builder(
+          padding: EdgeInsets.zero,
           itemCount: isFromPoolSize ? homeController.gamePoolSize.length : homeController.gameStartTimeList.length,
           itemBuilder: (context, index) {
             final String title = isFromPoolSize ? homeController.gamePoolSize[index].label : homeController.gameStartTimeList[index];
@@ -57,7 +59,7 @@ class BottomSheetView extends StatelessWidget {
             ),
             if (isSelected) Icon(Icons.check, size: 20.sp),
           ],
-        ).paddingSymmetric(horizontal: 16.w, vertical: 5.h),
+        ).paddingSymmetric(vertical: 5.h),
         isSelected: isSelected,
       ),
     );
@@ -71,17 +73,19 @@ class BottomSheetView extends StatelessWidget {
         homeController.selectedPoolSize.value = title;
       },
       child: bottomSelectionView(
-        child: Row(
-          mainAxisAlignment: isSelected ? MainAxisAlignment.spaceBetween : MainAxisAlignment.start,
-          children: [
-            AppText(
-              text: title,
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w500,
-            ),
-            if (isSelected) Icon(Icons.check, size: 20.sp),
-          ],
-        ).paddingSymmetric(horizontal: 16.w, vertical: 5.h),
+        child: Container(
+          child: Row(
+            mainAxisAlignment: isSelected ? MainAxisAlignment.spaceBetween : MainAxisAlignment.start,
+            children: [
+              AppText(
+                text: title,
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w500,
+              ),
+              if (isSelected) Icon(Icons.check, size: 20.sp),
+            ],
+          ).paddingSymmetric(vertical: 5.h),
+        ),
         isSelected: isSelected,
       ),
     );
