@@ -7,6 +7,9 @@ class AppAssets {
   static const String bottomBarShadow = "$baseImagePath/bottom_bar_shadow.png";
   static const String bottomSheetShadow = "$baseImagePath/bottom_sheet_shadow.png";
 
+  /// App launcher icon
+  static const String appLauncherIcon = "$baseImagePath/app_launcher_icon.png"; //assets/image/png/app_launcher_icon.png
+
   // Icons
   static const String pcGameIcon = "$baseIconPath/pc_game_icon.png";
   static const String appLogo = "$baseIconPath/app_logo.png";
