@@ -2,7 +2,7 @@ import 'package:playmaster_ui/dependency.dart';
 import 'package:playmaster_ui/module/home/home.dart';
 
 class GameDetailScreen extends StatelessWidget {
-  GameDetailScreen({super.key, required this.gameTitle});
+  GameDetailScreen({super.key, this.gameTitle = ""});
 
   final String gameTitle;
   final HomeController homeController = HomeController();

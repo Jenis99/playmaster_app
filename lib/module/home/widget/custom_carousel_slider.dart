@@ -22,7 +22,8 @@ class _CarouselWithIndicatorState extends State<GameCarouselView> {
           items: homeController.gameList.map((gameModel) => GameCard(gameModel: gameModel)).toList(),
           carouselController: homeController.carouselSliderController,
           options: CarouselOptions(
-              autoPlay: true,
+              autoPlay: false,
+              padEnds: false,
               enableInfiniteScroll: false,
               viewportFraction: .78,
               height: Get.height * 0.32,

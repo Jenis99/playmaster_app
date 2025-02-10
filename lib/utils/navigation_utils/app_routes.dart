@@ -2,6 +2,7 @@ import 'package:playmaster_ui/dependency.dart';
 import 'package:playmaster_ui/module/auth/presentation/create_account_screen.dart';
 import 'package:playmaster_ui/module/auth/presentation/login_screen.dart';
 import 'package:playmaster_ui/module/dashboard/dashboard.dart';
+import 'package:playmaster_ui/module/home/presentation/game_detail_screen.dart';
 import 'package:playmaster_ui/module/splash/presentation/splash_screen.dart';
 
 mixin AppRoutes {
@@ -10,6 +11,7 @@ mixin AppRoutes {
   static const String createAccountScreen = '/createAccountScreen';
   static const String loginScreen = '/loginScreen';
   static const String dashboardScreen = '/dashboardScreen';
+  static const String gameDetailScreen = '/gameDetailScreen';
   static const String homeScreen = '/homeScreen';
 
   static List<GetPage<dynamic>> pages = [
@@ -30,8 +32,13 @@ mixin AppRoutes {
     ),
     GetPage<dynamic>(
       name: dashboardScreen,
-      page: () => DashBoardScreen(),
+      page: () => const DashBoardScreen(),
       transition: Transition.fade,
     ),
+    GetPage<dynamic>(
+      name: gameDetailScreen,
+      page: () => GameDetailScreen(),
+      transition: Transition.fade,
+    )
   ];
 }
