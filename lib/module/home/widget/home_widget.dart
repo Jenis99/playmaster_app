@@ -7,4 +7,5 @@ export 'top_game_card.dart';
 export 'tournament_detail_widgets/joined_player_tile.dart';
 export 'tournament_detail_widgets/prize_pool_tile.dart';
 export 'tournament_detail_widgets/tournament_detail_tile.dart';
+export 'tournament_detail_widgets/tournament_rules_condition.dart';
 export 'tournament_title.dart';

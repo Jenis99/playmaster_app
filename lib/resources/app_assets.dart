@@ -15,6 +15,7 @@ class AppAssets {
   static const String rupeesIcon = "$baseIconPath/rupees_currency_logo.png";
   static const String prizePoolIcon = "$baseIconPath/prize_pool_icon.png";
   static const String joinedUserIcon = "$baseIconPath/joined_player_icon.png";
+  static const String rulesCondition = "$baseIconPath/rules_condition.png";
 
   /// Rank icon
   static const String firstIcon = "$baseIconPath/1st_rank_icon.png";

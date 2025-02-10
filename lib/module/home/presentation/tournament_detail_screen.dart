@@ -59,6 +59,15 @@ class TournamentDetailScreen extends StatelessWidget {
               itemCount: homeController.joinedPlayerList.length,
               itemBuilder: (context, index) => JoinedPlayerTile(userData: homeController.joinedPlayerList[index]),
             ),
+            AppText(
+              text: AppString.viewAll,
+              textAlign: TextAlign.center,
+              color: AppColors.blue500Color,
+              fontWeight: FontWeight.w600,
+              fontSize: 14.sp,
+            ).paddingOnly(top: 16.h, bottom: 40.h),
+            // Rules and condition of tournament
+            TournamentRulesCondition(),
           ],
         ).paddingSymmetric(horizontal: 16.w),
       ),
