@@ -39,6 +39,6 @@ class JoinedPlayerTile extends StatelessWidget {
           color: AppColors.grey400Color,
         ),
       ),
-    );
+    ).paddingSymmetric(vertical: 5.h);
   }
 }

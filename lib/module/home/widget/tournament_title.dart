@@ -7,12 +7,24 @@ class TournamentTitle extends StatelessWidget {
     this.onViewAll,
     this.subTitle,
     this.isSingleTitle = false,
+    this.titleFontSize,
+    this.subtitleFontSize,
+    this.titleColor,
+    this.subtitleColor,
+    this.titleFontWeight,
+    this.subtitleFontWeight,
   });
 
   final String title;
   final String? subTitle;
   final void Function()? onViewAll;
   final bool isSingleTitle;
+  final double? titleFontSize;
+  final double? subtitleFontSize;
+  final Color? titleColor;
+  final Color? subtitleColor;
+  final FontWeight? titleFontWeight;
+  final FontWeight? subtitleFontWeight;
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +34,9 @@ class TournamentTitle extends StatelessWidget {
         /// Game title
         AppText(
           text: title,
-          fontWeight: FontWeight.w600,
-          fontSize: 18.sp,
-          color: AppColors.whiteColor,
+          fontWeight: titleFontWeight ?? FontWeight.w600,
+          fontSize: titleFontSize ?? 18.sp,
+          color: titleColor ?? AppColors.whiteColor,
         ),
 
         /// View all
@@ -35,8 +47,9 @@ class TournamentTitle extends StatelessWidget {
                   color: AppColors.transparentClr,
                   child: AppText(
                     text: subTitle ?? AppString.viewAll,
-                    color: AppColors.blue500Color,
-                    fontWeight: FontWeight.w600,
+                    color: subtitleColor ?? AppColors.blue500Color,
+                    fontWeight: subtitleFontWeight ?? FontWeight.w600,
+                    fontSize: subtitleFontSize,
                   ),
                 ),
               )

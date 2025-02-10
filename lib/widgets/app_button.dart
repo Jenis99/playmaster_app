@@ -15,6 +15,7 @@ class AppButton extends StatelessWidget {
   final bool isLoading;
   final Widget? icon;
   final double? iconRightPadding;
+  final EdgeInsetsGeometry? buttonPadding;
 
   const AppButton({
     super.key,
@@ -32,6 +33,7 @@ class AppButton extends StatelessWidget {
     this.isLoading = false,
     this.icon,
     this.iconRightPadding,
+    this.buttonPadding,
   });
 
   @override
@@ -40,6 +42,7 @@ class AppButton extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
+        margin: buttonPadding,
         width: width ?? double.infinity,
         height: height ?? 48.h,
         clipBehavior: Clip.antiAlias,

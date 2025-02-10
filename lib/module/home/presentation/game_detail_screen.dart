@@ -1,6 +1,5 @@
 import 'package:playmaster_ui/dependency.dart';
 import 'package:playmaster_ui/module/home/home.dart';
-import 'package:playmaster_ui/module/home/widget/game_detail_widget/bottom_sheet_view.dart';
 
 class GameDetailScreen extends StatelessWidget {
   GameDetailScreen({super.key, required this.gameTitle});
@@ -30,7 +29,7 @@ class GameDetailScreen extends StatelessWidget {
             children: [
               // Start in
               Obx(() => commonGameFilter(
-                context: context,
+                    context: context,
                     title: AppString.startIn,
                     filterValue: homeController.selectedStartTime.value,
                     isFromPool: false,
@@ -67,6 +66,9 @@ class GameDetailScreen extends StatelessWidget {
       onTap: () {
         showModalBottomSheet(
           backgroundColor: AppColors.appBackgroundClr,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(16.0.r)),
+          ),
           context: context,
           builder: (context) {
             return BottomSheetView(
@@ -142,7 +144,7 @@ class GameDetailScreen extends StatelessWidget {
               color: homeController.selectedGameType.value == index ? AppColors.primaryColor : AppColors.grey800Color,
               borderRadius: BorderRadius.circular(4.r)),
           child: AppText(
-            text: gameType ?? "All category",
+            text: gameType,
             fontWeight: FontWeight.w500,
             fontSize: 14.sp,
           ),
