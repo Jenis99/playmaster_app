@@ -5,7 +5,7 @@ class GameDetailScreen extends StatelessWidget {
   GameDetailScreen({super.key, this.gameTitle = ""});
 
   final String gameTitle;
-  final HomeController homeController = HomeController();
+  final HomeController homeController = Get.find();
 
   @override
   Widget build(BuildContext context) {
