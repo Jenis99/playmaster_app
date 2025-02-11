@@ -1,7 +1,7 @@
 import 'package:playmaster_ui/dependency.dart';
 
 class TournamentDetailTile extends StatelessWidget {
-  const TournamentDetailTile({super.key, required this.icon, required this.title, this.subtitle = ""});
+  const TournamentDetailTile({super.key, this.icon = "", this.title = "", this.subtitle = ""});
 
   final String icon;
   final String title;

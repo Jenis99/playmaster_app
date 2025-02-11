@@ -1,6 +1,5 @@
 import 'package:playmaster_ui/dependency.dart';
 import 'package:playmaster_ui/model/game_model.dart';
-import 'package:playmaster_ui/module/home/presentation/game_detail_screen.dart';
 import 'package:playmaster_ui/widgets/dotted_divider.dart';
 
 class GameCard extends StatelessWidget {
@@ -12,10 +11,11 @@ class GameCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigation.push(GameDetailScreen(gameTitle: gameModel.gameName ?? ""));
+        Navigation.pushNamed(AppRoutes.gameDetailScreen, arg: gameModel.gameName ?? "");
+        // Navigation.push(GameDetailScreen(gameTitle: gameModel.gameName ?? ""));
       },
       child: Container(
-        width: 293.h,
+        width: 305.h,
         margin: EdgeInsets.symmetric(horizontal: 5.w),
         decoration: BoxDecoration(color: AppColors.grey900Color2, borderRadius: BorderRadius.circular(4.r)),
         child: Column(

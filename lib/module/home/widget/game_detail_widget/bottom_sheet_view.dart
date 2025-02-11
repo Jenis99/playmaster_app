@@ -26,7 +26,7 @@ class BottomSheetView extends StatelessWidget {
           title: isFromPoolSize ? AppString.prizePool : AppString.startIn,
           subTitle: AppString.cancelTag,
           onViewAll: () => Navigation.pop(),
-        ).paddingSymmetric(horizontal: 16.w),
+        ).paddingSymmetric(horizontal: AppConstants.appHorizontalPadding),
         20.h.verticalSpace,
         ListView.builder(
           padding: EdgeInsets.zero,
@@ -47,6 +47,7 @@ class BottomSheetView extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         homeController.selectedStartTime.value = title;
+        Navigation.pop();
       },
       child: bottomSelectionView(
         child: Row(
@@ -71,6 +72,7 @@ class BottomSheetView extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         homeController.selectedPoolSize.value = title;
+        Navigation.pop();
       },
       child: bottomSelectionView(
         child: Container(

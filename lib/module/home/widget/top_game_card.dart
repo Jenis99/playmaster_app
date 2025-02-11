@@ -1,7 +1,6 @@
 import 'package:playmaster_ui/dependency.dart';
 import 'package:playmaster_ui/model/model.dart';
 import 'package:playmaster_ui/module/home/home.dart';
-import 'package:playmaster_ui/module/home/presentation/game_detail_screen.dart';
 
 class TopGameCard extends StatelessWidget {
   const TopGameCard({super.key, required this.topGameModel});
@@ -12,16 +11,17 @@ class TopGameCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
-        Navigation.push(GameDetailScreen(gameTitle: topGameModel.gameName ?? ""));
+        Navigation.pushNamed(AppRoutes.gameDetailScreen, arg: topGameModel.gameName ?? "");
+        // Navigation.push(GameDetailScreen(gameTitle: topGameModel.gameName ?? ""));
       },
       contentPadding: EdgeInsets.zero,
-
+      minTileHeight: 80.h,
       // Game image
       leading: CachedNetworkImg(
         imgPath: topGameModel.gameImg ?? "",
         borderRadius: 4.r,
         imgSize: 80.h,
-        // fit: BoxFit.fitHeight,
+        fit: BoxFit.cover,
       ),
       // Game name
       title: AppText(

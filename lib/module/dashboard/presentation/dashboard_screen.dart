@@ -118,11 +118,11 @@ class _DashBoardScreenState extends State<DashBoardScreen> with WidgetsBindingOb
           children: [
             4.verticalSpace,
             Obx(
-              () => Image.asset(
-                icon,
-                height: 22.h,
-                width: 22.h,
-                color: _dashBoardController.selectedTabIndex.value == index ? AppColors.whiteColor : AppColors.grey400Color,
+              () => CachedNetworkImg(
+                imgPath: icon,
+                imgSize: 24.h,
+                isAssetImg: true,
+                imgColor: _dashBoardController.selectedTabIndex.value == index ? AppColors.whiteColor : AppColors.grey400Color,
               ),
             ),
             4.verticalSpace,

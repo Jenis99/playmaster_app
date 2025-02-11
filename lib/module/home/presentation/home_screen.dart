@@ -17,12 +17,16 @@ class HomeScreen extends StatelessWidget {
             /// Game list
             SizedBox(height: Get.height * 0.37, child: const GameCarouselView()),
 
+            40.h.verticalSpace,
+
+            /// Your match is Live
             const TournamentTitle(title: AppString.yourMatchIsLive, isSingleTitle: true),
             liveGameCard(),
+            30.h.verticalSpace,
 
             /// Top Games Tournaments
             const TournamentTitle(title: AppString.topGamesTournament),
-            8.verticalSpace,
+            24.h.verticalSpace,
             ListView.builder(
               itemCount: homeController.topGameList.length,
               shrinkWrap: true,
@@ -32,7 +36,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
 
-            20.h.verticalSpace,
+            50.h.verticalSpace,
 
             /// Last minutes
             const TournamentTitle(title: AppString.lastMinutes),
@@ -41,13 +45,16 @@ class HomeScreen extends StatelessWidget {
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemCount: homeController.lastGameModelList.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: .56),
+              gridDelegate:
+                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: .56, crossAxisSpacing: 5.w, mainAxisSpacing: 10.h
+                      //5.w, vertical: 10.h
+                      ),
               itemBuilder: (context, index) => LastMinuteGameCard(
                 lastMinGameModel: homeController.lastGameModelList[index],
               ),
             ),
           ],
-        ).paddingSymmetric(horizontal: 16.w),
+        ).paddingSymmetric(horizontal: AppConstants.appHorizontalPadding),
       ),
     );
   }

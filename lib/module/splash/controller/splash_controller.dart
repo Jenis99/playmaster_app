@@ -8,6 +8,7 @@ class SplashController extends GetxController {
   }
 
   void startTimeOut() {
-    Future.delayed(const Duration(seconds: 2), () => Navigation.replaceAll(AppRoutes.createAccountScreen));
+    Future.delayed(const Duration(seconds: 4), () => Navigation.replaceAll(AppRoutes.dashboardScreen));
+    // Future.delayed(const Duration(seconds: 4), () => Navigation.replaceAll(AppRoutes.createAccountScreen));
   }
 }

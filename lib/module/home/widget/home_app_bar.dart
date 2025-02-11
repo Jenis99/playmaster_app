@@ -13,15 +13,15 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       surfaceTintColor: AppColors.transparentClr,
       centerTitle: false,
-      titleSpacing: 0,
+      titleSpacing: isAppLogo ? 16.w : 0,
       backgroundColor: appbarBgClr ?? AppColors.appBackgroundClr,
       title: isAppLogo
           ? Row(
               children: [
-                Image.asset(
-                  AppAssets.appLogo,
-                  height: 24.h,
-                  width: 24.h,
+                CachedNetworkImg(
+                  imgPath: AppAssets.appLogo,
+                  imgSize: 24.h,
+                  isAssetImg: true,
                 ),
                 GradientText(
                   gradient: LinearGradient(colors: AppColors.appNameTextGradient),
@@ -42,7 +42,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         if (isShowWallet)
           Container(
-            margin: EdgeInsets.only(right: 16.w),
+            margin: EdgeInsets.symmetric(horizontal: AppConstants.appHorizontalPadding),
             decoration: BoxDecoration(
               color: AppColors.grey800Color,
               borderRadius: BorderRadius.circular(4.r),
@@ -50,7 +50,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             child: Row(
               children: [
                 AppText(
-                  text: "2000",
+                  text: "₹ 2000",
                   fontWeight: FontWeight.w500,
                   fontSize: 14.sp,
                   color: AppColors.whiteColor,
@@ -60,10 +60,10 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                   left: 12.w,
                 ),
                 12.w.horizontalSpace,
-                Image.asset(
-                  AppAssets.walletIcon,
-                  height: 28.h,
-                  width: 28.h,
+                CachedNetworkImg(
+                  imgPath: AppAssets.walletIcon,
+                  imgSize: 28.h,
+                  isAssetImg: true,
                 )
               ],
             ),

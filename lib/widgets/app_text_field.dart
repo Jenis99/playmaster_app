@@ -31,6 +31,8 @@ class AppTextField extends StatefulWidget {
   final ValueChanged<String>? onSubmitted;
   final TextAlign? textAlign;
   final bool isPhoneField;
+  final bool isTapOutsideEnable;
+  final Function(PointerDownEvent)? onTapOutside;
 
   AppTextField({
     super.key,
@@ -62,6 +64,8 @@ class AppTextField extends StatefulWidget {
     this.onSubmitted,
     this.textAlign,
     this.isPhoneField = false,
+    this.onTapOutside,
+    this.isTapOutsideEnable = false,
   }) {
     isVisibility = (obscureText ?? false).obs;
   }
@@ -121,6 +125,7 @@ class _AppTextFieldState extends State<AppTextField> {
               : null,
           suffixIcon: buildDefaultSuffix(),
         ),
+        onTapOutside: widget.onTapOutside ?? (widget.isTapOutsideEnable ? (event) => FocusManager.instance.primaryFocus?.unfocus() : null),
         onChanged: widget.onChanged,
         onTap: widget.onTap,
       ),

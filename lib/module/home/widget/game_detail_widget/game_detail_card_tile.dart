@@ -1,7 +1,6 @@
 import 'package:playmaster_ui/dependency.dart';
 import 'package:playmaster_ui/model/last_minute_game_model.dart';
 import 'package:playmaster_ui/module/home/home.dart';
-import 'package:playmaster_ui/module/home/presentation/tournament_detail_screen.dart';
 
 class GameDetailCardTile extends StatelessWidget {
   const GameDetailCardTile({super.key, required this.lastMinGameModel, this.isFromTournament = false});
@@ -13,7 +12,8 @@ class GameDetailCardTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigation.push(TournamentDetailScreen(lastMinGameModel: lastMinGameModel));
+        Navigation.pushNamed(AppRoutes.tournamentDetailScreen, arg: lastMinGameModel);
+        // Navigation.push(TournamentDetailScreen(lastMinGameModel: lastMinGameModel));
       },
       child: Container(
         padding: EdgeInsets.all(isFromTournament ? 0 : 12.h),

@@ -12,7 +12,7 @@ class JoinedPlayerTile extends StatelessWidget {
       borderRadius: BorderRadius.circular(4.r),
       child: ListTile(
         dense: true,
-        horizontalTitleGap: 16.w,
+        horizontalTitleGap: AppConstants.appHorizontalPadding,
         minLeadingWidth: 0,
         tileColor: AppColors.grey900Color2,
         contentPadding: EdgeInsets.zero,

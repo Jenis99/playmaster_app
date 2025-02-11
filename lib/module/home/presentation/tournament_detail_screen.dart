@@ -1,15 +1,17 @@
 import 'package:playmaster_ui/dependency.dart';
+import 'package:playmaster_ui/model/last_minute_game_model.dart';
 import 'package:playmaster_ui/model/model.dart';
 import 'package:playmaster_ui/module/home/home.dart';
 
 class TournamentDetailScreen extends StatelessWidget {
-  TournamentDetailScreen({super.key, required this.lastMinGameModel});
+  TournamentDetailScreen({super.key});
 
-  final LastMinGameModel lastMinGameModel;
   final HomeController homeController = Get.find();
 
   @override
   Widget build(BuildContext context) {
+    final LastMinGameModel lastMinGameModel = Get.arguments ?? LastMinGameModel();
+
     return Scaffold(
       appBar: const HomeAppBar(
         titleText: AppString.tournamentDetails,
@@ -26,18 +28,19 @@ class TournamentDetailScreen extends StatelessWidget {
                   GameDetailCardTile(
                     lastMinGameModel: lastMinGameModel,
                     isFromTournament: true,
-                  ).paddingSymmetric(horizontal: 16.w),
+                  ).paddingSymmetric(horizontal: AppConstants.appHorizontalPadding),
                   30.h.verticalSpace,
-                  // Prize pool
+
+                  /// Prize pool
                   const TournamentDetailTile(
                     icon: AppAssets.prizePoolIcon,
                     title: AppString.prizePool,
-                  ).paddingSymmetric(horizontal: 16.w),
+                  ).paddingSymmetric(horizontal: AppConstants.appHorizontalPadding),
 
                   ListView.separated(
                     itemCount: homeController.rankPriceList.length,
                     shrinkWrap: true,
-                    padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 16.w),
+                    padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: AppConstants.appHorizontalPadding),
                     physics: const NeverScrollableScrollPhysics(),
                     separatorBuilder: (context, index) => const Divider(),
                     itemBuilder: (context, index) {
@@ -55,11 +58,11 @@ class TournamentDetailScreen extends StatelessWidget {
                     icon: AppAssets.joinedUserIcon,
                     title: AppString.joinedPlayer,
                     subtitle: "15 ${AppString.playerJoined}",
-                  ).paddingSymmetric(vertical: 20.h, horizontal: 16.w),
+                  ).paddingSymmetric(vertical: 20.h, horizontal: AppConstants.appHorizontalPadding),
 
                   ListView.builder(
                     shrinkWrap: true,
-                    padding: EdgeInsetsDirectional.symmetric(horizontal: 16.w),
+                    padding: EdgeInsetsDirectional.symmetric(horizontal: AppConstants.appHorizontalPadding),
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: homeController.joinedPlayerList.length,
                     itemBuilder: (context, index) => JoinedPlayerTile(userData: homeController.joinedPlayerList[index]),
@@ -72,7 +75,7 @@ class TournamentDetailScreen extends StatelessWidget {
                     fontSize: 14.sp,
                   ).paddingOnly(top: 16.h, bottom: 15.h),
                   // Rules and condition of tournament
-                  TournamentRulesCondition().paddingSymmetric(horizontal: 16.w),
+                  TournamentRulesCondition().paddingSymmetric(horizontal: AppConstants.appHorizontalPadding),
                   20.h.verticalSpace,
                 ],
               ),
@@ -91,7 +94,7 @@ class TournamentDetailScreen extends StatelessWidget {
                 builder: (context) {
                   return Container(
                     color: AppColors.appBackgroundClr,
-                    padding: EdgeInsets.fromLTRB(16.w, 0, 16.w, 10.h),
+                    padding: EdgeInsets.fromLTRB(AppConstants.appHorizontalPadding, 0, AppConstants.appHorizontalPadding, 10.h),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [

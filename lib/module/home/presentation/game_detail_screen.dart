@@ -9,6 +9,7 @@ class GameDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String gameTitle = Get.arguments ?? "BGMI";
     return Scaffold(
       backgroundColor: AppColors.appBackgroundClr,
       appBar: HomeAppBar(
@@ -19,7 +20,7 @@ class GameDetailScreen extends StatelessWidget {
       body: Column(
         children: [
           /// Category view
-          gameCategoryView().paddingOnly(left: 16.w),
+          gameCategoryView(),
 
           24.verticalSpace,
 
@@ -37,13 +38,13 @@ class GameDetailScreen extends StatelessWidget {
 
               // Pool size
               Obx(() => commonGameFilter(
-                context: context,
+                    context: context,
                     title: AppString.poolSize,
                     isFromPool: true,
                     filterValue: homeController.selectedPoolSize.value,
                   )),
             ],
-          ).paddingSymmetric(horizontal: 16.w),
+          ).paddingSymmetric(horizontal: AppConstants.appHorizontalPadding),
 
           20.h.verticalSpace,
           Expanded(
@@ -78,36 +79,39 @@ class GameDetailScreen extends StatelessWidget {
           },
         );
       },
-      child: Row(
-        children: [
-          RichText(
-            text: TextSpan(
-              text: "$title: ",
-              style: TextStyle(
-                fontSize: 14.sp,
-                color: AppColors.grey400Color,
-                fontWeight: FontWeight.w500,
-              ),
-              // style: com  monStyle(),
-              children: <TextSpan>[
-                TextSpan(
-                  text: " ${isFromPool ? (filterValue.split(" ").first ?? "") : filterValue}",
-                  style: TextStyle(
-                    fontSize: 14.sp,
-                    color: AppColors.whiteColor,
-                    fontWeight: FontWeight.w500,
-                  ),
-                  // recognizer: TapGestureRecognizer()..onTap = () => Navigation.pop(),
+      child: Container(
+        color: AppColors.transparentClr,
+        child: Row(
+          children: [
+            RichText(
+              text: TextSpan(
+                text: "$title: ",
+                style: TextStyle(
+                  fontSize: 14.sp,
+                  color: AppColors.grey400Color,
+                  fontWeight: FontWeight.w500,
                 ),
-              ],
+                // style: com  monStyle(),
+                children: <TextSpan>[
+                  TextSpan(
+                    text: " ${isFromPool ? (filterValue.split(" ").first ?? "") : filterValue}",
+                    style: TextStyle(
+                      fontSize: 14.sp,
+                      color: AppColors.whiteColor,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    // recognizer: TapGestureRecognizer()..onTap = () => Navigation.pop(),
+                  ),
+                ],
+              ),
             ),
-          ),
-          Icon(
-            Icons.keyboard_arrow_down_outlined,
-            color: AppColors.whiteColor,
-            size: 20.h,
-          )
-        ],
+            Icon(
+              Icons.keyboard_arrow_down_outlined,
+              color: AppColors.whiteColor,
+              size: 20.h,
+            )
+          ],
+        ),
       ),
     );
   }
@@ -122,7 +126,7 @@ class GameDetailScreen extends StatelessWidget {
           children: List.generate(
             homeController.gameType.length,
             (index) {
-              return gameCategoryBox(homeController.gameType[index], index);
+              return gameCategoryBox(homeController.gameType[index], index).paddingOnly(left: index == 0 ? 16.w : 0);
             },
           ),
         ),
