@@ -19,7 +19,16 @@ class _CarouselWithIndicatorState extends State<GameCarouselView> {
     return Column(
       children: [
         CarouselSlider(
-          items: homeController.gameList.map((gameModel) => GameCard(gameModel: gameModel)).toList(),
+          items: homeController.gameList
+              .asMap()
+              .entries
+              .map(
+                (gameModel) => GameCard(gameModel: gameModel.value).paddingOnly(
+                  left: gameModel.key == 0 ? 16.w : 0,
+                  right: gameModel.key == (homeController.gameList.length - 1) ? 16.w : 0,
+                ),
+              )
+              .toList(),
           carouselController: homeController.carouselSliderController,
           options: CarouselOptions(
               autoPlay: false,

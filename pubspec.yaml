@@ -16,6 +16,8 @@ dependencies:
 
   # Responsive UI
   flutter_screenutil: ^5.9.3
+  device_preview: ^1.2.0
+  dotted_border: ^2.1.0
 
   # Image
   cached_network_image: ^3.4.1

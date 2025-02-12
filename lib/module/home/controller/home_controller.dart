@@ -5,6 +5,7 @@ import 'package:playmaster_ui/model/model.dart';
 class HomeController extends GetxController {
   final CarouselSliderController carouselSliderController = CarouselSliderController();
   RxInt currentCarousel = 0.obs;
+  RxBool isShowAddBalance = false.obs;
 
   /// Home detail view
   RxInt selectedGameType = 0.obs;

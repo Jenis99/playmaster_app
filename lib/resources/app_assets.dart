@@ -15,7 +15,7 @@ class AppAssets {
   static const String appLogo = "$baseIconPath/app_logo.png";
   static const String walletIcon = "$baseIconPath/wallet_icon.png";
   static const String mobileGameIcon = "$baseIconPath/mobile_game_icon.png";
-  static const String rupeesIcon = "$baseIconPath/rupees_currency_logo.png";
+  static const String rupeesCurrencyIcon = "$baseIconPath/rupees_currency_logo.png";
   static const String prizePoolIcon = "$baseIconPath/prize_pool_icon.png";
   static const String joinedUserIcon = "$baseIconPath/joined_player_icon.png";
   static const String rulesCondition = "$baseIconPath/rules_condition.png";

@@ -66,7 +66,7 @@ class GameDetailCardTile extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     CachedNetworkImg(
-                      imgPath: AppAssets.rupeesIcon,
+                      imgPath: AppAssets.rupeesCurrencyIcon,
                       isAssetImg: true,
                       imgSize: 15.h,
                     ),

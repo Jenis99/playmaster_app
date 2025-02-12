@@ -2,6 +2,7 @@ import 'package:playmaster_ui/dependency.dart';
 import 'package:playmaster_ui/model/last_minute_game_model.dart';
 import 'package:playmaster_ui/model/model.dart';
 import 'package:playmaster_ui/module/home/home.dart';
+import 'package:playmaster_ui/module/home/presentation/add_balance_screen.dart';
 
 class TournamentDetailScreen extends StatelessWidget {
   TournamentDetailScreen({super.key});
@@ -81,83 +82,106 @@ class TournamentDetailScreen extends StatelessWidget {
               ),
             ),
           ),
-          JoinTournamentButtonView(
-            balanceAmount: "2000",
-            buttonTitle: AppString.joinTournament,
-            entryFee: "500",
-            onPress: () {
-              showModalBottomSheet(
-                context: context,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
-                ),
-                builder: (context) {
-                  return Container(
-                    color: AppColors.appBackgroundClr,
-                    padding: EdgeInsets.fromLTRB(AppConstants.appHorizontalPadding, 0, AppConstants.appHorizontalPadding, 10.h),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Container(
-                          height: 4.h,
-                          width: 50.h,
-                          margin: EdgeInsetsDirectional.symmetric(vertical: 8.h),
-                          decoration: BoxDecoration(
-                            color: AppColors.grey700Color,
-                            borderRadius: BorderRadius.circular(100.r),
-                          ),
-                        ),
 
-                        /// Confirm payment
-                        TournamentTitle(
-                          title: AppString.confirmPayment,
-                          subTitle: AppString.cancelTag,
-                          onViewAll: () => Navigation.pop(),
-                        ),
-                        20.h.verticalSpace,
+          /// Join tournament button view
+          Obx(
+            () => JoinTournamentButtonView(
+              balanceAmount: homeController.isShowAddBalance.value ? "100" : "2000",
+              buttonTitle: homeController.isShowAddBalance.value ? AppString.addBalanceToJoin : AppString.joinTournament,
+              entryFee: "500",
+              buttonColor: homeController.isShowAddBalance.value ? AppColors.whiteColor : AppColors.primaryColor,
+              textColor: homeController.isShowAddBalance.value ? AppColors.grey900Color2 : AppColors.whiteColor,
+              onPress: () {
+                if (homeController.isShowAddBalance.value) {
+                  // Navigation.push(Container());
+                  Navigation.push(AddBalanceScreen());
 
-                        /// Tournament entry fee
-                        TournamentTitle(
-                          title: AppString.tournamentEntryFee,
-                          subTitle: "₹450",
-                          titleFontWeight: FontWeight.w500,
-                          titleFontSize: 14.sp,
-                          subtitleFontSize: 14.sp,
-                          subtitleFontWeight: FontWeight.w500,
-                          subtitleColor: AppColors.whiteColor,
-                          titleColor: AppColors.grey400Color,
-                        ),
-                        16.h.verticalSpace,
+                  return;
+                }
+                showModalBottomSheet(
+                  context: context,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
+                  ),
+                  builder: (context) {
+                    return confirmPaymentBottomView();
+                  },
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
-                        /// TDS and other tax
-                        TournamentTitle(
-                          title: AppString.tdsAndOther,
-                          subTitle: "₹50",
-                          titleFontWeight: FontWeight.w500,
-                          titleFontSize: 14.sp,
-                          subtitleFontSize: 14.sp,
-                          subtitleFontWeight: FontWeight.w500,
-                          subtitleColor: AppColors.whiteColor,
-                          titleColor: AppColors.grey400Color,
-                        ),
-                        AppDivider(color: AppColors.grey700Color),
+  Widget confirmPaymentBottomView() {
+    return Container(
+      color: AppColors.appBackgroundClr,
+      padding: EdgeInsets.fromLTRB(AppConstants.appHorizontalPadding, 0, AppConstants.appHorizontalPadding, 10.h),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            height: 4.h,
+            width: 50.h,
+            margin: EdgeInsetsDirectional.symmetric(vertical: 8.h),
+            decoration: BoxDecoration(
+              color: AppColors.grey700Color,
+              borderRadius: BorderRadius.circular(100.r),
+            ),
+          ),
 
-                        /// Total amount
-                        TournamentTitle(
-                          title: AppString.totalAmount,
-                          subTitle: "₹ 500",
-                          titleFontSize: 16.sp,
-                          subtitleFontSize: 16.sp,
-                          titleFontWeight: FontWeight.w700,
-                          subtitleFontWeight: FontWeight.w700,
-                          subtitleColor: AppColors.whiteColor,
-                        ).paddingSymmetric(vertical: 16.h),
-                        AppButton(text: AppString.confirmPayment)
-                      ],
-                    ),
-                  );
-                },
-              );
+          /// Confirm payment
+          TournamentTitle(
+            title: AppString.confirmPayment,
+            subTitle: AppString.cancelTag,
+            onViewAll: () => Navigation.pop(),
+          ),
+          20.h.verticalSpace,
+
+          /// Tournament entry fee
+          TournamentTitle(
+            title: AppString.tournamentEntryFee,
+            subTitle: "₹450",
+            titleFontWeight: FontWeight.w500,
+            titleFontSize: 14.sp,
+            subtitleFontSize: 14.sp,
+            subtitleFontWeight: FontWeight.w500,
+            subtitleColor: AppColors.whiteColor,
+            titleColor: AppColors.grey400Color,
+          ),
+          16.h.verticalSpace,
+
+          /// TDS and other tax
+          TournamentTitle(
+            title: AppString.tdsAndOther,
+            subTitle: "₹50",
+            titleFontWeight: FontWeight.w500,
+            titleFontSize: 14.sp,
+            subtitleFontSize: 14.sp,
+            subtitleFontWeight: FontWeight.w500,
+            subtitleColor: AppColors.whiteColor,
+            titleColor: AppColors.grey400Color,
+          ),
+          AppDivider(color: AppColors.grey700Color),
+
+          /// Total amount
+          TournamentTitle(
+            title: AppString.totalAmount,
+            subTitle: "₹ 500",
+            titleFontSize: 16.sp,
+            subtitleFontSize: 16.sp,
+            titleFontWeight: FontWeight.w700,
+            subtitleFontWeight: FontWeight.w700,
+            subtitleColor: AppColors.whiteColor,
+          ).paddingSymmetric(vertical: 16.h),
+
+          /// Confirm payment button
+          AppButton(
+            text: AppString.confirmPayment,
+            onTap: () {
+              homeController.isShowAddBalance.value = true;
             },
           )
         ],

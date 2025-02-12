@@ -1,11 +1,21 @@
 import 'package:playmaster_ui/dependency.dart';
 
 class JoinTournamentButtonView extends StatelessWidget {
-  const JoinTournamentButtonView({super.key, required this.buttonTitle, required this.entryFee, required this.balanceAmount, required this.onPress});
+  const JoinTournamentButtonView({
+    super.key,
+    required this.buttonTitle,
+    required this.entryFee,
+    required this.balanceAmount,
+    required this.onPress,
+    this.buttonColor,
+    this.textColor,
+  });
 
   final String buttonTitle;
   final String entryFee;
   final String balanceAmount;
+  final Color? buttonColor;
+  final Color? textColor;
   final void Function() onPress;
 
   @override
@@ -28,7 +38,9 @@ class JoinTournamentButtonView extends StatelessWidget {
           ),
           16.h.verticalSpace,
           AppButton(
-            text: AppString.joinTournament,
+            text: buttonTitle,
+            textColor: textColor,
+            buttonColor: buttonColor,
             onTap: onPress,
           )
         ],
