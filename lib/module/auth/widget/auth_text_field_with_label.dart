@@ -25,7 +25,7 @@ class AuthTextFieldWithLabel extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         AppText(
-          text: labelName ?? "",
+          text: labelName,
           fontSize: 14.sp,
           fontWeight: FontWeight.w400,
         ),

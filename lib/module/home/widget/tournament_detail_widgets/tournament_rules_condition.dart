@@ -1,6 +1,7 @@
 import 'package:playmaster_ui/dependency.dart';
 import 'package:playmaster_ui/module/home/home.dart';
 
+// ignore: must_be_immutable
 class TournamentRulesCondition extends StatelessWidget {
   TournamentRulesCondition({super.key});
 

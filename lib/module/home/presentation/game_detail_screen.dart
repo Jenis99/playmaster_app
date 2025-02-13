@@ -94,7 +94,7 @@ class GameDetailScreen extends StatelessWidget {
                 // style: com  monStyle(),
                 children: <TextSpan>[
                   TextSpan(
-                    text: " ${isFromPool ? (filterValue.split(" ").first ?? "") : filterValue}",
+                    text: " ${isFromPool ? (filterValue.split(" ").first) : filterValue}",
                     style: TextStyle(
                       fontSize: 14.sp,
                       color: AppColors.whiteColor,

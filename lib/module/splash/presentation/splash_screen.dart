@@ -1,6 +1,7 @@
 import 'package:playmaster_ui/dependency.dart';
 import 'package:playmaster_ui/module/splash/controller/splash_controller.dart';
 
+// ignore: must_be_immutable
 class SplashScreen extends StatelessWidget {
   SplashScreen({super.key});
 

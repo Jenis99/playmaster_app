@@ -1,6 +1,7 @@
 import 'package:playmaster_ui/dependency.dart';
 import 'package:playmaster_ui/module/auth/auth.dart';
 
+// ignore: must_be_immutable
 class CreateAccountScreen extends StatelessWidget {
   CreateAccountScreen({super.key});
 

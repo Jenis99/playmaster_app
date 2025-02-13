@@ -32,6 +32,7 @@ class AppTextField extends StatefulWidget {
   final TextAlign? textAlign;
   final bool isPhoneField;
   final bool isTapOutsideEnable;
+  final InputBorder? textFieldOrder;
   final Function(PointerDownEvent)? onTapOutside;
 
   AppTextField({
@@ -66,6 +67,7 @@ class AppTextField extends StatefulWidget {
     this.isPhoneField = false,
     this.onTapOutside,
     this.isTapOutsideEnable = false,
+    this.textFieldOrder,
   }) {
     isVisibility = (obscureText ?? false).obs;
   }
@@ -115,8 +117,8 @@ class _AppTextFieldState extends State<AppTextField> {
                 fontWeight: FontWeight.w500,
                 // letterSpacing: 0.0,
               ),
-          focusedBorder: CustomStyle.commonBorder(color: AppColors.grey900Color),
-          enabledBorder: CustomStyle.commonBorder(color: AppColors.grey900Color),
+          focusedBorder: widget.textFieldOrder ?? CustomStyle.commonBorder(color: AppColors.grey900Color),
+          enabledBorder: widget.textFieldOrder ?? CustomStyle.commonBorder(color: AppColors.grey900Color),
           prefixIcon: widget.prefixIcon != null
               ? Padding(
                   padding: EdgeInsets.all(widget.prefixIconPadding ?? 15.w),
