@@ -3,10 +3,11 @@ import 'package:playmaster_ui/model/last_minute_game_model.dart';
 import 'package:playmaster_ui/module/home/home.dart';
 
 class GameDetailCardTile extends StatelessWidget {
-  const GameDetailCardTile({super.key, required this.lastMinGameModel, this.isFromTournament = false});
+  const GameDetailCardTile({super.key, required this.lastMinGameModel, this.isFromTournament = false, this.isFromPayment = false});
 
   final LastMinGameModel lastMinGameModel;
   final bool isFromTournament;
+  final bool isFromPayment;
 
   @override
   Widget build(BuildContext context) {
@@ -49,12 +50,15 @@ class GameDetailCardTile extends StatelessWidget {
               ],
             ),
             16.h.verticalSpace,
+
+            /// Tournament status view
+            if (isFromPayment) tournamentStatusView(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 /// Entry fee
                 AppText(
-                  text: "₹${lastMinGameModel.pricePerTeam} entry fee",
+                  text: "₹${lastMinGameModel.pricePerTeam ?? 500} entry fee",
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w500,
                   color: AppColors.whiteColor,
@@ -98,4 +102,26 @@ class GameDetailCardTile extends StatelessWidget {
       ),
     );
   }
+
+  Widget tournamentStatusView() {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.h),
+      margin: EdgeInsets.only(top: 14.h, bottom: 18.h),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16.r),
+        color: statusWiseColor(),
+      ),
+      child: AppText(
+        text: lastMinGameModel.tournamentStatus?.statusLabel ?? "",
+        fontWeight: FontWeight.w500,
+        fontSize: 12.sp,
+      ),
+    );
+  }
+
+  Color statusWiseColor() => TournamentStatus.joined == lastMinGameModel.tournamentStatus?.name
+      ? AppColors.green400Clr
+      : TournamentStatus.joined == lastMinGameModel.tournamentStatus?.name
+          ? AppColors.primaryColor
+          : AppColors.grey800Color;
 }

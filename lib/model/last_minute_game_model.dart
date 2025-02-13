@@ -12,6 +12,7 @@ class LastMinGameModel {
   int? totalSlot;
   int? availableSlot;
   int? slotPercentage;
+  TournamentStatus? tournamentStatus;
 
   LastMinGameModel({
     this.gameImg,
@@ -25,6 +26,7 @@ class LastMinGameModel {
     this.gameCategory,
     this.gamePoolSize,
     this.startTime,
+    this.tournamentStatus = TournamentStatus.completed,
   });
 
   LastMinGameModel.fromJson(Map<String, dynamic> json) {
@@ -39,6 +41,7 @@ class LastMinGameModel {
     gamePoolSize = json['gamePoolSize'];
     startTime = json['startTime'];
     gameType = json['gameType'];
+    tournamentStatus = json['tournamentStatus'];
   }
 
   Map<String, dynamic> toJson() {
@@ -52,6 +55,7 @@ class LastMinGameModel {
     data['gameCategory'] = gameCategory;
     data['gamePoolSize'] = gamePoolSize;
     data['gameType'] = gameType;
+    data['tournamentStatus'] = tournamentStatus;
     return data;
   }
 }

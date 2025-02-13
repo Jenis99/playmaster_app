@@ -2,11 +2,12 @@ import 'package:playmaster_ui/dependency.dart';
 import 'package:playmaster_ui/model/last_minute_game_model.dart';
 import 'package:playmaster_ui/model/model.dart';
 import 'package:playmaster_ui/module/home/home.dart';
-import 'package:playmaster_ui/module/home/presentation/add_balance_screen.dart';
+import 'package:playmaster_ui/module/home/tournament/presentation/add_balance_screen.dart';
 
 class TournamentDetailScreen extends StatelessWidget {
-  TournamentDetailScreen({super.key});
+  TournamentDetailScreen({super.key, this.isFromPayment = false});
 
+  final bool isFromPayment;
   final HomeController homeController = Get.find();
 
   @override
@@ -29,6 +30,7 @@ class TournamentDetailScreen extends StatelessWidget {
                   GameDetailCardTile(
                     lastMinGameModel: lastMinGameModel,
                     isFromTournament: true,
+                    isFromPayment: isFromPayment,
                   ).paddingSymmetric(horizontal: AppConstants.appHorizontalPadding),
                   30.h.verticalSpace,
 
@@ -84,28 +86,30 @@ class TournamentDetailScreen extends StatelessWidget {
           ),
 
           /// Join tournament button view
-          Obx(
-            () => JoinTournamentButtonView(
-              balanceAmount: homeController.isShowAddBalance.value ? "100" : "2000",
-              buttonTitle: homeController.isShowAddBalance.value ? AppString.addBalanceToJoin : AppString.joinTournament,
-              entryFee: "500",
-              buttonColor: homeController.isShowAddBalance.value ? AppColors.whiteColor : AppColors.primaryColor,
-              textColor: homeController.isShowAddBalance.value ? AppColors.grey900Color2 : AppColors.whiteColor,
-              onPress: () {
-                if (homeController.isShowAddBalance.value) {
-                  // Navigation.push(Container());
-                  Navigation.push(AddBalanceScreen());
+          if (!isFromPayment)
+            Obx(
+              () => JoinTournamentButtonView(
+                balanceAmount: homeController.isShowAddBalance.value ? "100" : "2000",
+                buttonTitle: homeController.isShowAddBalance.value ? AppString.addBalanceToJoin : AppString.joinTournament,
+                entryFee: "500",
+                buttonColor: homeController.isShowAddBalance.value ? AppColors.whiteColor : AppColors.primaryColor,
+                textColor: homeController.isShowAddBalance.value ? AppColors.grey900Color2 : AppColors.whiteColor,
+                onPress: () {
+                  if (homeController.isShowAddBalance.value) {
+                    // Navigation.push(Container());
+                    Navigation.push(AddBalanceScreen());
+                    homeController.isShowAddBalance.value = false;
 
-                  return;
-                }
-                showModalBottomSheet(
-                  context: context,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
-                  ),
-                  builder: (context) {
-                    return confirmPaymentBottomView();
-                  },
+                    return;
+                  }
+                  showModalBottomSheet(
+                    context: context,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
+                    ),
+                    builder: (context) {
+                      return confirmPaymentBottomView();
+                    },
                 );
               },
             ),
@@ -182,6 +186,7 @@ class TournamentDetailScreen extends StatelessWidget {
             text: AppString.confirmPayment,
             onTap: () {
               homeController.isShowAddBalance.value = true;
+              Navigation.pop();
             },
           )
         ],

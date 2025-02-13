@@ -2,8 +2,8 @@ import 'package:playmaster_ui/dependency.dart';
 import 'package:playmaster_ui/module/auth/presentation/create_account_screen.dart';
 import 'package:playmaster_ui/module/auth/presentation/login_screen.dart';
 import 'package:playmaster_ui/module/dashboard/dashboard.dart';
-import 'package:playmaster_ui/module/home/presentation/game_detail_screen.dart';
-import 'package:playmaster_ui/module/home/presentation/tournament_detail_screen.dart';
+import 'package:playmaster_ui/module/home/game/presentation/game_detail_screen.dart';
+import 'package:playmaster_ui/module/home/tournament/presentation/tournament_detail_screen.dart';
 import 'package:playmaster_ui/module/splash/presentation/splash_screen.dart';
 
 mixin AppRoutes {

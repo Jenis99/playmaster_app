@@ -145,6 +145,7 @@ class HomeController extends GetxController {
         gameType: GameType.pcGame,
         pricePool: 1000,
         totalSlot: 2,
+        tournamentStatus: TournamentStatus.completed,
         slotPercentage: 50),
     LastMinGameModel(
         gameImg:
@@ -156,6 +157,7 @@ class HomeController extends GetxController {
         pricePerTeam: 550,
         pricePool: 10000,
         totalSlot: 100,
+        tournamentStatus: TournamentStatus.live,
         slotPercentage: 80),
     LastMinGameModel(
         gameImg:
@@ -166,6 +168,7 @@ class HomeController extends GetxController {
         gameType: GameType.pcGame,
         pricePerTeam: 50,
         pricePool: 500,
+        tournamentStatus: TournamentStatus.joined,
         totalSlot: 50,
         slotPercentage: 50),
     LastMinGameModel(
@@ -173,6 +176,7 @@ class HomeController extends GetxController {
             "https://s3-alpha-sig.figma.com/img/a99b/95b8/30274f57e0e2e22fdbc6edcf3763013d?Expires=1739750400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=Yz6MaYluspyJ83wBKR2WNCXZsVufyXFz1Rb~XWKpEdoFSjHiGT4H1fZGYKOO0zPby9mvQApBD2uWs4J-R2cZxsz2RHeK5e8UoyNs8n-o0ymvEMofODQMuZn5D8LmS8-WMTivOzCEmdSMEjS~UquMe-oSfjdPpM8ewuB1pol23n0BEtNTTzAaD2~rJSRFzBN4tNHL3YQlaDK-P8j~SHedG7KheOIZGrbzRUXoI6EyYE5lBwvW8~zWcnC5Ks~8extPmUD~B6MV8deQQQUsFVZS36eHkL5Ij8mjtgbKD5-of7~kzm3g-Df-iPwRjy~AQdmFPiA81tkxVhb2R6Hg8yRW7A__",
         gameName: "Valorant - Unrank Medium Pool",
         availableSlot: 1,
+        tournamentStatus: TournamentStatus.live,
         gameType: GameType.pcGame,
         startTime: "Start at 12 Jun, 10:00pm",
         pricePerTeam: 600,
@@ -186,6 +190,7 @@ class HomeController extends GetxController {
         availableSlot: 85,
         startTime: "Start at 12 Jun, 10:00pm",
         pricePerTeam: 550,
+        tournamentStatus: TournamentStatus.live,
         gameType: GameType.mobileGame,
         pricePool: 10000,
         totalSlot: 100,
@@ -198,6 +203,7 @@ class HomeController extends GetxController {
         startTime: "Start at 12 Jun, 10:00pm",
         pricePerTeam: 80,
         pricePool: 500,
+        tournamentStatus: TournamentStatus.joined,
         gameType: GameType.pcGame,
         totalSlot: 35,
         slotPercentage: 90),

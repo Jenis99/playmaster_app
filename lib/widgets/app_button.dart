@@ -47,11 +47,7 @@ class AppButton extends StatelessWidget {
         height: height ?? 48.h,
         clipBehavior: Clip.antiAlias,
         decoration: CustomStyle.buttonShapeDecoration(
-          color: buttonColor,
-          isBorder: isBorderButton,
-          isTransparent: isTransparentButton,
-          borderWidth: 1,
-        ),
+            color: buttonColor, isBorder: isBorderButton, isTransparent: isTransparentButton, borderWidth: 1, borderColor: textColor),
         child: Center(
           child: icon != null
               ? Row(

@@ -41,7 +41,9 @@ class AppString {
   static const enterAmountToAdd = "Enter amount to add";
   static const addTag = "Add";
   static const successfullyAdded = "Successfully added";
+  static const transactionFail = "Transaction failed";
   static const yourAmountHasBeing = "Your amount has being credited in wallet.";
+  static const dueToTechnicalError = "Due to some technical error transaction failed";
   static const goToYoutubeLiveStream = "Go to YouTube live stream to join tournament.";
   static const loadingTag = "Loading";
   static const gameImage = "Loading";
