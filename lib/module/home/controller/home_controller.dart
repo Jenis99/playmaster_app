@@ -1,11 +1,33 @@
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:playmaster_ui/dependency.dart';
 import 'package:playmaster_ui/model/model.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class HomeController extends GetxController {
   final CarouselSliderController carouselSliderController = CarouselSliderController();
   RxInt currentCarousel = 0.obs;
   RxBool isShowAddBalance = false.obs;
+  RxBool isVideoPlaying = false.obs;
+
+  // late VideoPlayerController videoController;
+  YoutubePlayerController youtubePlayerController = YoutubePlayerController(
+    initialVideoId: 'IX2Emps0al4',
+    flags: YoutubePlayerFlags(
+      autoPlay: true,
+      isLive: true,
+      mute: false,
+    ),
+  );
+
+  void initVideoController() {
+    // YoutubePlayerController _controller = YoutubePlayerController(
+    //   initialVideoId: 'IX2Emps0al4',
+    //   flags: YoutubePlayerFlags(
+    //     autoPlay: true,
+    //     mute: true,
+    //   ),
+    // );
+  }
 
   /// Home detail view
   RxInt selectedGameType = 0.obs;
@@ -168,7 +190,7 @@ class HomeController extends GetxController {
         gameType: GameType.pcGame,
         pricePerTeam: 50,
         pricePool: 500,
-        tournamentStatus: TournamentStatus.joined,
+        tournamentStatus: TournamentStatus.live,
         totalSlot: 50,
         slotPercentage: 50),
     LastMinGameModel(

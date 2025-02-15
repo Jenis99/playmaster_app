@@ -13,7 +13,10 @@ class GameDetailCardTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigation.pushNamed(AppRoutes.tournamentDetailScreen, arg: lastMinGameModel);
+        Get.find<HomeController>().initVideoController();
+        Navigation.rightToLeft(TournamentDetailScreen(
+          lastMinGameModel: lastMinGameModel,
+        ));
         // Navigation.push(TournamentDetailScreen(lastMinGameModel: lastMinGameModel));
       },
       child: Container(
@@ -30,7 +33,7 @@ class GameDetailCardTile extends StatelessWidget {
               fontWeight: FontWeight.w500,
               color: AppColors.whiteColor,
             ),
-            6.h.verticalSpace,
+            16.h.verticalSpace,
 
             /// Start time
             Row(

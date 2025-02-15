@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 class Navigation {
   static void push(Widget child) {
-    Get.to<dynamic>(child);
+    Get.to<dynamic>(() => child);
   }
 
   static void pushMaterial(context, Widget child) {
@@ -38,8 +38,10 @@ class Navigation {
     Get.to<dynamic>(() => child, transition: Transition.leftToRight);
   }
 
-  static void rightToLeft(Widget child) {
-    Get.to<dynamic>(() => child, transition: Transition.rightToLeft);
+  static Future<void> rightToLeft(Widget child) async {
+    print("Navigation rightToLeft called :: ");
+    await Get.to<dynamic>(() => child, transition: Transition.rightToLeft);
+    print("Navigation rightToLeft called :: 222");
   }
 
   static Future<void> replace(String routeName, {dynamic arguments}) async {

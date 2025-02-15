@@ -1,9 +1,11 @@
 import 'package:playmaster_ui/dependency.dart';
+import 'package:playmaster_ui/model/model.dart';
 import 'package:playmaster_ui/module/home/tournament/presentation/tournament_detail_screen.dart';
 import 'package:playmaster_ui/module/home/tournament/widget/payment_result_view.dart';
 
 class FailPaymentScreen extends StatelessWidget {
-  const FailPaymentScreen({Key? key}) : super(key: key);
+  const FailPaymentScreen({Key? key, this.lastMinGameModel}) : super(key: key);
+  final LastMinGameModel? lastMinGameModel;
 
   @override
   Widget build(BuildContext context) {
@@ -22,22 +24,32 @@ class FailPaymentScreen extends StatelessWidget {
               isBorderButton: true,
               buttonColor: AppColors.transparentClr,
               buttonPadding: EdgeInsets.symmetric(horizontal: AppConstants.appHorizontalPadding),
-              onTap: () => Navigation.push(TournamentDetailScreen(
-                isFromPayment: true,
-              )),
+              onTap: () {
+                navigateToDetailScreen();
+              },
             ),
             AppButton(
               text: AppString.tryAgain,
               textColor: AppColors.grey900Color2,
               buttonColor: AppColors.whiteColor,
               buttonPadding: EdgeInsets.symmetric(horizontal: AppConstants.appHorizontalPadding, vertical: 16.h),
-              onTap: () => Navigation.push(TournamentDetailScreen(
-                isFromPayment: true,
-              )),
+              onTap: () {
+                navigateToDetailScreen();
+              },
             ),
           ],
         ),
       ],
     ));
+  }
+
+  void navigateToDetailScreen() {
+    Navigation.popupUtil(AppRoutes.dashboardScreen);
+    Navigation.rightToLeft(
+      (TournamentDetailScreen(
+        isFromPayment: true,
+        lastMinGameModel: lastMinGameModel,
+      )),
+    );
   }
 }

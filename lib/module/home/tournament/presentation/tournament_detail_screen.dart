@@ -1,19 +1,34 @@
 import 'package:playmaster_ui/dependency.dart';
-import 'package:playmaster_ui/model/last_minute_game_model.dart';
 import 'package:playmaster_ui/model/model.dart';
 import 'package:playmaster_ui/module/home/home.dart';
-import 'package:playmaster_ui/module/home/tournament/presentation/add_balance_screen.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class TournamentDetailScreen extends StatelessWidget {
-  TournamentDetailScreen({super.key, this.isFromPayment = false});
+class TournamentDetailScreen extends StatefulWidget {
+  TournamentDetailScreen({super.key, this.isFromPayment = false, this.lastMinGameModel});
+
+  final LastMinGameModel? lastMinGameModel;
 
   final bool isFromPayment;
+
+  @override
+  State<TournamentDetailScreen> createState() => _TournamentDetailScreenState();
+}
+
+class _TournamentDetailScreenState extends State<TournamentDetailScreen> {
   final HomeController homeController = Get.find();
 
   @override
-  Widget build(BuildContext context) {
-    final LastMinGameModel lastMinGameModel = Get.arguments ?? LastMinGameModel();
+  void initState() {
+    super.initState();
+  }
 
+  @override
+  Widget build(BuildContext context) {
+    homeController.lastGameModelList.forEach(
+      (element) => print("element call for lastgamelist ${element.tournamentStatus?.name}"),
+    );
+
+    print("lastMinGameModel call ${widget.lastMinGameModel?.tournamentStatus?.name}");
     return Scaffold(
       appBar: const HomeAppBar(
         titleText: AppString.tournamentDetails,
@@ -27,10 +42,14 @@ class TournamentDetailScreen extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
+                  if (widget.isFromPayment && widget.lastMinGameModel?.tournamentStatus == TournamentStatus.live)
+                    TournamentVideoView(
+                      homeController: homeController,
+                    ),
                   GameDetailCardTile(
-                    lastMinGameModel: lastMinGameModel,
+                    lastMinGameModel: widget.lastMinGameModel ?? LastMinGameModel(),
                     isFromTournament: true,
-                    isFromPayment: isFromPayment,
+                    isFromPayment: widget.isFromPayment,
                   ).paddingSymmetric(horizontal: AppConstants.appHorizontalPadding),
                   30.h.verticalSpace,
 
@@ -86,7 +105,7 @@ class TournamentDetailScreen extends StatelessWidget {
           ),
 
           /// Join tournament button view
-          if (!isFromPayment)
+          if (!widget.isFromPayment)
             Obx(
               () => JoinTournamentButtonView(
                 balanceAmount: homeController.isShowAddBalance.value ? "100" : "2000",
@@ -96,10 +115,11 @@ class TournamentDetailScreen extends StatelessWidget {
                 textColor: homeController.isShowAddBalance.value ? AppColors.grey900Color2 : AppColors.whiteColor,
                 onPress: () {
                   if (homeController.isShowAddBalance.value) {
-                    // Navigation.push(Container());
-                    Navigation.push(AddBalanceScreen());
+                    Navigation.pop();
+                    Navigation.rightToLeft(AddBalanceScreen(
+                      lastMinGameModel: widget.lastMinGameModel,
+                    ));
                     homeController.isShowAddBalance.value = false;
-
                     return;
                   }
                   showModalBottomSheet(
@@ -110,13 +130,33 @@ class TournamentDetailScreen extends StatelessWidget {
                     builder: (context) {
                       return confirmPaymentBottomView();
                     },
-                );
-              },
+                  );
+                },
+              ),
             ),
-          ),
+
+          if (widget.isFromPayment && widget.lastMinGameModel?.tournamentStatus == TournamentStatus.live)
+            AppButton(
+                buttonPadding: EdgeInsets.all(16.w),
+                text: AppString.goToYoutube,
+                onTap: () {
+                  _launchUrl();
+                }),
         ],
       ),
     );
+  }
+
+  Future<void> _launchUrl() async {
+    Uri gameUrl = Uri.parse("https://www.youtube.com/watch?v=IX2Emps0al4");
+
+    if (!await launchUrl(gameUrl)) {
+      throw Exception('Could not launch ${gameUrl}');
+    }
+  }
+
+  void listenOnUpdate() {
+    print("listenOnUpdate call start");
   }
 
   Widget confirmPaymentBottomView() {

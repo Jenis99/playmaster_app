@@ -1,5 +1,6 @@
 import 'package:playmaster_ui/dependency.dart';
 import 'package:playmaster_ui/model/last_minute_game_model.dart';
+import 'package:playmaster_ui/module/home/game/presentation/game_detail_screen.dart';
 
 class LastMinuteGameCard extends StatelessWidget {
   const LastMinuteGameCard({super.key, required this.lastMinGameModel});
@@ -10,7 +11,7 @@ class LastMinuteGameCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigation.pushNamed(AppRoutes.gameDetailScreen, arg: lastMinGameModel.gameName ?? "");
+        Navigation.rightToLeft(GameDetailScreen(gameTitle: lastMinGameModel.gameName ?? ""));
 
         // Navigation.push(GameDetailScreen(
         //   gameTitle: lastMinGameModel.gameName ?? "",

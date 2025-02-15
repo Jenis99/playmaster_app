@@ -1,10 +1,13 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:playmaster_ui/dependency.dart';
+import 'package:playmaster_ui/model/last_minute_game_model.dart';
 import 'package:playmaster_ui/module/home/home.dart';
 
 // ignore: must_be_immutable
 class AddBalanceScreen extends StatelessWidget {
-  AddBalanceScreen({Key? key}) : super(key: key);
+  AddBalanceScreen({Key? key, this.lastMinGameModel}) : super(key: key);
+
+  final LastMinGameModel? lastMinGameModel;
 
   TextEditingController addAmountController = TextEditingController();
   List<String> amountSuggestionList = [
@@ -86,8 +89,13 @@ class AddBalanceScreen extends StatelessWidget {
                           buttonColor: AppColors.whiteColor,
                           textColor: AppColors.grey900Color,
                           onTap: () {
-                            Navigation.push(SuccessPaymentScreen());
-                            // showModalBottomSheet(context: context, builder:(context) => PaymentBottomView(),);
+                            showModalBottomSheet(
+                              context: context,
+                              backgroundColor: AppColors.appBackgroundClr,
+                              builder: (context) => PaymentBottomView(
+                                lastMinGameModel: lastMinGameModel,
+                              ),
+                            );
                           },
                         )),
                   ],

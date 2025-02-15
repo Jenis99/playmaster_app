@@ -1,4 +1,8 @@
+export 'package:playmaster_ui/module/home/tournament/presentation/add_balance_screen.dart';
+export 'package:playmaster_ui/module/home/tournament/presentation/fail_payment_screen.dart';
 export 'package:playmaster_ui/module/home/tournament/presentation/success_payment_screen.dart';
+export 'package:playmaster_ui/module/home/tournament/presentation/tournament_detail_screen.dart';
+export 'package:playmaster_ui/module/home/tournament/presentation/tournament_video_view.dart';
 export 'package:playmaster_ui/module/home/tournament/widget/join_tournament_button_view.dart';
 export 'package:playmaster_ui/module/home/tournament/widget/joined_player_tile.dart';
 export 'package:playmaster_ui/module/home/tournament/widget/payment_bottom_view.dart';

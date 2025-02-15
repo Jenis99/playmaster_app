@@ -13,54 +13,55 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: const HomeAppBar(),
       body: SingleChildScrollView(
-          child: Column(
-        children: [
-          /// Game list
-          SizedBox(height: Get.height * 0.37, child: const GameCarouselView()),
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              40.h.verticalSpace,
+        child: Column(
+          children: [
+            /// Game list
+            SizedBox(height: Get.height * 0.37, child: const GameCarouselView()),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                40.h.verticalSpace,
 
-              /// Your match is Live
-              const TournamentTitle(title: AppString.yourMatchIsLive, isSingleTitle: true),
-              liveGameCard(),
-              30.h.verticalSpace,
+                /// Your match is Live
+                const TournamentTitle(title: AppString.yourMatchIsLive, isSingleTitle: true),
+                liveGameCard(),
+                30.h.verticalSpace,
 
-              /// Top Games Tournaments
-              const TournamentTitle(title: AppString.topGamesTournament),
-              24.h.verticalSpace,
-              ListView.builder(
-                itemCount: homeController.topGameList.length,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) => TopGameCard(
-                  topGameModel: homeController.topGameList[index],
+                /// Top Games Tournaments
+                const TournamentTitle(title: AppString.topGamesTournament),
+                24.h.verticalSpace,
+                ListView.builder(
+                  itemCount: homeController.topGameList.length,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) => TopGameCard(
+                    topGameModel: homeController.topGameList[index],
+                  ),
                 ),
-              ),
 
-              50.h.verticalSpace,
+                50.h.verticalSpace,
 
-              /// Last minutes
-              const TournamentTitle(title: AppString.lastMinutes),
-              20.h.verticalSpace,
-              GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: homeController.lastGameModelList.length,
-                gridDelegate:
-                    SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: .56, crossAxisSpacing: 5.w, mainAxisSpacing: 10.h
-                        //5.w, vertical: 10.h
-                        ),
-                itemBuilder: (context, index) => LastMinuteGameCard(
-                  lastMinGameModel: homeController.lastGameModelList[index],
+                /// Last minutes
+                const TournamentTitle(title: AppString.lastMinutes),
+                20.h.verticalSpace,
+                GridView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: homeController.lastGameModelList.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: .55,
+                    crossAxisSpacing: 5.w,
+                    mainAxisSpacing: 10.h,
+                  ),
+                  itemBuilder: (context, index) => LastMinuteGameCard(lastMinGameModel: homeController.lastGameModelList[index]),
                 ),
-              ),
-            ],
-          ).paddingSymmetric(horizontal: AppConstants.appHorizontalPadding),
-        ],
-      )),
+              ],
+            ).paddingSymmetric(horizontal: AppConstants.appHorizontalPadding),
+          ],
+        ),
+      ),
     );
   }
 

@@ -1,9 +1,11 @@
 import 'package:playmaster_ui/dependency.dart';
+import 'package:playmaster_ui/model/model.dart';
 import 'package:playmaster_ui/module/home/home.dart';
 
 // ignore: must_be_immutable
 class PaymentBottomView extends StatelessWidget {
-  // PaymentBottomView({Key? key}) : super(key: key);
+  PaymentBottomView({Key? key, this.lastMinGameModel}) : super(key: key);
+  final LastMinGameModel? lastMinGameModel;
 
   List<({String title, String subtitle, String icon})> listOsPaymentOpt = [
     (icon: AppAssets.googlePayIcon, title: AppString.googlePay, subtitle: AppString.payWithUpi),
@@ -30,24 +32,26 @@ class PaymentBottomView extends StatelessWidget {
             ),
           ),
         ),
+        5.h.verticalSpace,
         TournamentTitle(
           title: AppString.totalAmount,
           subTitle: "₹500",
           subtitleColor: AppColors.whiteColor,
           onViewAll: () => Navigation.pop(),
         ).paddingSymmetric(horizontal: AppConstants.appHorizontalPadding),
-        20.h.verticalSpace,
+        15.h.verticalSpace,
         AppDivider(
           color: AppColors.grey700Color,
         ),
-        // ListView.builder(
-        //   itemBuilder: (context, index) {
-        //     return paymentTile(listOsPaymentOpt[index], index);
-        //   },
-        //   itemCount: listOsPaymentOpt.length,
-        //   shrinkWrap: true,
-        //   physics: NeverScrollableScrollPhysics(),
-        // ),
+        ListView.builder(
+          itemBuilder: (context, index) {
+            return paymentTile(listOsPaymentOpt[index], index);
+          },
+          scrollDirection: Axis.vertical,
+          itemCount: listOsPaymentOpt.length,
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+        ),
 
         ///
         // Column(
@@ -60,6 +64,18 @@ class PaymentBottomView extends StatelessWidget {
         // ),
         AppButton(
           text: AppString.payTag,
+          onTap: () async {
+            try {
+              Navigation.pop();
+              await Get.to<dynamic>(() => SuccessPaymentScreen(lastMinGameModel: lastMinGameModel), transition: Transition.rightToLeft);
+
+              // Navigation.rightToLeft(SuccessPaymentScreen(
+              //   lastMinGameModel: lastMinGameModel,
+              // ));
+            } catch (e, st) {
+              print("call this on error $e :: $st");
+            }
+          },
           buttonPadding: EdgeInsets.all(AppConstants.appHorizontalPadding),
         )
       ],
@@ -73,7 +89,15 @@ class PaymentBottomView extends StatelessWidget {
       },
       child: Obx(
         () => Container(
-          decoration: BoxDecoration(image: selectedPaymentIndex.value == index ? DecorationImage(image: AssetImage(AppAssets.paymentShadow)) : null),
+          decoration: BoxDecoration(
+              image: selectedPaymentIndex.value == index
+                  ? DecorationImage(
+                      image: AssetImage(
+                        AppAssets.paymentShadow,
+                      ),
+                      fit: BoxFit.cover,
+                    )
+                  : null),
           child: ListTile(
             title: AppText(
               text: paymentData.title,
@@ -83,12 +107,12 @@ class PaymentBottomView extends StatelessWidget {
               text: paymentData.subtitle,
               color: AppColors.grey400Color,
             ),
-            trailing: FittedBox(
-              child: CachedNetworkImg(
-                isAssetImg: true,
-                imgHeight: 16.h,
-                imgPath: paymentData.icon,
-              ),
+            trailing: CachedNetworkImg(
+              isAssetImg: true,
+              imgHeight: 16.h,
+              // imgWidth: 100.w,
+              // fit: BoxFit.fill,
+              imgPath: paymentData.icon,
             ),
           ),
         ),
