@@ -52,7 +52,12 @@ class AppString {
   // Tournaments status
   static const tournamentCompleted = "Tournament Completed";
   static const tournamentIsLive = "Tournament is Live";
-  static const tournamentJoined = "Tournament is Joined";
+  static const tournamentJoined = "Tournament Joined";
+
+  // My matches tab
+  static const upcomingTab = "Upcoming";
+  static const liveTab = "Live";
+  static const completedTab = "Completed";
 
   // Payment
   static const googlePay = "Google Pay";

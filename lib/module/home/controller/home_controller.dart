@@ -19,16 +19,6 @@ class HomeController extends GetxController {
     ),
   );
 
-  void initVideoController() {
-    // YoutubePlayerController _controller = YoutubePlayerController(
-    //   initialVideoId: 'IX2Emps0al4',
-    //   flags: YoutubePlayerFlags(
-    //     autoPlay: true,
-    //     mute: true,
-    //   ),
-    // );
-  }
-
   /// Home detail view
   RxInt selectedGameType = 0.obs;
   List<String> gameType = ["All Category", "Unrated", "Deathmatch", "Team Deathmatch"];
@@ -167,6 +157,7 @@ class HomeController extends GetxController {
         gameType: GameType.pcGame,
         pricePool: 1000,
         totalSlot: 2,
+        gameFee: "₹ 500 entry fee",
         tournamentStatus: TournamentStatus.completed,
         slotPercentage: 50),
     LastMinGameModel(
@@ -179,6 +170,7 @@ class HomeController extends GetxController {
         pricePerTeam: 550,
         pricePool: 10000,
         totalSlot: 100,
+        gameFee: "₹ 500 entry fee",
         tournamentStatus: TournamentStatus.live,
         slotPercentage: 80),
     LastMinGameModel(
@@ -192,6 +184,7 @@ class HomeController extends GetxController {
         pricePool: 500,
         tournamentStatus: TournamentStatus.live,
         totalSlot: 50,
+        gameFee: "₹ 500 entry fee",
         slotPercentage: 50),
     LastMinGameModel(
         gameImg:
@@ -202,6 +195,7 @@ class HomeController extends GetxController {
         gameType: GameType.pcGame,
         startTime: "Start at 12 Jun, 10:00pm",
         pricePerTeam: 600,
+        gameFee: "₹ 500 entry fee",
         pricePool: 1000,
         totalSlot: 2,
         slotPercentage: 50),
@@ -215,6 +209,7 @@ class HomeController extends GetxController {
         tournamentStatus: TournamentStatus.live,
         gameType: GameType.mobileGame,
         pricePool: 10000,
+        gameFee: "₹ 500 entry fee",
         totalSlot: 100,
         slotPercentage: 70),
     LastMinGameModel(
@@ -227,6 +222,7 @@ class HomeController extends GetxController {
         pricePool: 500,
         tournamentStatus: TournamentStatus.joined,
         gameType: GameType.pcGame,
+        gameFee: "₹ 500 entry fee",
         totalSlot: 35,
         slotPercentage: 90),
   ];

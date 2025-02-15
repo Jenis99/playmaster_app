@@ -9,6 +9,8 @@ class AppAssets {
   static const String bottomBarShadow = "$baseImagePath/bottom_bar_shadow.png";
   static const String bottomSheetShadow = "$baseImagePath/bottom_sheet_shadow.png";
   static const String paymentShadow = "$baseImagePath/payment_shadow.png";
+  static const String myMatchesShadow = "$baseImagePath/my_match_tab_shadow.png";
+
   static const String successPaymentImg = "$baseImagePath/success_payment_img.png";
   static const String failedPaymentImg = "$baseImagePath/failed_payment_img.png";
 
@@ -17,6 +19,7 @@ class AppAssets {
 
   // Icons
   static const String pcGameIcon = "$baseIconPath/pc_game_icon.png";
+  static const String trophyIcon = "$baseIconPath/trophy_icon.png";
   static const String appLogo = "$baseIconPath/app_logo.png";
   static const String walletIcon = "$baseIconPath/wallet_icon.png";
   static const String mobileGameIcon = "$baseIconPath/mobile_game_icon.png";
@@ -27,7 +30,7 @@ class AppAssets {
   static const String rulesCondition = "$baseIconPath/rules_condition.png";
   static const String tournamentWalletIcon = "$baseIconPath/tournament_wallet_icon.png";
 
-  /// Rank icon
+  /// Payment icon
   static const String googlePayIcon = "$baseIconPath/google_pay_icon.png";
   static const String paytmIcon = "$baseIconPath/paytm_icon.png";
   static const String razorpayIcon = "$baseIconPath/razor_pay_icon.png";

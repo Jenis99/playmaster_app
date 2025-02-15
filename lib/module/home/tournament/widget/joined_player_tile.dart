@@ -9,7 +9,7 @@ class JoinedPlayerTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(4.r),
+      borderRadius: BorderRadius.circular(AppConstants.borderRadius),
       child: ListTile(
         dense: true,
         horizontalTitleGap: AppConstants.appHorizontalPadding,
@@ -25,7 +25,7 @@ class JoinedPlayerTile extends StatelessWidget {
         leading: CachedNetworkImg(
           imgPath: userData.profileImg,
           imgSize: 50.h,
-          borderRadius: 4.r,
+          borderRadius: AppConstants.borderRadius,
         ).paddingOnly(left: 4.w),
         trailing: !isMyProfileData
             ? Icon(

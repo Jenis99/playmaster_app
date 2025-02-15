@@ -146,7 +146,7 @@ class GameDetailScreen extends StatelessWidget {
           padding: EdgeInsetsDirectional.symmetric(horizontal: 8.w, vertical: 6.h),
           decoration: BoxDecoration(
               color: homeController.selectedGameType.value == index ? AppColors.primaryColor : AppColors.grey800Color,
-              borderRadius: BorderRadius.circular(4.r)),
+              borderRadius: BorderRadius.circular(AppConstants.borderRadius)),
           child: AppText(
             text: gameType,
             fontWeight: FontWeight.w500,

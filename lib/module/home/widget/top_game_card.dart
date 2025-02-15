@@ -19,7 +19,7 @@ class TopGameCard extends StatelessWidget {
       // Game image
       leading: CachedNetworkImg(
         imgPath: topGameModel.gameImg ?? "",
-        borderRadius: 4.r,
+        borderRadius: AppConstants.borderRadius,
         imgSize: 80.h,
         fit: BoxFit.cover,
       ),

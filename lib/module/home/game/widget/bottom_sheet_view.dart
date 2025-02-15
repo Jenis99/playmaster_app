@@ -99,7 +99,7 @@ class BottomSheetView extends StatelessWidget {
       margin: EdgeInsetsDirectional.symmetric(horizontal: 4.w),
       padding: EdgeInsetsDirectional.symmetric(horizontal: 8.w, vertical: 6.h),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(4.r),
+          borderRadius: BorderRadius.circular(AppConstants.borderRadius),
           image: (isSelected)
               ? const DecorationImage(
                   fit: BoxFit.cover,

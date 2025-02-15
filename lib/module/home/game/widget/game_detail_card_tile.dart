@@ -11,12 +11,10 @@ class GameDetailCardTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("GameDetailCardTile called ${lastMinGameModel.tournamentStatus?.name}");
     return GestureDetector(
       onTap: () {
-        Get.find<HomeController>().initVideoController();
-        Navigation.rightToLeft(TournamentDetailScreen(
-          lastMinGameModel: lastMinGameModel,
-        ));
+        Navigation.rightToLeft(TournamentDetailScreen(lastMinGameModel: lastMinGameModel));
         // Navigation.push(TournamentDetailScreen(lastMinGameModel: lastMinGameModel));
       },
       child: Container(
@@ -122,9 +120,9 @@ class GameDetailCardTile extends StatelessWidget {
     );
   }
 
-  Color statusWiseColor() => TournamentStatus.joined == lastMinGameModel.tournamentStatus?.name
+  Color statusWiseColor() => lastMinGameModel.tournamentStatus == TournamentStatus.joined
       ? AppColors.green400Clr
-      : TournamentStatus.joined == lastMinGameModel.tournamentStatus?.name
+      : lastMinGameModel.tournamentStatus == TournamentStatus.live
           ? AppColors.primaryColor
           : AppColors.grey800Color;
 }

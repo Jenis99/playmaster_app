@@ -1,4 +1,4 @@
-import 'package:device_preview/device_preview.dart';
+// import 'package:device_preview/device_preview.dart';
 
 import 'dependency.dart';
 
@@ -18,17 +18,17 @@ class PlaymasterApp extends StatelessWidget {
         initialRoute: AppRoutes.splash,
         debugShowCheckedModeBanner: false,
         useInheritedMediaQuery: true,
-        locale: DevicePreview.locale(context),
+        // locale: DevicePreview.locale(context),
         // builder: DevicePreview.appBuilder,
         theme: ThemeData(
-          brightness: Brightness.dark,
-          fontFamily: AppString.montserratFont,
-          splashColor: AppColors.transparentClr,
-          disabledColor: AppColors.transparentClr,
-          highlightColor: AppColors.transparentClr,
-          scaffoldBackgroundColor: AppColors.appBackgroundClr,
-          appBarTheme: AppBarTheme(backgroundColor: AppColors.appBackgroundClr),
-          textSelectionTheme: TextSelectionThemeData(cursorColor: AppColors.primaryColor)),
+            brightness: Brightness.dark,
+            fontFamily: AppString.montserratFont,
+            splashColor: AppColors.transparentClr,
+            disabledColor: AppColors.transparentClr,
+            highlightColor: AppColors.transparentClr,
+            scaffoldBackgroundColor: AppColors.appBackgroundClr,
+            appBarTheme: AppBarTheme(backgroundColor: AppColors.appBackgroundClr),
+            textSelectionTheme: TextSelectionThemeData(cursorColor: AppColors.primaryColor)),
         initialBinding: AppBinding(),
         builder: (context, child) => Scaffold(
           body: child,

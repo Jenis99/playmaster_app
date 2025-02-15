@@ -12,6 +12,7 @@ class LastMinGameModel {
   int? totalSlot;
   int? availableSlot;
   int? slotPercentage;
+  String? gameFee;
   TournamentStatus? tournamentStatus;
 
   LastMinGameModel({
@@ -26,6 +27,7 @@ class LastMinGameModel {
     this.gameCategory,
     this.gamePoolSize,
     this.startTime,
+    this.gameFee,
     this.tournamentStatus = TournamentStatus.completed,
   });
 
@@ -42,6 +44,7 @@ class LastMinGameModel {
     startTime = json['startTime'];
     gameType = json['gameType'];
     tournamentStatus = json['tournamentStatus'];
+    gameFee = json['entryFee'];
   }
 
   Map<String, dynamic> toJson() {
@@ -56,6 +59,7 @@ class LastMinGameModel {
     data['gamePoolSize'] = gamePoolSize;
     data['gameType'] = gameType;
     data['tournamentStatus'] = tournamentStatus;
+    data['entryFee'] = gameFee;
     return data;
   }
 }

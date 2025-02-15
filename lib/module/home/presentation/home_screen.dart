@@ -67,7 +67,7 @@ class HomeScreen extends StatelessWidget {
 
   Widget liveGameCard() {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(4.r),
+      borderRadius: BorderRadius.circular(AppConstants.borderRadius),
       child: ListTile(
         contentPadding: EdgeInsets.symmetric(horizontal: 8.w),
         tileColor: AppColors.grey900Color2,

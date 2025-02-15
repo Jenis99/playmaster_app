@@ -52,7 +52,7 @@ class _CarouselWithIndicatorState extends State<GameCarouselView> {
                     height: 4.0.h,
                     margin: EdgeInsets.symmetric(vertical: 8.0.h, horizontal: 4.0.w),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4.r),
+                        borderRadius: BorderRadius.circular(AppConstants.borderRadius),
                         color: homeController.currentCarousel.value == entry.key ? AppColors.redColor : AppColors.grey700Color)),
               ),
             );

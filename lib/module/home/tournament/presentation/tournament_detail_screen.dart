@@ -3,32 +3,19 @@ import 'package:playmaster_ui/model/model.dart';
 import 'package:playmaster_ui/module/home/home.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class TournamentDetailScreen extends StatefulWidget {
-  TournamentDetailScreen({super.key, this.isFromPayment = false, this.lastMinGameModel});
+class TournamentDetailScreen extends StatelessWidget {
+  TournamentDetailScreen({
+    super.key,
+    this.isFromPayment = false,
+    this.lastMinGameModel,
+  });
 
   final LastMinGameModel? lastMinGameModel;
-
   final bool isFromPayment;
-
-  @override
-  State<TournamentDetailScreen> createState() => _TournamentDetailScreenState();
-}
-
-class _TournamentDetailScreenState extends State<TournamentDetailScreen> {
   final HomeController homeController = Get.find();
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    homeController.lastGameModelList.forEach(
-      (element) => print("element call for lastgamelist ${element.tournamentStatus?.name}"),
-    );
-
-    print("lastMinGameModel call ${widget.lastMinGameModel?.tournamentStatus?.name}");
     return Scaffold(
       appBar: const HomeAppBar(
         titleText: AppString.tournamentDetails,
@@ -42,38 +29,43 @@ class _TournamentDetailScreenState extends State<TournamentDetailScreen> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  if (widget.isFromPayment && widget.lastMinGameModel?.tournamentStatus == TournamentStatus.live)
+                  /// Live video view
+                  if (isFromPayment && lastMinGameModel?.tournamentStatus == TournamentStatus.live)
                     TournamentVideoView(
                       homeController: homeController,
                     ),
+
+                  /// Game card
                   GameDetailCardTile(
-                    lastMinGameModel: widget.lastMinGameModel ?? LastMinGameModel(),
+                    lastMinGameModel: lastMinGameModel ?? LastMinGameModel(),
                     isFromTournament: true,
-                    isFromPayment: widget.isFromPayment,
+                    isFromPayment: isFromPayment,
                   ).paddingSymmetric(horizontal: AppConstants.appHorizontalPadding),
-                  30.h.verticalSpace,
 
                   /// Prize pool
-                  const TournamentDetailTile(
-                    icon: AppAssets.prizePoolIcon,
-                    title: AppString.prizePool,
-                  ).paddingSymmetric(horizontal: AppConstants.appHorizontalPadding),
+                  if (isShowRankList)
+                    const TournamentDetailTile(
+                      icon: AppAssets.prizePoolIcon,
+                      title: AppString.prizePool,
+                    ).paddingSymmetric(horizontal: AppConstants.appHorizontalPadding),
 
-                  ListView.separated(
-                    itemCount: homeController.rankPriceList.length,
-                    shrinkWrap: true,
-                    padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: AppConstants.appHorizontalPadding),
-                    physics: const NeverScrollableScrollPhysics(),
-                    separatorBuilder: (context, index) => const Divider(),
-                    itemBuilder: (context, index) {
-                      final rankPriceData = homeController.rankPriceList[index];
-                      return PrizePoolTile(
-                        title: rankPriceData.name,
-                        icon: rankPriceData.icon,
-                        price: rankPriceData.price,
-                      );
-                    },
-                  ),
+                  if (isShowRankList) 30.h.verticalSpace,
+                  if (isShowRankList)
+                    ListView.separated(
+                      itemCount: homeController.rankPriceList.length,
+                      shrinkWrap: true,
+                      padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: AppConstants.appHorizontalPadding),
+                      physics: const NeverScrollableScrollPhysics(),
+                      separatorBuilder: (context, index) => const Divider(),
+                      itemBuilder: (context, index) {
+                        final rankPriceData = homeController.rankPriceList[index];
+                        return PrizePoolTile(
+                          title: rankPriceData.name,
+                          icon: rankPriceData.icon,
+                          price: rankPriceData.price,
+                        );
+                      },
+                    ),
 
                   // Joined player
                   const TournamentDetailTile(
@@ -105,7 +97,7 @@ class _TournamentDetailScreenState extends State<TournamentDetailScreen> {
           ),
 
           /// Join tournament button view
-          if (!widget.isFromPayment)
+          if (!isFromPayment)
             Obx(
               () => JoinTournamentButtonView(
                 balanceAmount: homeController.isShowAddBalance.value ? "100" : "2000",
@@ -117,7 +109,7 @@ class _TournamentDetailScreenState extends State<TournamentDetailScreen> {
                   if (homeController.isShowAddBalance.value) {
                     Navigation.pop();
                     Navigation.rightToLeft(AddBalanceScreen(
-                      lastMinGameModel: widget.lastMinGameModel,
+                      lastMinGameModel: lastMinGameModel,
                     ));
                     homeController.isShowAddBalance.value = false;
                     return;
@@ -135,7 +127,7 @@ class _TournamentDetailScreenState extends State<TournamentDetailScreen> {
               ),
             ),
 
-          if (widget.isFromPayment && widget.lastMinGameModel?.tournamentStatus == TournamentStatus.live)
+          if (isFromPayment && lastMinGameModel?.tournamentStatus == TournamentStatus.live)
             AppButton(
                 buttonPadding: EdgeInsets.all(16.w),
                 text: AppString.goToYoutube,
@@ -146,6 +138,8 @@ class _TournamentDetailScreenState extends State<TournamentDetailScreen> {
       ),
     );
   }
+
+  bool get isShowRankList => isFromPayment && lastMinGameModel?.tournamentStatus != TournamentStatus.completed;
 
   Future<void> _launchUrl() async {
     Uri gameUrl = Uri.parse("https://www.youtube.com/watch?v=IX2Emps0al4");

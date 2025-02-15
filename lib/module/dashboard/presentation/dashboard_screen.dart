@@ -14,6 +14,7 @@ class DashBoardScreen extends StatefulWidget {
 
 class _DashBoardScreenState extends State<DashBoardScreen> with WidgetsBindingObserver {
   final DashboardController _dashBoardController = Get.put(DashboardController());
+  final MyMatchesController myMatchesController = Get.put(MyMatchesController());
 
   @override
   void initState() {
@@ -29,73 +30,73 @@ class _DashBoardScreenState extends State<DashBoardScreen> with WidgetsBindingOb
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-          child: Scaffold(
-            backgroundColor: AppColors.appBackgroundClr,
-            body: TabBarView(
+    return Scaffold(
+      backgroundColor: AppColors.appBackgroundClr,
+      bottomNavigationBar: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            height: 70.h,
+            decoration: BoxDecoration(
+              color: AppColors.appBackgroundClr,
+            ),
+            child: TabBar(
+              indicatorSize: TabBarIndicatorSize.tab,
+              controller: _dashBoardController.tabController,
+              padding: EdgeInsets.zero,
+              labelPadding: EdgeInsets.zero,
+              dividerHeight: 0,
+              indicator: const BoxDecoration(
+                image: DecorationImage(image: AssetImage(AppAssets.bottomBarShadow)),
+              ),
+              tabs: [
+                bottomNavigationBarElement(
+                  title: AppString.homeTab,
+                  icon: AppAssets.homeIcon,
+                  index: 0,
+                  onTap: _dashBoardController.onTabChange,
+                ),
+                bottomNavigationBarElement(
+                  title: AppString.myMatches,
+                  icon: AppAssets.myMatchesIcon,
+                  index: 1,
+                  onTap: _dashBoardController.onTabChange,
+                ),
+                bottomNavigationBarElement(
+                  title: AppString.friends,
+                  icon: AppAssets.friendsIcon,
+                  index: 2,
+                  onTap: _dashBoardController.onTabChange,
+                ),
+                bottomNavigationBarElement(
+                  title: AppString.profile,
+                  icon: AppAssets.profileIcon,
+                  index: 3,
+                  onTap: _dashBoardController.onTabChange,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: TabBarView(
               physics: const NeverScrollableScrollPhysics(),
               controller: _dashBoardController.tabController,
               // physics: NeverScrollableScrollPhysics(),
               children: [
                 HomeScreen(),
-                const MyMatchesScreen(),
+                MyMatchesTab(),
                 const FriendsScreen(),
                 const ProfileScreen(),
               ],
             ),
-            bottomNavigationBar: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(
-                  height: 70.h,
-                  decoration: BoxDecoration(
-                    color: AppColors.appBackgroundClr,
-                  ),
-                  child: TabBar(
-                    indicatorSize: TabBarIndicatorSize.tab,
-                    controller: _dashBoardController.tabController,
-                    padding: EdgeInsets.zero,
-                    labelPadding: EdgeInsets.zero,
-                    dividerHeight: 0,
-                    indicator: const BoxDecoration(
-                      image: DecorationImage(image: AssetImage(AppAssets.bottomBarShadow)),
-                    ),
-                    tabs: [
-                      bottomNavigationBarElement(
-                        title: AppString.homeTab,
-                        icon: AppAssets.homeIcon,
-                        index: 0,
-                        onTap: _dashBoardController.onTabChange,
-                      ),
-                      bottomNavigationBarElement(
-                        title: AppString.myMatches,
-                        icon: AppAssets.myMatchesIcon,
-                        index: 1,
-                        onTap: _dashBoardController.onTabChange,
-                      ),
-                      bottomNavigationBarElement(
-                        title: AppString.friends,
-                        icon: AppAssets.friendsIcon,
-                        index: 2,
-                        onTap: _dashBoardController.onTabChange,
-                      ),
-                      bottomNavigationBarElement(
-                        title: AppString.profile,
-                        icon: AppAssets.profileIcon,
-                        index: 3,
-                        onTap: _dashBoardController.onTabChange,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

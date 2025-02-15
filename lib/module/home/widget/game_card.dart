@@ -17,7 +17,7 @@ class GameCard extends StatelessWidget {
       child: Container(
         width: 305.h,
         margin: EdgeInsets.symmetric(horizontal: 5.w),
-        decoration: BoxDecoration(color: AppColors.grey900Color2, borderRadius: BorderRadius.circular(4.r)),
+        decoration: BoxDecoration(color: AppColors.grey900Color2, borderRadius: BorderRadius.circular(AppConstants.borderRadius)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -26,7 +26,7 @@ class GameCard extends StatelessWidget {
               imgPath: gameModel.gameImg ?? "Game Image",
               imgWidth: 293.w,
               imgHeight: 140.h,
-              borderRadius: 4.r,
+              borderRadius: AppConstants.borderRadius,
             ),
 
             16.h.verticalSpace,

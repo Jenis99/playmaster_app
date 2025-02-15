@@ -73,7 +73,8 @@ class AddBalanceScreen extends StatelessWidget {
                                 },
                                 child: Container(
                                   margin: EdgeInsets.symmetric(horizontal: 5),
-                                  decoration: BoxDecoration(color: AppColors.grey800Color, borderRadius: BorderRadius.circular(4.r)),
+                                  decoration:
+                                      BoxDecoration(color: AppColors.grey800Color, borderRadius: BorderRadius.circular(AppConstants.borderRadius)),
                                   child: AppText(text: "₹${amountSuggestionList[index]}"),
                                   padding: EdgeInsets.all(
                                     8.sp,
@@ -113,10 +114,10 @@ class AddBalanceScreen extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.5.h),
       borderType: BorderType.RRect,
       color: AppColors.grey900Color2,
-      radius: Radius.circular(4.r),
+      radius: Radius.circular(AppConstants.borderRadius),
       // padding: EdgeInsets.all(6),
       child: ClipRRect(
-        borderRadius: BorderRadius.all(Radius.circular(4.r)),
+        borderRadius: BorderRadius.all(Radius.circular(AppConstants.borderRadius)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
