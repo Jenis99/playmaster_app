@@ -48,16 +48,26 @@ class AddBalanceScreen extends StatelessWidget {
                     10.h.verticalSpace,
                     AppTextField(
                       controller: addAmountController,
-                      prefixIcon: CachedNetworkImg(
-                        imgPath: AppAssets.rupeesIcon,
-                        imgSize: 5,
-                        isAssetImg: true,
+                      prefixIcon: Icon(
+                        Icons.currency_rupee,
+                        color: AppColors.greenClr,
+                        size: 22.sp,
                       ),
+                      // prefixIcon: Padding(
+                      //   padding: const EdgeInsets.all(8.0),
+                      //   child: CachedNetworkImg(
+                      //     imgPath: AppAssets.rupeesIcon,
+                      //     imgSize: 20,
+                      //     isAssetImg: true,
+                      //   ),
+                      // ),
                       keyboardType: TextInputType.number,
+                      fontSize: 22.sp,
                       isTapOutsideEnable: true,
                       onChanged: (String? updatedValue) {
                         enterAmount.value = "${(updatedValue?.isNotEmpty ?? false) ? "₹" : ""}${updatedValue ?? " "}";
                       },
+
                       color: AppColors.transparentClr,
                       textFieldOrder: UnderlineInputBorder(
                         borderSide: BorderSide(color: AppColors.grey700Color),

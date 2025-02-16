@@ -126,7 +126,8 @@ class GameDetailScreen extends StatelessWidget {
           children: List.generate(
             homeController.gameType.length,
             (index) {
-              return gameCategoryBox(homeController.gameType[index], index).paddingOnly(left: index == 0 ? 16.w : 0);
+              return gameCategoryBox(homeController.gameType[index], index)
+                  .paddingOnly(left: index == 0 ? 16.w : 0, right: ((homeController.gameType.length - 1) == index) ? 16.w : 0);
             },
           ),
         ),

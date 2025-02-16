@@ -20,7 +20,9 @@ class GameDetailCardTile extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(isFromTournament ? 0 : 12.h),
         margin: EdgeInsets.symmetric(vertical: 8.h, horizontal: isFromTournament ? 0 : 16.h),
-        decoration: BoxDecoration(color: isFromTournament ? AppColors.transparentClr : AppColors.grey900Color2),
+        decoration: BoxDecoration(
+            color: isFromTournament ? AppColors.transparentClr : AppColors.grey900Color2,
+            borderRadius: BorderRadius.circular(AppConstants.commonRadius)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
