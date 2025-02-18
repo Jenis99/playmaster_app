@@ -46,7 +46,19 @@ class AppString {
   static const dueToTechnicalError = "Due to some technical error transaction failed";
   static const goToYoutubeLiveStream = "Go to YouTube live stream to join tournament.";
   static const loadingTag = "Loading";
-  static const gameImage = "Loading";
+  static const exploreFriends = "Explore Friends";
+  static const myFriends = "My Friends";
+  static const searchFriendsHere = "Search friends here...";
+  static const gamePlayed = "Games Played";
+  static const joinedTag = "Joined";
+  static const aboutTag = "About";
+  static const pastGame = "Past Games";
+  static const gameInfo = "Games  Info";
+  static const sendFrdRequest = "Send Friend Request";
+  static const favouriteGame = "Favourite Game";
+  static const bioTag = "Bio";
+  static const bioDetail =
+      "Hi, I am mainly looking for people to play FPS games with competitively. I mainly play Valorant and Apex feel free to add me!";
   static const valorantGameName = "Valorant - Unrank Medium Pool";
 
   // Tournaments status

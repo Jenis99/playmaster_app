@@ -1,7 +1,5 @@
 // import 'package:device_preview/device_preview.dart';
 
-import 'package:device_preview/device_preview.dart';
-
 import 'dependency.dart';
 
 class PlaymasterApp extends StatelessWidget {
@@ -20,8 +18,8 @@ class PlaymasterApp extends StatelessWidget {
         initialRoute: AppRoutes.splash,
         debugShowCheckedModeBanner: false,
         useInheritedMediaQuery: true,
-        locale: DevicePreview.locale(context),
-        builder: DevicePreview.appBuilder,
+        // locale: DevicePreview.locale(context),
+        // builder: DevicePreview.appBuilder,
         theme: ThemeData(
             brightness: Brightness.dark,
             fontFamily: AppString.montserratFont,
@@ -32,9 +30,9 @@ class PlaymasterApp extends StatelessWidget {
             appBarTheme: AppBarTheme(backgroundColor: AppColors.appBackgroundClr),
             textSelectionTheme: TextSelectionThemeData(cursorColor: AppColors.primaryColor)),
         initialBinding: AppBinding(),
-        // builder: (context, child) => Scaffold(
-        //   body: child,
-        // ),
+        builder: (context, child) => Scaffold(
+          body: child,
+        ),
       ),
     );
   }

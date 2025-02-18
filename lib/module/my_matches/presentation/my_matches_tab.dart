@@ -3,6 +3,7 @@ import 'package:playmaster_ui/module/home/home.dart';
 import 'package:playmaster_ui/module/my_matches/completed/completed_tournament_screen.dart';
 import 'package:playmaster_ui/module/my_matches/live/live_tournament_screen.dart';
 import 'package:playmaster_ui/module/my_matches/my_matches.dart';
+import 'package:playmaster_ui/widgets/common_tab_bar_element.dart';
 
 class MyMatchesTab extends StatelessWidget {
   MyMatchesTab({super.key});
@@ -31,21 +32,21 @@ class MyMatchesTab extends StatelessWidget {
                 ),
                 tabs: [
                   Obx(
-                    () => bottomNavigationBarElement(
+                        () => CommonTabBarElement(
                         index: 0,
                         title: AppString.upcomingTab,
                         onTap: matchesController.onTabChange,
                         selectedIndex: matchesController.selectedMatchTabIndex.value),
                   ),
                   Obx(
-                    () => bottomNavigationBarElement(
+                        () => CommonTabBarElement(
                         index: 1,
                         title: AppString.liveTag,
                         onTap: matchesController.onTabChange,
                         selectedIndex: matchesController.selectedMatchTabIndex.value),
                   ),
                   Obx(
-                    () => bottomNavigationBarElement(
+                        () => CommonTabBarElement(
                         index: 2,
                         title: AppString.completedTab,
                         onTap: matchesController.onTabChange,
@@ -71,30 +72,5 @@ class MyMatchesTab extends StatelessWidget {
             ),
           ],
         ));
-  }
-
-  Widget bottomNavigationBarElement({
-    required final String title,
-    required final Function(int) onTap,
-    required final int index,
-    required final int selectedIndex,
-    // required final int titleSize,
-  }) {
-    return GestureDetector(
-      onTap: () {
-        onTap.call(index);
-      },
-      child: Container(
-        color: AppColors.transparentClr,
-        child: AppText(
-          text: title,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          fontSize: 12.sp,
-          fontWeight: selectedIndex == index ? FontWeight.w700 : FontWeight.w400,
-          color: selectedIndex == index ? AppColors.whiteColor : AppColors.grey400Color,
-        ),
-      ),
-    );
   }
 }

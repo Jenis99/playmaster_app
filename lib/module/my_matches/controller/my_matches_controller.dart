@@ -21,9 +21,7 @@ class MyMatchesController extends GetxController with GetSingleTickerProviderSta
 
   void listenTabController() {
     matchTabController.addListener(() {
-      print("Listener called old value ${matchTabController.index} ::: ${selectedMatchTabIndex.value}");
       selectedMatchTabIndex.value = matchTabController.index;
-      print("Listener called updates ${matchTabController.index} ::: ${selectedMatchTabIndex.value}");
     });
   }
 

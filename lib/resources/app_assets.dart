@@ -20,6 +20,7 @@ class AppAssets {
   // Icons
   static const String pcGameIcon = "$baseIconPath/pc_game_icon.png";
   static const String trophyIcon = "$baseIconPath/trophy_icon.png";
+  static const String searchIcon = "$baseIconPath/search_icon.png";
   static const String appLogo = "$baseIconPath/app_logo.png";
   static const String walletIcon = "$baseIconPath/wallet_icon.png";
   static const String mobileGameIcon = "$baseIconPath/mobile_game_icon.png";

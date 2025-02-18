@@ -20,6 +20,7 @@ class AppColors {
   static Color yellow400Clr = const Color(0xffE3A008);
   static Color pink500Clr = const Color(0xffE74694);
   static Color blue400Clr = const Color(0xff76A9FA);
+  static Color blueClr = const Color(0xff1A56DB);
 
   // Gradient
   static List<Color> appNameTextGradient = [const Color(0xff4064AE), const Color(0xffD4253B)];

@@ -15,6 +15,7 @@ class DashBoardScreen extends StatefulWidget {
 class _DashBoardScreenState extends State<DashBoardScreen> with WidgetsBindingObserver {
   final DashboardController _dashBoardController = Get.put(DashboardController());
   final MyMatchesController myMatchesController = Get.put(MyMatchesController());
+  final FriendsController friendsController = Get.put(FriendsController());
 
   @override
   void initState() {
@@ -90,7 +91,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> with WidgetsBindingOb
               children: [
                 HomeScreen(),
                 MyMatchesTab(),
-                const FriendsScreen(),
+                FriendsTab(),
                 const ProfileScreen(),
               ],
             ),
