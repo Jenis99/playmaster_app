@@ -34,41 +34,42 @@ class AppTextField extends StatefulWidget {
   final bool isTapOutsideEnable;
   final InputBorder? textFieldOrder;
   final Function(PointerDownEvent)? onTapOutside;
+  final bool isBottomPaddingApply;
 
-  AppTextField({
-    super.key,
-    required this.controller,
-    this.obscureText,
-    this.onTap,
-    this.hintStyle,
-    this.prefixIcon,
-    this.color,
-    this.keyboardType,
-    this.maxLines,
-    this.maxLength,
-    this.width,
-    this.fontSize,
-    this.height,
-    this.hintText,
-    this.suffixIcon,
-    this.onChanged,
-    this.margin,
-    this.contentPadding,
-    this.showBorder = false,
-    this.readOnly = false,
-    this.inputFormatters,
-    this.textInputAction,
-    this.textCapitalization,
-    this.focusNode,
-    this.prefixIconPadding,
-    this.horizontalPadding,
-    this.onSubmitted,
-    this.textAlign,
-    this.isPhoneField = false,
-    this.onTapOutside,
-    this.isTapOutsideEnable = false,
-    this.textFieldOrder,
-  }) {
+  AppTextField(
+      {super.key,
+      required this.controller,
+      this.obscureText,
+      this.onTap,
+      this.hintStyle,
+      this.prefixIcon,
+      this.color,
+      this.keyboardType,
+      this.maxLines,
+      this.maxLength,
+      this.width,
+      this.fontSize,
+      this.height,
+      this.hintText,
+      this.suffixIcon,
+      this.onChanged,
+      this.margin,
+      this.contentPadding,
+      this.showBorder = false,
+      this.readOnly = false,
+      this.inputFormatters,
+      this.textInputAction,
+      this.textCapitalization,
+      this.focusNode,
+      this.prefixIconPadding,
+      this.horizontalPadding,
+      this.onSubmitted,
+      this.textAlign,
+      this.isPhoneField = false,
+      this.onTapOutside,
+      this.isTapOutsideEnable = false,
+      this.textFieldOrder,
+      this.isBottomPaddingApply = true}) {
     isVisibility = (obscureText ?? false).obs;
   }
 
@@ -131,7 +132,7 @@ class _AppTextFieldState extends State<AppTextField> {
         onChanged: widget.onChanged,
         onTap: widget.onTap,
       ),
-    ).paddingOnly(bottom: 32.h);
+    ).paddingOnly(bottom: widget.isBottomPaddingApply ? 32.h : 0);
   }
 
   Widget? buildDefaultSuffix() {

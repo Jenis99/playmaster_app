@@ -41,8 +41,11 @@ class MyMatchTile extends StatelessWidget {
                 title: AppText(text: lastMinGameModel.gameName ?? AppString.valorantTag),
                 titleTextStyle: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
                 subtitleTextStyle: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w500, color: AppColors.grey400Color),
-                subtitle:
-                    AppText(text: lastMinGameModel.gameFee ?? "", fontWeight: FontWeight.w500, color: AppColors.grey400Color).paddingOnly(top: 6.h),
+                subtitle: AppText(
+                        text: selectedIndex == 2 ? AppString.tournamentCompleted : lastMinGameModel.gameFee ?? "",
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.grey400Color)
+                    .paddingOnly(top: 6.h),
               ),
             ),
             AppDivider(
