@@ -33,7 +33,7 @@ class MyMatchTile extends StatelessWidget {
                 minTileHeight: 60.h,
                 leading: CachedNetworkImg(
                   imgPath: lastMinGameModel.gameImg ??
-                      "https://s3-alpha-sig.figma.com/img/2852/8aba/ef45eafc9f2cc02b95f440e7ab8a51ab?Expires=1739750400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=hOvYmb8qWWqwNef~WK1GgvkXcd32gCuDPOuzRwc8V6FSmUa51bujyRiZwc7M8pJhU8hz~adYGX-VCT9qfw6z-pr64I79Nv7GJ0mTchrqjXuxPwTAEHO4FuA4DtpzTcFDsXaFhcnNFvB0IfNcSegp7-T6pZ0lOndmpbbsAt5vzxKD80MZo8YBfMcNTnA7uZcd3KFfQ~rY0T~tHsdt40ksUpsFJmr9XbBrgPnrfBjaMS0jZMg6vVe~SqaVinXoyeCqHj-W-MosYfoSIhhbkO47HoBPYJ9D4RFRhyIvVv4SOyAIji4fSYwpUdIIXISFfivjBMyfPDAfWHWONH~r880zIg__",
+                      "https://www.exhibit.tech/wp-content/uploads/2023/05/desktop-wallpaper-100-best-bgmi-names-for-new-version-of-pubg-bgmi-pubg.jpg",
                   borderRadius: AppConstants.borderRadius,
                   imgSize: 40.h,
                   fit: BoxFit.cover,
@@ -62,6 +62,8 @@ class MyMatchTile extends StatelessWidget {
                         margin: EdgeInsets.only(right: 6.w),
                         decoration: BoxDecoration(color: AppColors.primaryColor, shape: BoxShape.circle),
                       ),
+
+                    /// Tournament start time or live status
                     AppText(
                       text: selectedIndex == 1 ? "${AppString.tournamentIsLive}" : lastMinGameModel.startTime ?? "Start at 12 Jun, 10:00pm",
                       fontSize: 12.sp,
@@ -73,12 +75,14 @@ class MyMatchTile extends StatelessWidget {
                 if (selectedIndex == 2)
                   trophyView()
                 else
+
+                  /// Game type view
                   GameTypeView(
                     gameType: lastMinGameModel.gameType ?? GameType.pcGame,
                     iconSize: 16.h,
                   )
               ],
-            ).paddingSymmetric(horizontal: 12.w, vertical: 5),
+            ).paddingOnly(left: 12.w, right: 12.w, bottom: 4.h, top: 1.h),
           ],
         ),
       ),

@@ -107,7 +107,8 @@ class TournamentDetailScreen extends StatelessWidget {
                 textColor: homeController.isShowAddBalance.value ? AppColors.grey900Color2 : AppColors.whiteColor,
                 onPress: () {
                   if (homeController.isShowAddBalance.value) {
-                    Navigation.pop();
+                    // Future.delayed(duration)
+                    // Navigation.pop();
                     Navigation.rightToLeft(AddBalanceScreen(
                       lastMinGameModel: lastMinGameModel,
                     ));

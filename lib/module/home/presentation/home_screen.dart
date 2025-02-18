@@ -51,7 +51,8 @@ class HomeScreen extends StatelessWidget {
                   itemCount: homeController.lastGameModelList.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    childAspectRatio: .55,
+                    childAspectRatio: MediaQuery.of(context).size.width / (MediaQuery.of(context).size.height / 1.13),
+                    // childAspectRatio: .55,
                     crossAxisSpacing: 5.w,
                     mainAxisSpacing: 10.h,
                   ),

@@ -12,7 +12,6 @@ class LastMinuteGameCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigation.rightToLeft(GameDetailScreen(gameTitle: lastMinGameModel.gameName ?? ""));
-
         // Navigation.push(GameDetailScreen(
         //   gameTitle: lastMinGameModel.gameName ?? "",
         // ));
@@ -26,7 +25,7 @@ class LastMinuteGameCard extends StatelessWidget {
             /// Game image
             CachedNetworkImg(
               imgPath: lastMinGameModel.gameImg ??
-                  "https://s3-alpha-sig.figma.com/img/a99b/95b8/30274f57e0e2e22fdbc6edcf3763013d?Expires=1739750400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=Yz6MaYluspyJ83wBKR2WNCXZsVufyXFz1Rb~XWKpEdoFSjHiGT4H1fZGYKOO0zPby9mvQApBD2uWs4J-R2cZxsz2RHeK5e8UoyNs8n-o0ymvEMofODQMuZn5D8LmS8-WMTivOzCEmdSMEjS~UquMe-oSfjdPpM8ewuB1pol23n0BEtNTTzAaD2~rJSRFzBN4tNHL3YQlaDK-P8j~SHedG7KheOIZGrbzRUXoI6EyYE5lBwvW8~zWcnC5Ks~8extPmUD~B6MV8deQQQUsFVZS36eHkL5Ij8mjtgbKD5-of7~kzm3g-Df-iPwRjy~AQdmFPiA81tkxVhb2R6Hg8yRW7A__",
+                  "https://www.exhibit.tech/wp-content/uploads/2023/05/desktop-wallpaper-100-best-bgmi-names-for-new-version-of-pubg-bgmi-pubg.jpg",
               // imgWidth: 140.w,
               imgHeight: 140.h,
               borderRadius: AppConstants.borderRadius,

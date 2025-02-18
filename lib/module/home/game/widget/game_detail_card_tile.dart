@@ -14,8 +14,7 @@ class GameDetailCardTile extends StatelessWidget {
     print("GameDetailCardTile called ${lastMinGameModel.tournamentStatus?.name}");
     return GestureDetector(
       onTap: () {
-        Navigation.rightToLeft(TournamentDetailScreen(lastMinGameModel: lastMinGameModel));
-        // Navigation.push(TournamentDetailScreen(lastMinGameModel: lastMinGameModel));
+        Get.to<dynamic>(() => TournamentDetailScreen(lastMinGameModel: lastMinGameModel), transition: Transition.rightToLeft);
       },
       child: Container(
         padding: EdgeInsets.all(isFromTournament ? 0 : 12.h),

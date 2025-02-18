@@ -30,6 +30,7 @@ class CachedNetworkImg extends StatelessWidget {
       child: !isAssetImg
           ? CachedNetworkImage(
               color: imgColor,
+              // imageUrl: "https://www.exhibit.tech/wp-content/uploads/2023/05/desktop-wallpaper-100-best-bgmi-names-for-new-version-of-pubg-bgmi-pubg.jpg",
               imageUrl: imgPath,
               height: imgSize ?? imgHeight,
               width: imgSize ?? imgWidth,
@@ -40,7 +41,7 @@ class CachedNetworkImg extends StatelessWidget {
                   color: AppColors.primaryColor,
                 ),
               ),
-              errorWidget: (context, url, error) => const Icon(Icons.error),
+              errorWidget: (context, url, error) => Center(child: const Icon(Icons.error)),
             )
           : Image.asset(
               imgPath,

@@ -10,6 +10,12 @@ class MyMatchesController extends GetxController with GetSingleTickerProviderSta
     super.onInit();
   }
 
+  void listenTabController() {
+    matchTabController.addListener(() {
+      selectedMatchTabIndex.value = matchTabController.index;
+    });
+  }
+
   void onTabChange(int index) {
     matchTabController.animateTo(index);
     selectedMatchTabIndex(index);
