@@ -15,7 +15,7 @@ class AppAssets {
   static const String failedPaymentImg = "$baseImagePath/failed_payment_img.png";
 
   /// App launcher icon
-  static const String appLauncherIcon = "$baseImagePath/app_launcher_icon.png"; //assets/image/png/app_launcher_icon.png
+  static const String appLauncherIcon = "$baseImagePath/app_launcher_icon.png";
 
   // Icons
   static const String pcGameIcon = "$baseIconPath/pc_game_icon.png";

@@ -62,20 +62,59 @@ class AppString {
   static const requestSmallTag = "request";
   static const playerId = "Player ID";
   static const chatOnDiscord = "Chat in Discord";
-  static const followingTag = "Follwing";
-  static const bioDetail =
-      "Hi, I am mainly looking for people to play FPS games with competitively. I mainly play Valorant and Apex feel free to add me!";
-  static const valorantGameName = "Valorant - Unrank Medium Pool";
+  static const followingTag = "Following";
+  static const currentPassword = "Current Password";
+  static const newPassword = "New Password";
+  static const confirmPassword = "Confirm Password";
+  static const updatePassword = "Update Password";
+  static const enterNewPassword = "Enter new password";
+  static const enterCurrentPassword = "Enter current password";
+  static const availableForWithdraw = "Available for withdraw";
+  static const enterAmountToWithdraw = "Enter amount to withdraw";
+  static const withdrawTo = "Withdraw to";
+  static const upiId = "UPI ID";
+  static const enterUpiAddress = "Enter UPI address";
+  static const verified = "Verified";
+  static const invalid = "Invalid";
+  static const withdrawInProgress = "Withdraw in Progress";
+  static const paymentHistory = "Payment History";
+  static const contests = "Contests";
+  static const deposits = "Deposits";
+  static const withdrawal = "Withdrawal";
+  static const dateOfTransaction = "Date of Transaction";
+  static const transactionStatus = "Transaction Status";
+  static const gamePlatform = "Game Platform";
+  static const failedTag = "Failed";
+  static const successfully = "Successfully";
+  static const pending = "Pending";
+  static const allGames = "All Games";
+
+  static const withdrawDescription = "Your amount will be withdrawn and credited to your bank account within 24 hours.";
+
+  static const allType = "All type";
 
   // Tournaments status
   static const tournamentCompleted = "Tournament Completed";
   static const tournamentIsLive = "Tournament is Live";
   static const tournamentJoined = "Tournament Joined";
 
-  // My matches tab
-  static const upcomingTab = "Upcoming";
+  // My matches tabAll type
+  static const upcomingTab = "UpcoFailedming";
   static const liveTab = "Live";
   static const completedTab = "Completed";
+
+  // Profile option
+  static const accountTag = "Account";
+  static const editProfile = "Edit Profile";
+  static const securityOption = "Security";
+  static const paymentOption = "Payment";
+  static const walletTag = "Wallet";
+  static const withdrawIcon = "Withdraw";
+  static const paymentHistoryTag = "Payment History";
+  static const tdsTag = "TDS";
+  static const otherTag = "OTHER";
+  static const helpAndSupport = "Help & Support";
+  static const logoutTag = "Log Out";
 
   // Payment
   static const googlePay = "Google Pay";
@@ -84,6 +123,20 @@ class AppString {
   static const payWithUpi = "Pay with UPI id";
   static const payWithUpiOrWallet = "Pay with UPI or Wallet";
   static const payWithUpiOrWalletOrCard = "Pay with UPI, Card or Wallet";
+
+  // Game list
+  static const valorantGame = "Valorant";
+  static const BGMIGame = "BGMI";
+  static const fallGuys = "Fall guys";
+  static const freeFire = "Free Fire";
+  static const csgoTag = "CSGO";
+  static const codTag = "COD";
+  static const rocketLeague = "Rocket League";
+  static const fortnight = "Fortnight";
+  static const stumbleGuys = "Stumble Guys";
+  static const battleStar = "Battle Star";
+  static const miniMilitia = "Mini Militia";
+  static const enterPlayerID = "Enter player ID";
 
   // Font-family
   static const montserratFont = "Montserrat";
@@ -121,4 +174,8 @@ class AppString {
   static const backToTournament = "Back to tournament";
   static const tryAgain = "Try Again";
   static const goToYoutube = "Go to YouTube";
+
+  static const bioDetail =
+      "Hi, I am mainly looking for people to play FPS games with competitively. I mainly play Valorant and Apex feel free to add me!";
+  static const valorantGameName = "Valorant - Unrank Medium Pool";
 }

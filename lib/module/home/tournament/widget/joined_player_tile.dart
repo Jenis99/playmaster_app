@@ -1,23 +1,25 @@
 import 'package:playmaster_ui/dependency.dart';
 
 class UserTile extends StatelessWidget {
-  const UserTile({
-    super.key,
-    required this.userData,
-    this.isMyProfileData = false,
-    this.tileColor,
-    this.trailingIconClr,
-    this.onTap,
-    this.borderRadius,
-    this.imageSize,
-    this.isShowTrophy = false,
-    this.rankNumber,
-    this.playerID = "",
-    this.trailing,
-    this.titleText,
-    this.subtitleText,
-    this.profileImg,
-  });
+  const UserTile(
+      {super.key,
+      this.userData,
+      this.isMyProfileData = false,
+      this.tileColor,
+      this.trailingIconClr,
+      this.onTap,
+      this.borderRadius,
+      this.imageSize,
+      this.isShowTrophy = false,
+      this.rankNumber,
+      this.playerID = "",
+      this.trailing,
+      this.titleText,
+      this.subtitleText,
+      this.profileImg,
+      this.isAssetImg = false,
+      this.titleFontSize,
+      this.subtitleFontSize});
 
   final ({String profileImg, String username, String userId})? userData;
   final bool isMyProfileData;
@@ -28,11 +30,14 @@ class UserTile extends StatelessWidget {
   final double? borderRadius;
   final double? imageSize;
   final bool isShowTrophy;
+  final bool isAssetImg;
   final String playerID;
   final String? titleText;
   final String? subtitleText;
   final String? profileImg;
   final String? rankNumber;
+  final double? titleFontSize;
+  final double? subtitleFontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -47,13 +52,14 @@ class UserTile extends StatelessWidget {
         contentPadding: EdgeInsets.zero,
         title: AppText(
           text: titleText ?? userData?.username ?? "",
-          fontSize: 14.sp,
+          fontSize: titleFontSize ?? 14.sp,
           fontWeight: FontWeight.w500,
           color: AppColors.whiteColor,
         ),
         leading: CachedNetworkImg(
           imgPath: profileImg ?? userData?.profileImg ?? "",
           imgSize: imageSize ?? 50.h,
+          isAssetImg: isAssetImg,
           borderRadius: borderRadius ?? AppConstants.borderRadius,
         ).paddingOnly(left: 4.w),
         trailing: trailing ??
@@ -70,9 +76,9 @@ class UserTile extends StatelessWidget {
             : isShowTrophy
                 ? TrophyView()
                 : AppText(
-                    text: playerID.isNotEmpty ? "${AppString.playerId}: ${playerID}" : subtitleText ?? userData?.userId ?? "",
+          text: playerID.isNotEmpty ? "${AppString.playerId}: ${playerID}" : subtitleText ?? userData?.userId ?? "",
                     color: AppColors.grey400Color,
-                    fontSize: 14.sp,
+                    fontSize: subtitleFontSize ?? 14.sp,
                   ),
       ),
     ).paddingSymmetric(vertical: 5.h);
