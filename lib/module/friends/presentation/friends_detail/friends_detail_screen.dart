@@ -102,13 +102,18 @@ class FriendsDetailScreen extends StatelessWidget {
           // imageSize: 60.h,
         ),
         friendsDetailView(),
-        AppButton(
-          text: AppString.sendFrdRequest,
-          buttonColor: AppColors.blueClr,
-          height: 34.h,
-          fontSize: 12.sp,
-          fontWeight: FontWeight.w500,
-          buttonPadding: EdgeInsets.symmetric(vertical: 24.h),
+        Obx(
+          () => AppButton(
+            onTap: () {
+              friendsDetailController.isRequested.toggle();
+            },
+            text: friendsDetailController.isRequested.isTrue ? AppString.requestedTag : AppString.sendFrdRequest,
+            buttonColor: friendsDetailController.isRequested.isTrue ? AppColors.grey800Color : AppColors.blueClr,
+            height: 34.h,
+            fontSize: 12.sp,
+            fontWeight: FontWeight.w500,
+            buttonPadding: EdgeInsets.symmetric(vertical: 24.h),
+          ),
         )
       ],
     ).paddingSymmetric(horizontal: AppConstants.appHorizontalPadding);

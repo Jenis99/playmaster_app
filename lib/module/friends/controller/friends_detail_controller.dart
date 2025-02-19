@@ -3,6 +3,7 @@ import 'package:playmaster_ui/dependency.dart';
 class FriendsDetailController extends GetxController with GetSingleTickerProviderStateMixin {
   late TabController friendDetailTabController;
   RxInt selectedFriendsDetailTabIndex = 0.obs;
+  RxBool isRequested = false.obs;
 
   @override
   void onInit() {

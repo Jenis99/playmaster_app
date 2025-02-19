@@ -57,6 +57,8 @@ class AppString {
   static const sendFrdRequest = "Send Friend Request";
   static const favouriteGame = "Favourite Game";
   static const bioTag = "Bio";
+  static const requestedTag = "Requested";
+  static const requestSmallTag = "request";
   static const bioDetail =
       "Hi, I am mainly looking for people to play FPS games with competitively. I mainly play Valorant and Apex feel free to add me!";
   static const valorantGameName = "Valorant - Unrank Medium Pool";

@@ -1,12 +1,22 @@
 import 'package:playmaster_ui/dependency.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const HomeAppBar({super.key, this.isAppLogo = true, this.titleText = "", this.appbarBgClr, this.isShowWallet = true});
+  const HomeAppBar({
+    super.key,
+    this.isAppLogo = true,
+    this.titleText = "",
+    this.appbarBgClr,
+    this.isShowWallet = true,
+    this.isFriendsRequest = false,
+    this.onActionOnTap,
+  });
 
   final bool isAppLogo;
   final bool isShowWallet;
+  final bool isFriendsRequest;
   final String titleText;
   final Color? appbarBgClr;
+  final void Function()? onActionOnTap;
 
   @override
   Widget build(BuildContext context) {
@@ -41,31 +51,34 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
       actions: [
         if (isShowWallet)
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: AppConstants.appHorizontalPadding),
-            decoration: BoxDecoration(
-              color: AppColors.grey800Color,
-              borderRadius: BorderRadius.circular(AppConstants.borderRadius),
-            ),
-            child: Row(
-              children: [
-                AppText(
-                  text: "₹ 2000",
-                  fontWeight: FontWeight.w500,
-                  fontSize: 14.sp,
-                  color: AppColors.whiteColor,
-                ).paddingOnly(
-                  top: 4.h,
-                  bottom: 4.h,
-                  left: 12.w,
-                ),
-                12.w.horizontalSpace,
-                CachedNetworkImg(
-                  imgPath: AppAssets.walletIcon,
-                  imgSize: 28.h,
-                  isAssetImg: true,
-                )
-              ],
+          GestureDetector(
+            onTap: onActionOnTap,
+            child: Container(
+              margin: EdgeInsets.symmetric(horizontal: AppConstants.appHorizontalPadding),
+              decoration: BoxDecoration(
+                color: AppColors.grey800Color,
+                borderRadius: BorderRadius.circular(AppConstants.borderRadius),
+              ),
+              child: Row(
+                children: [
+                  AppText(
+                    text: isFriendsRequest ? "5 ${AppString.requestSmallTag}" : "₹ 2000",
+                    fontWeight: FontWeight.w500,
+                    fontSize: 14.sp,
+                    color: AppColors.whiteColor,
+                  ).paddingOnly(
+                    top: 4.h,
+                    bottom: 4.h,
+                    left: 12.w,
+                  ),
+                  12.w.horizontalSpace,
+                  CachedNetworkImg(
+                    imgPath: isFriendsRequest ? AppAssets.friendRequestIcon : AppAssets.walletIcon,
+                    imgSize: 28.h,
+                    isAssetImg: true,
+                  )
+                ],
+              ),
             ),
           )
       ],
