@@ -1,6 +1,5 @@
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:playmaster_ui/dependency.dart';
-import 'package:playmaster_ui/model/model.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class HomeController extends GetxController {
@@ -8,6 +7,8 @@ class HomeController extends GetxController {
   RxInt currentCarousel = 0.obs;
   RxBool isShowAddBalance = false.obs;
   RxBool isVideoPlaying = false.obs;
+
+  static HomeController get find => Get.isRegistered<HomeController>() ? Get.find() : Get.put(HomeController());
 
   // late VideoPlayerController videoController;
   YoutubePlayerController youtubePlayerController = YoutubePlayerController(

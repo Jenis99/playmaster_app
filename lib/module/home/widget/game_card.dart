@@ -1,6 +1,4 @@
 import 'package:playmaster_ui/dependency.dart';
-import 'package:playmaster_ui/model/game_model.dart';
-import 'package:playmaster_ui/widgets/dotted_divider.dart';
 
 class GameCard extends StatelessWidget {
   const GameCard({super.key, required this.gameModel});

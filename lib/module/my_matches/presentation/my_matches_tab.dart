@@ -3,7 +3,6 @@ import 'package:playmaster_ui/module/home/home.dart';
 import 'package:playmaster_ui/module/my_matches/completed/completed_tournament_screen.dart';
 import 'package:playmaster_ui/module/my_matches/live/live_tournament_screen.dart';
 import 'package:playmaster_ui/module/my_matches/my_matches.dart';
-import 'package:playmaster_ui/widgets/common_tab_bar_element.dart';
 
 class MyMatchesTab extends StatelessWidget {
   MyMatchesTab({super.key});

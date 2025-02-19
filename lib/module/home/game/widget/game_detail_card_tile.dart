@@ -1,5 +1,4 @@
 import 'package:playmaster_ui/dependency.dart';
-import 'package:playmaster_ui/model/last_minute_game_model.dart';
 import 'package:playmaster_ui/module/home/home.dart';
 
 class GameDetailCardTile extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:playmaster_ui/dependency.dart';
-import 'package:playmaster_ui/module/home/controller/home_controller.dart';
+import 'package:playmaster_ui/module/home/home.dart';
 
 class DetailAboutTab extends StatelessWidget {
   DetailAboutTab({Key? key}) : super(key: key);

@@ -3,7 +3,7 @@ import 'package:playmaster_ui/module/dashboard/dashboard.dart';
 import 'package:playmaster_ui/module/friends/friends.dart';
 import 'package:playmaster_ui/module/home/home.dart';
 import 'package:playmaster_ui/module/my_matches/my_matches.dart';
-import 'package:playmaster_ui/module/profile/presentation/profile_screen.dart';
+import 'package:playmaster_ui/module/profile/profile.dart';
 
 class DashBoardScreen extends StatefulWidget {
   const DashBoardScreen({super.key});
@@ -87,7 +87,6 @@ class _DashBoardScreenState extends State<DashBoardScreen> with WidgetsBindingOb
             child: TabBarView(
               physics: const NeverScrollableScrollPhysics(),
               controller: _dashBoardController.tabController,
-              // physics: NeverScrollableScrollPhysics(),
               children: [
                 HomeScreen(),
                 MyMatchesTab(),

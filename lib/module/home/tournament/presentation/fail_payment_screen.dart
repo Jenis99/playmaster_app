@@ -1,5 +1,4 @@
 import 'package:playmaster_ui/dependency.dart';
-import 'package:playmaster_ui/model/model.dart';
 import 'package:playmaster_ui/module/home/tournament/presentation/tournament_detail_screen.dart';
 import 'package:playmaster_ui/module/home/tournament/widget/payment_result_view.dart';
 

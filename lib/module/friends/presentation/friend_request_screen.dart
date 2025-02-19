@@ -15,9 +15,9 @@ class FriendRequestScreen extends StatelessWidget {
       body: ListView.builder(
         shrinkWrap: true,
         padding: EdgeInsets.symmetric(horizontal: AppConstants.appHorizontalPadding, vertical: 10.h),
-        itemCount: Get.find<HomeController>().joinedPlayerList.length,
+        itemCount: HomeController.find.joinedPlayerList.length,
         itemBuilder: (context, index) => UserTile(
-          userData: Get.find<HomeController>().joinedPlayerList[index],
+          userData: HomeController.find.joinedPlayerList[index],
           tileColor: AppColors.transparentClr,
           trailing: Row(
             mainAxisSize: MainAxisSize.min,

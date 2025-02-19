@@ -27,9 +27,9 @@ class PastGameTab extends StatelessWidget {
         : ListView.separated(
             padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 5.h),
             separatorBuilder: (context, index) => AppDivider(height: 0, color: AppColors.grey700Color),
-            itemCount: Get.find<HomeController>().gameList.length,
+            itemCount: HomeController.find.gameList.length,
             itemBuilder: (context, index) {
-              final data = Get.find<HomeController>().gameList[index];
+              final data = HomeController.find.gameList[index];
               return UserTile(
                 tileColor: AppColors.transparentClr,
                 isMyProfileData: true,

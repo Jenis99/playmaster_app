@@ -1,5 +1,5 @@
 import 'package:playmaster_ui/dependency.dart';
-import 'package:playmaster_ui/module/friends/presentation/friends_detail/friends_detail_screen.dart';
+import 'package:playmaster_ui/module/friends/friends.dart';
 import 'package:playmaster_ui/module/home/home.dart';
 
 class MyFriendsView extends StatelessWidget {

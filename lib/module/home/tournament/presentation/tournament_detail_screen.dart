@@ -1,5 +1,4 @@
 import 'package:playmaster_ui/dependency.dart';
-import 'package:playmaster_ui/model/model.dart';
 import 'package:playmaster_ui/module/home/home.dart';
 import 'package:url_launcher/url_launcher.dart';
 

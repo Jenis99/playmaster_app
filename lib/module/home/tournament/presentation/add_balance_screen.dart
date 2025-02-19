@@ -1,6 +1,5 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:playmaster_ui/dependency.dart';
-import 'package:playmaster_ui/model/last_minute_game_model.dart';
 import 'package:playmaster_ui/module/home/home.dart';
 
 // ignore: must_be_immutable

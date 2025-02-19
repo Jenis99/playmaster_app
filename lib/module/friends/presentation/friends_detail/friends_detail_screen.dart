@@ -1,11 +1,6 @@
 import 'package:playmaster_ui/dependency.dart';
-import 'package:playmaster_ui/module/friends/controller/friends_detail_controller.dart';
-import 'package:playmaster_ui/module/friends/presentation/friends_detail/game_info_tab.dart';
-import 'package:playmaster_ui/module/friends/presentation/friends_detail/past_game_tab.dart';
+import 'package:playmaster_ui/module/friends/friends.dart';
 import 'package:playmaster_ui/module/home/home.dart';
-import 'package:playmaster_ui/widgets/common_tab_bar_element.dart';
-
-import 'detail_about_tab.dart';
 
 class FriendsDetailScreen extends StatelessWidget {
   FriendsDetailScreen({Key? key, this.isFromMyFriends = false, required this.friendName}) : super(key: key);
@@ -99,7 +94,7 @@ class FriendsDetailScreen extends StatelessWidget {
     return Column(
       children: [
         UserTile(
-          userData: Get.find<HomeController>().joinedPlayerList.first,
+          userData: HomeController.find.joinedPlayerList.first,
           trailingIconClr: AppColors.transparentClr,
           tileColor: AppColors.transparentClr,
           borderRadius: 100.r,

@@ -2,8 +2,6 @@ import 'package:playmaster_ui/dependency.dart';
 import 'package:playmaster_ui/module/friends/friends.dart';
 import 'package:playmaster_ui/module/home/home.dart';
 
-import 'friend_request_screen.dart';
-
 class FriendsTab extends StatelessWidget {
   FriendsTab({super.key});
 
