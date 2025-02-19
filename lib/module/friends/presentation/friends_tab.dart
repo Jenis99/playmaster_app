@@ -15,7 +15,7 @@ class FriendsTab extends StatelessWidget {
         appBar: HomeAppBar(
           isFriendsRequest: true,
           onActionOnTap: () {
-            Navigation.push(FriendRequestScreen());
+            Navigation.rightToLeft(FriendRequestScreen());
           },
         ),
         body: Column(
