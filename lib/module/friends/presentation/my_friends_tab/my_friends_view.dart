@@ -1,4 +1,5 @@
 import 'package:playmaster_ui/dependency.dart';
+import 'package:playmaster_ui/module/friends/presentation/friends_detail/friends_detail_screen.dart';
 import 'package:playmaster_ui/module/home/home.dart';
 
 class MyFriendsView extends StatelessWidget {
@@ -16,21 +17,17 @@ class MyFriendsView extends StatelessWidget {
               height: 1.h,
               color: AppColors.grey700Color,
             ),
-            padding: EdgeInsets.zero,
+            padding: EdgeInsets.symmetric(horizontal: AppConstants.appHorizontalPadding),
             shrinkWrap: true,
             itemBuilder: (context, index) {
-              return JoinedPlayerTile(
+              return UserTile(
                 userData: homeController.joinedPlayerList[index],
                 tileColor: AppColors.transparentClr,
                 onTap: () {
-                  Get.snackbar(
-                    "Coming soon",
-                    "This section is under development.",
-                    colorText: AppColors.whiteColor,
-                    backgroundColor: AppColors.primaryColor.withOpacity(0.4),
-                    icon: const Icon(Icons.add_alert),
-                  );
-                  // Get.showSnackbar(GetSnackBar(titleText: AppText(text: "Coming soon",),));
+                  Navigation.rightToLeft(FriendsDetailScreen(
+                    friendName: homeController.joinedPlayerList[index].username,
+                    isFromMyFriends: true,
+                  ));
                 },
                 trailingIconClr: AppColors.grey400Color,
               );

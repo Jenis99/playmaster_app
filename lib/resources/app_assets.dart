@@ -31,6 +31,7 @@ class AppAssets {
   static const String friendRequestIcon = "$baseIconPath/friend_request_icon.png";
   static const String rulesCondition = "$baseIconPath/rules_condition.png";
   static const String tournamentWalletIcon = "$baseIconPath/tournament_wallet_icon.png";
+  static const String discordIcon = "$baseIconPath/discord_icon.png";
 
   /// Payment icon
   static const String googlePayIcon = "$baseIconPath/google_pay_icon.png";

@@ -79,7 +79,7 @@ class TournamentDetailScreen extends StatelessWidget {
                     padding: EdgeInsetsDirectional.symmetric(horizontal: AppConstants.appHorizontalPadding),
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: homeController.joinedPlayerList.length,
-                    itemBuilder: (context, index) => JoinedPlayerTile(userData: homeController.joinedPlayerList[index]),
+                    itemBuilder: (context, index) => UserTile(userData: homeController.joinedPlayerList[index]),
                   ),
                   AppText(
                     text: AppString.viewAll,

@@ -1,23 +1,38 @@
 import 'package:playmaster_ui/dependency.dart';
 
-class JoinedPlayerTile extends StatelessWidget {
-  const JoinedPlayerTile(
-      {super.key,
-      required this.userData,
-      this.isMyProfileData = false,
-      this.tileColor,
-      this.trailingIconClr,
-      this.onTap,
-      this.borderRadius,
-      this.imageSize});
+class UserTile extends StatelessWidget {
+  const UserTile({
+    super.key,
+    required this.userData,
+    this.isMyProfileData = false,
+    this.tileColor,
+    this.trailingIconClr,
+    this.onTap,
+    this.borderRadius,
+    this.imageSize,
+    this.isShowTrophy = false,
+    this.rankNumber,
+    this.playerID = "",
+    this.trailing,
+    this.titleText,
+    this.subtitleText,
+    this.profileImg,
+  });
 
-  final ({String profileImg, String username, String userId}) userData;
+  final ({String profileImg, String username, String userId})? userData;
   final bool isMyProfileData;
+  final Widget? trailing;
   final Color? tileColor;
   final Color? trailingIconClr;
   final void Function()? onTap;
   final double? borderRadius;
   final double? imageSize;
+  final bool isShowTrophy;
+  final String playerID;
+  final String? titleText;
+  final String? subtitleText;
+  final String? profileImg;
+  final String? rankNumber;
 
   @override
   Widget build(BuildContext context) {
@@ -31,30 +46,52 @@ class JoinedPlayerTile extends StatelessWidget {
         tileColor: tileColor ?? AppColors.grey900Color2,
         contentPadding: EdgeInsets.zero,
         title: AppText(
-          text: userData.username,
+          text: titleText ?? userData?.username ?? "",
           fontSize: 14.sp,
           fontWeight: FontWeight.w500,
           color: AppColors.whiteColor,
         ),
         leading: CachedNetworkImg(
-          imgPath: userData.profileImg,
+          imgPath: profileImg ?? userData?.profileImg ?? "",
           imgSize: imageSize ?? 50.h,
           borderRadius: borderRadius ?? AppConstants.borderRadius,
         ).paddingOnly(left: 4.w),
-        trailing: !isMyProfileData
-            ? Icon(
-          Icons.arrow_forward_ios_outlined,
-                size: 15.h,
-                color: trailingIconClr,
-              ).paddingOnly(right: 8.w)
-            : null,
+        trailing: trailing ??
+            (!isMyProfileData
+                ? Icon(
+                    Icons.arrow_forward_ios_outlined,
+                    size: 15.h,
+                    color: trailingIconClr,
+                  ).paddingOnly(right: 8.w)
+                : null),
         minVerticalPadding: 2,
-        subtitle: AppText(
-          text: userData.userId,
-          color: AppColors.grey400Color,
-          fontSize: 14.sp,
-        ),
+        subtitle: playerID.isNotEmpty
+            ? playerIdView()
+            : isShowTrophy
+                ? TrophyView()
+                : AppText(
+                    text: playerID.isNotEmpty ? "${AppString.playerId}: ${playerID}" : subtitleText ?? userData?.userId ?? "",
+                    color: AppColors.grey400Color,
+                    fontSize: 14.sp,
+                  ),
       ),
     ).paddingSymmetric(vertical: 5.h);
+  }
+
+  RichText playerIdView() {
+    return RichText(
+      text: TextSpan(
+        text: AppString.playerId + ": ",
+        style: TextStyle(fontSize: 12.sp, color: AppColors.grey400Color),
+        children: <TextSpan>[
+          TextSpan(
+              text: playerID,
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                color: AppColors.whiteColor,
+              )),
+        ],
+      ),
+    );
   }
 }

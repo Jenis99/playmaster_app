@@ -33,6 +33,7 @@ class AppString {
   static const balanceTag = "Balance";
   static const joinTournament = "Join Tournament";
   static const confirmPayment = "Confirm Payment";
+  static const confirmTag = "Confirm";
   static const tournamentEntryFee = "Tournament entry fee ";
   static const tdsAndOther = "TDS and other tax";
   static const totalAmount = "Total Amount";
@@ -59,6 +60,9 @@ class AppString {
   static const bioTag = "Bio";
   static const requestedTag = "Requested";
   static const requestSmallTag = "request";
+  static const playerId = "Player ID";
+  static const chatOnDiscord = "Chat in Discord";
+  static const followingTag = "Follwing";
   static const bioDetail =
       "Hi, I am mainly looking for people to play FPS games with competitively. I mainly play Valorant and Apex feel free to add me!";
   static const valorantGameName = "Valorant - Unrank Medium Pool";

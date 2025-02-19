@@ -26,11 +26,14 @@ class ExploreFriendsView extends StatelessWidget {
             shrinkWrap: true,
             itemBuilder: (context, index) {
               final userdata = homeController.joinedPlayerList[index];
-              return JoinedPlayerTile(
+              return UserTile(
                 userData: userdata,
                 tileColor: AppColors.transparentClr,
                 onTap: () {
-                  Navigation.rightToLeft(FriendsDetailScreen(friendName: userdata.username));
+                  Navigation.rightToLeft(FriendsDetailScreen(
+                    friendName: userdata.username,
+                    isFromMyFriends: false,
+                  ));
                 },
                 trailingIconClr: AppColors.grey400Color,
               );

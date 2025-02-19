@@ -76,7 +76,7 @@ class MyMatchTile extends StatelessWidget {
                   ],
                 ),
                 if (selectedIndex == 2)
-                  trophyView()
+                  TrophyView()
                 else
 
                   /// Game type view
@@ -92,30 +92,6 @@ class MyMatchTile extends StatelessWidget {
     );
 
     // GameTypeView(gameType: GameType.pcGame),
-  }
-
-  Widget trophyView({
-    double? iconSize,
-    double? textFontSize,
-  }) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        CachedNetworkImg(
-          imgPath: "assets/icon/png/trophy_icon.png",
-          // imgPath: AppAssets.trophyIcon,
-          imgSize: 16.h,
-          isAssetImg: true,
-        ),
-        4.w.horizontalSpace,
-        AppText(
-          text: "4th Rank",
-          color: AppColors.blue400Clr,
-          fontSize: 12.sp,
-        ),
-      ],
-    );
   }
 
   void navigateToDetail() {

@@ -12,8 +12,35 @@ class FriendRequestScreen extends StatelessWidget {
         isShowWallet: false,
         isAppLogo: false,
       ),
-      body: const Center(
-        child: AppText(text: "Friend request screen"),
+      body: ListView.builder(
+        shrinkWrap: true,
+        padding: EdgeInsets.symmetric(horizontal: AppConstants.appHorizontalPadding, vertical: 10.h),
+        itemCount: Get.find<HomeController>().joinedPlayerList.length,
+        itemBuilder: (context, index) => UserTile(
+          userData: Get.find<HomeController>().joinedPlayerList[index],
+          tileColor: AppColors.transparentClr,
+          trailing: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              AppButton(
+                text: AppString.confirmTag,
+                width: 80.w,
+                height: 35.h,
+                fontWeight: FontWeight.w500,
+                buttonColor: AppColors.blue700Clr,
+              ),
+              5.w.horizontalSpace,
+              Container(
+                padding: EdgeInsets.all(4.h),
+                decoration: BoxDecoration(
+                  color: AppColors.grey800Color,
+                  borderRadius: BorderRadius.circular(4.r),
+                ),
+                child: Icon(Icons.clear),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }

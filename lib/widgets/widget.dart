@@ -6,3 +6,4 @@ export 'cached_network_img.dart';
 export 'custom_style.dart';
 export 'gradient_progress_bar.dart';
 export 'gradient_text.dart';
+export 'trophy_view.dart';

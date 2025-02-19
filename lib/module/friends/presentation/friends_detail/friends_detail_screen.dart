@@ -78,8 +78,12 @@ class FriendsDetailScreen extends StatelessWidget {
                     controller: friendsDetailController.friendDetailTabController,
                     children: [
                       DetailAboutTab(),
-                      PastGameTab(),
-                      GameInfoTab(),
+                      PastGameTab(
+                        isFromExploreFriends: !isFromMyFriends,
+                      ),
+                      GameInfoTab(
+                        isFromExploreFriend: !isFromMyFriends,
+                      ),
                     ],
                   ),
                 ),
@@ -94,7 +98,7 @@ class FriendsDetailScreen extends StatelessWidget {
   Widget userProfileView() {
     return Column(
       children: [
-        JoinedPlayerTile(
+        UserTile(
           userData: Get.find<HomeController>().joinedPlayerList.first,
           trailingIconClr: AppColors.transparentClr,
           tileColor: AppColors.transparentClr,
@@ -102,19 +106,48 @@ class FriendsDetailScreen extends StatelessWidget {
           // imageSize: 60.h,
         ),
         friendsDetailView(),
-        Obx(
-          () => AppButton(
-            onTap: () {
-              friendsDetailController.isRequested.toggle();
-            },
-            text: friendsDetailController.isRequested.isTrue ? AppString.requestedTag : AppString.sendFrdRequest,
-            buttonColor: friendsDetailController.isRequested.isTrue ? AppColors.grey800Color : AppColors.blueClr,
-            height: 34.h,
-            fontSize: 12.sp,
-            fontWeight: FontWeight.w500,
-            buttonPadding: EdgeInsets.symmetric(vertical: 24.h),
-          ),
-        )
+        isFromMyFriends
+            ? Row(
+                children: [
+                  Expanded(
+                      child: AppButton(
+                    text: AppString.followingTag,
+                    height: 34.h,
+                    buttonColor: AppColors.whiteColor,
+                    textColor: AppColors.grey900Color2,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 12.sp,
+                  )),
+                  16.w.horizontalSpace,
+                  Expanded(
+                      child: AppButton(
+                    text: AppString.chatOnDiscord,
+                    icon: CachedNetworkImg(
+                      imgPath: AppAssets.discordIcon,
+                      isAssetImg: true,
+                      imgSize: 18.h,
+                      fit: BoxFit.fitWidth,
+                    ),
+                    fontSize: 12.sp,
+                    height: 34.h,
+                    buttonColor: AppColors.blue700Clr,
+                    fontWeight: FontWeight.w500,
+                  )),
+                ],
+              ).paddingSymmetric(vertical: 24.h)
+            : Obx(
+                () => AppButton(
+                  onTap: () {
+                    friendsDetailController.isRequested.toggle();
+                  },
+                  text: friendsDetailController.isRequested.isTrue ? AppString.requestedTag : AppString.sendFrdRequest,
+                  buttonColor: friendsDetailController.isRequested.isTrue ? AppColors.grey800Color : AppColors.blue700Clr,
+                  height: 34.h,
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.w500,
+                  buttonPadding: EdgeInsets.symmetric(vertical: 24.h),
+                ),
+              )
       ],
     ).paddingSymmetric(horizontal: AppConstants.appHorizontalPadding);
   }
@@ -136,7 +169,7 @@ class FriendsDetailScreen extends StatelessWidget {
                 margin: EdgeInsets.only(right: 12.w),
                 color: AppColors.grey700Color,
               ),
-              friendsDetailText(title: AppString.friends, score: "43223"),
+              friendsDetailText(title: AppString.friends, score: "343"),
             ],
           ),
         ),
@@ -152,7 +185,7 @@ class FriendsDetailScreen extends StatelessWidget {
                 height: 38.h,
                 color: AppColors.grey700Color,
               ),
-              friendsDetailText(title: AppString.joinedTag, score: "43223" * 3),
+              friendsDetailText(title: AppString.joinedTag, score: "12 June 2024"),
             ],
           ),
         ),

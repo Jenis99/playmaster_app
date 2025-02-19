@@ -10,5 +10,5 @@ class AppConstants {
 
   // App common padding
   static double appHorizontalPadding = 16.h;
-  static double commonRadius = 8.w;
+  static double commonRadius = 4.r;
 }
