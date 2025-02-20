@@ -54,4 +54,14 @@ class AppAssets {
   static const String facebookIcon = "$baseIconPath/facebook_logo.png";
   static const String googleIcon = "$baseIconPath/google_logo.png";
   static const String appleLogin = "$baseIconPath/apple_lpgo.png";
+
+  //
+  static const String userProfileIcon = "$baseIconPath/user_profile_icon.png";
+  static const String walletProfileIcon = "$baseIconPath/wallet_profile_icon.png";
+  static const String withdrawIcon = "$baseIconPath/withdraw_icon.png";
+  static const String tdsIcon = "$baseIconPath/tds_icon.png";
+  static const String securityIcon = "$baseIconPath/security_icon.png";
+  static const String paymentHistoryIcon = "$baseIconPath/payment_history.png";
+  static const String logoutIcon = "$baseIconPath/logout_icon.png";
+  static const String helpIcon = "$baseIconPath/help_icon.png";
 }
