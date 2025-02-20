@@ -91,7 +91,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> with WidgetsBindingOb
                 HomeScreen(),
                 MyMatchesTab(),
                 FriendsTab(),
-                const ProfileScreen(),
+                const ProfileTab(),
               ],
             ),
           ),

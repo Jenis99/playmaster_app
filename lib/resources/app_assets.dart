@@ -55,7 +55,7 @@ class AppAssets {
   static const String googleIcon = "$baseIconPath/google_logo.png";
   static const String appleLogin = "$baseIconPath/apple_lpgo.png";
 
-  //
+  // Profile setting options
   static const String userProfileIcon = "$baseIconPath/user_profile_icon.png";
   static const String walletProfileIcon = "$baseIconPath/wallet_profile_icon.png";
   static const String withdrawIcon = "$baseIconPath/withdraw_icon.png";
