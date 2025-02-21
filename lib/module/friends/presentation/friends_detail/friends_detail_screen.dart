@@ -218,7 +218,7 @@ class FriendsDetailScreen extends StatelessWidget {
     );
   }
 
-  Column friendsDetailText({required String title, required String score}) {
+  Widget friendsDetailText({required String title, required String score}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,

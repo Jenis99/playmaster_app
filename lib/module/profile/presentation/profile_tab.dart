@@ -2,6 +2,7 @@ import 'package:playmaster_ui/dependency.dart';
 import 'package:playmaster_ui/module/friends/presentation/friends_detail/friends_detail_screen.dart';
 import 'package:playmaster_ui/module/home/home.dart';
 import 'package:playmaster_ui/module/profile/presentation/edit_profile_screen.dart';
+import 'package:playmaster_ui/module/profile/presentation/security_screen.dart';
 import 'package:playmaster_ui/module/profile/widget/profile_option_tile.dart';
 
 class ProfileTab extends StatelessWidget {
@@ -29,7 +30,13 @@ class ProfileTab extends StatelessWidget {
               },
             ),
             //Security
-            ProfileOptionTile(imagePath: AppAssets.securityIcon, titleName: AppString.securityOption),
+            ProfileOptionTile(
+              imagePath: AppAssets.securityIcon,
+              titleName: AppString.securityOption,
+              onTap: () {
+                Navigation.rightToLeft(SecurityScreen());
+              },
+            ),
 
             /// Payment section
             profileTitleView(AppString.paymentOption).paddingOnly(top: 32.h, bottom: 12.h),
