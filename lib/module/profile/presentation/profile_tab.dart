@@ -1,9 +1,9 @@
 import 'package:playmaster_ui/dependency.dart';
 import 'package:playmaster_ui/module/friends/presentation/friends_detail/friends_detail_screen.dart';
 import 'package:playmaster_ui/module/home/home.dart';
-import 'package:playmaster_ui/module/profile/presentation/edit_profile_screen.dart';
-import 'package:playmaster_ui/module/profile/presentation/security_screen.dart';
-import 'package:playmaster_ui/module/profile/widget/profile_option_tile.dart';
+import 'package:playmaster_ui/module/profile/profile.dart';
+
+import 'profile_option/withdraw_screen.dart';
 
 class ProfileTab extends StatelessWidget {
   const ProfileTab({super.key});
@@ -41,9 +41,21 @@ class ProfileTab extends StatelessWidget {
             /// Payment section
             profileTitleView(AppString.paymentOption).paddingOnly(top: 32.h, bottom: 12.h),
             // Wallet
-            ProfileOptionTile(imagePath: AppAssets.walletProfileIcon, titleName: AppString.walletTag),
+            ProfileOptionTile(
+              onTap: () {
+                Navigation.rightToLeft(AddBalanceScreen());
+              },
+              imagePath: AppAssets.walletProfileIcon,
+              titleName: AppString.walletTag,
+            ),
             // Withdraw
-            ProfileOptionTile(imagePath: AppAssets.withdrawIcon, titleName: AppString.withdrawal),
+            ProfileOptionTile(
+              onTap: () {
+                Navigation.rightToLeft(WithdrawScreen());
+              },
+              imagePath: AppAssets.withdrawIcon,
+              titleName: AppString.withdrawal,
+            ),
             // Payment history
             ProfileOptionTile(imagePath: AppAssets.paymentHistoryIcon, titleName: AppString.paymentHistory),
             // Tds

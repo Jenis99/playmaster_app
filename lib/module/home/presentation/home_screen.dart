@@ -1,6 +1,7 @@
 import 'package:playmaster_ui/dependency.dart';
 import 'package:playmaster_ui/module/home/home.dart';
 import 'package:playmaster_ui/module/home/widget/last_minute_game_card.dart';
+import 'package:playmaster_ui/module/profile/widget/payment_bottom_view.dart';
 
 // ignore: must_be_immutable
 class HomeScreen extends StatelessWidget {
@@ -11,7 +12,17 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const HomeAppBar(),
+      appBar: HomeAppBar(
+        onActionOnTap: () {
+          showModalBottomSheet(
+            context: context,
+            backgroundColor: AppColors.appBackgroundClr,
+            builder: (context) {
+              return WalletBottomView();
+            },
+          );
+        },
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [

@@ -43,6 +43,8 @@ class AppString {
   static const addTag = "Add";
   static const successfullyAdded = "Successfully added";
   static const transactionFail = "Transaction failed";
+  static const withdrawSuccess = "Withdraw Successfully";
+  static const yourAmountWillBeWithdraw = "Your amount will be withdraw in few hours.";
   static const yourAmountHasBeing = "Your amount has being credited in wallet.";
   static const dueToTechnicalError = "Due to some technical error transaction failed";
   static const goToYoutubeLiveStream = "Go to YouTube live stream to join tournament.";
@@ -89,6 +91,8 @@ class AppString {
   static const pending = "Pending";
   static const allGames = "All Games";
   static const saveTag = "Save";
+  static const closeTag = "Close";
+  static const goBackToWallet = "Go back to wallet";
 
   // Dummy user
 

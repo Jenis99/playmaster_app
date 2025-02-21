@@ -18,7 +18,7 @@ class FailPaymentScreen extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             AppButton(
-              text: AppString.backToTournament,
+              text: lastMinGameModel != null ? AppString.backToTournament : AppString.goBackToWallet,
               textColor: AppColors.whiteColor,
               isBorderButton: true,
               buttonColor: AppColors.transparentClr,
@@ -44,11 +44,10 @@ class FailPaymentScreen extends StatelessWidget {
 
   void navigateToDetailScreen() {
     Navigation.popupUtil(AppRoutes.dashboardScreen);
-    Navigation.rightToLeft(
-      (TournamentDetailScreen(
-        isFromPayment: true,
-        lastMinGameModel: lastMinGameModel,
-      )),
-    );
+    if (lastMinGameModel != null) {
+      Navigation.rightToLeft(
+        (TournamentDetailScreen(isFromPayment: true, lastMinGameModel: lastMinGameModel)),
+      );
+    }
   }
 }

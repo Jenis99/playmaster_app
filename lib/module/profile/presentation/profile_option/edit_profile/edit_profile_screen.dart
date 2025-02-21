@@ -1,6 +1,5 @@
 import 'package:playmaster_ui/dependency.dart';
 import 'package:playmaster_ui/module/home/home.dart';
-import 'package:playmaster_ui/module/profile/presentation/edit_profile_game_info_tab.dart';
 import 'package:playmaster_ui/module/profile/profile.dart';
 
 class EditProfileScreen extends StatelessWidget {
@@ -65,7 +64,10 @@ class EditProfileScreen extends StatelessWidget {
                   child: TabBarView(
                     // physics: const NeverScrollableScrollPhysics(),
                     controller: editProfileController.profileTabController,
-                    children: [EditProfileTab(), EditProfileGameInfoTab()],
+                    children: [
+                      EditProfileTab(),
+                      EditProfileGameInfoTab(),
+                    ],
                   ),
                 ),
               ],

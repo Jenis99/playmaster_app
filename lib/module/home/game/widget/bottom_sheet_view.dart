@@ -12,7 +12,7 @@ class BottomSheetView extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        /// Title
+        /// Horizontal grey line
         Container(
           height: 4.h,
           width: 50.h,
