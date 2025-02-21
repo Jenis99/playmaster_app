@@ -21,7 +21,7 @@ class GameTypeView extends StatelessWidget {
         ),
         8.w.horizontalSpace,
         AppText(
-          text: gameType.getTitle(gameType),
+          text: gameType.gameLabel,
           color: isPcGame ? AppColors.yellow400Clr : AppColors.pink500Clr,
           fontSize: textFontSize ?? 14.sp,
         ),

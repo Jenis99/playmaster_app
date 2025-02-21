@@ -39,9 +39,7 @@ class Navigation {
   }
 
   static Future<void> rightToLeft(Widget child) async {
-    print("Navigation rightToLeft called :: ");
     await Get.to<dynamic>(() => child, transition: Transition.rightToLeft);
-    print("Navigation rightToLeft called :: 222");
   }
 
   static Future<void> replace(String routeName, {dynamic arguments}) async {

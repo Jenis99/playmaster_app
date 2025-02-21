@@ -63,7 +63,7 @@ class CustomStyle {
       borderRadius: BorderRadius.circular(AppConstants.commonRadius),
       borderSide: BorderSide(
         color: color ?? AppColors.grey900Color,
-      ),
+        width: 0.8),
     );
   }
 }

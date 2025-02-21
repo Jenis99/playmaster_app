@@ -2,7 +2,7 @@ import 'package:playmaster_ui/dependency.dart';
 import 'package:playmaster_ui/module/home/home.dart';
 
 class GameInfoTab extends StatelessWidget {
-  const GameInfoTab({Key? key, this.isFromExploreFriend = false}) : super(key: key);
+  GameInfoTab({Key? key, this.isFromExploreFriend = false}) : super(key: key);
 
   final bool isFromExploreFriend;
 

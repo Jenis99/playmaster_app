@@ -1,10 +1,12 @@
 import 'package:playmaster_ui/dependency.dart';
 import 'package:playmaster_ui/module/friends/friends.dart';
 import 'package:playmaster_ui/module/home/home.dart';
+import 'package:playmaster_ui/module/profile/profile.dart';
 
 class FriendsDetailScreen extends StatelessWidget {
-  FriendsDetailScreen({Key? key, this.isFromMyFriends = false, required this.friendName}) : super(key: key);
+  FriendsDetailScreen({Key? key, this.isFromMyFriends = false, required this.friendName, this.isFromProfile = false}) : super(key: key);
   final bool isFromMyFriends;
+  final bool isFromProfile;
   final String friendName;
 
   final FriendsDetailController friendsDetailController = Get.put(FriendsDetailController());
@@ -13,6 +15,7 @@ class FriendsDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: HomeAppBar(
+        appbarBgClr: AppColors.grey900Color2,
         titleText: friendName,
         isAppLogo: false,
         isShowWallet: false,
@@ -74,10 +77,10 @@ class FriendsDetailScreen extends StatelessWidget {
                     children: [
                       DetailAboutTab(),
                       PastGameTab(
-                        isFromExploreFriends: !isFromMyFriends,
+                        isFromExploreFriends: !isFromMyFriends && !isFromProfile,
                       ),
                       GameInfoTab(
-                        isFromExploreFriend: !isFromMyFriends,
+                        isFromExploreFriend: !isFromMyFriends && !isFromProfile,
                       ),
                     ],
                   ),
@@ -94,55 +97,82 @@ class FriendsDetailScreen extends StatelessWidget {
     return Column(
       children: [
         UserTile(
-          userData: HomeController.find.joinedPlayerList.first,
+          userData: !isFromProfile ? HomeController.find.joinedPlayerList.first : null,
           trailingIconClr: AppColors.transparentClr,
+          isAssetImg: isFromProfile,
+          titleText: AppString.dummyUsername,
+          subtitleText: AppString.userId,
+          profileImg: AppAssets.appLauncherIcon,
           tileColor: AppColors.transparentClr,
-          borderRadius: 100.r,
+          borderRadius: isFromProfile ? 8.r : 100.r,
           // imageSize: 60.h,
         ),
         friendsDetailView(),
-        isFromMyFriends
-            ? Row(
-                children: [
-                  Expanded(
-                      child: AppButton(
-                    text: AppString.followingTag,
-                    height: 34.h,
-                    buttonColor: AppColors.whiteColor,
-                    textColor: AppColors.grey900Color2,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 12.sp,
-                  )),
-                  16.w.horizontalSpace,
-                  Expanded(
-                      child: AppButton(
-                    text: AppString.chatOnDiscord,
-                    icon: CachedNetworkImg(
-                      imgPath: AppAssets.discordIcon,
-                      isAssetImg: true,
-                      imgSize: 18.h,
-                      fit: BoxFit.fitWidth,
-                    ),
-                    fontSize: 12.sp,
-                    height: 34.h,
-                    buttonColor: AppColors.blue700Clr,
-                    fontWeight: FontWeight.w500,
-                  )),
-                ],
-              ).paddingSymmetric(vertical: 24.h)
-            : Obx(
-                () => AppButton(
-                  onTap: () {
-                    friendsDetailController.isRequested.toggle();
-                  },
-                  text: friendsDetailController.isRequested.isTrue ? AppString.requestedTag : AppString.sendFrdRequest,
-                  buttonColor: friendsDetailController.isRequested.isTrue ? AppColors.grey800Color : AppColors.blue700Clr,
-                  height: 34.h,
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w500,
-                  buttonPadding: EdgeInsets.symmetric(vertical: 24.h),
-                ),
+        isFromProfile
+            ? AppButton(
+                onTap: () {
+                  Get.to<dynamic>(() => EditProfileScreen(), transition: Transition.rightToLeft);
+                },
+                text: AppString.editProfile,
+                buttonColor: AppColors.blue700Clr,
+                height: 34.h,
+                fontSize: 12.sp,
+                fontWeight: FontWeight.w500,
+                buttonMarginPadding: EdgeInsets.symmetric(vertical: 24.h),
               )
+            // ? AppButton(
+            //     onTap: () {
+            //       Navigation.rightToLeft(EditProfileScreen());
+            //     },
+            //     text: AppString.editProfile,
+            //     buttonColor: AppColors.blue700Clr,
+            //     height: 34.h,
+            //     fontSize: 12.sp,
+            //     fontWeight: FontWeight.w500,
+            //     buttonPadding: EdgeInsets.symmetric(vertical: 24.h),
+            //   )
+            : isFromMyFriends
+                ? Row(
+                    children: [
+                      Expanded(
+                          child: AppButton(
+                        text: AppString.followingTag,
+                        height: 34.h,
+                        buttonColor: AppColors.whiteColor,
+                        textColor: AppColors.grey900Color2,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 12.sp,
+                      )),
+                      16.w.horizontalSpace,
+                      Expanded(
+                          child: AppButton(
+                        text: AppString.chatOnDiscord,
+                        icon: CachedNetworkImg(
+                          imgPath: AppAssets.discordIcon,
+                          isAssetImg: true,
+                          imgSize: 18.h,
+                          fit: BoxFit.fitWidth,
+                        ),
+                        fontSize: 12.sp,
+                        height: 34.h,
+                        buttonColor: AppColors.blue700Clr,
+                        fontWeight: FontWeight.w500,
+                      )),
+                    ],
+                  ).paddingSymmetric(vertical: 24.h)
+                : Obx(
+                    () => AppButton(
+                      onTap: () {
+                        friendsDetailController.isRequested.toggle();
+                      },
+                      text: friendsDetailController.isRequested.isTrue ? AppString.requestedTag : AppString.sendFrdRequest,
+                      buttonColor: friendsDetailController.isRequested.isTrue ? AppColors.grey800Color : AppColors.blue700Clr,
+                      height: 34.h,
+                      fontSize: 12.sp,
+                      fontWeight: FontWeight.w500,
+                      buttonMarginPadding: EdgeInsets.symmetric(vertical: 24.h),
+                    ),
+                  )
       ],
     ).paddingSymmetric(horizontal: AppConstants.appHorizontalPadding);
   }

@@ -128,12 +128,22 @@ class TournamentDetailScreen extends StatelessWidget {
             ),
 
           if (isFromPayment && lastMinGameModel?.tournamentStatus == TournamentStatus.live)
-            AppButton(
-                buttonPadding: EdgeInsets.all(16.w),
-                text: AppString.goToYoutube,
-                onTap: () {
-                  _launchUrl();
-                }),
+            Container(
+              color: AppColors.grey900Color2,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  AppText(text: AppString.goToYoutubeLiveStream).paddingSymmetric(horizontal: 16.w),
+                  AppButton(
+                      buttonMarginPadding: EdgeInsets.all(16.w),
+                      text: AppString.goToYoutube,
+                      onTap: () {
+                        _launchUrl();
+                      }),
+                ],
+              ),
+            ),
         ],
       ),
     );

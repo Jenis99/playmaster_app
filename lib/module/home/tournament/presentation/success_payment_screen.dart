@@ -21,7 +21,7 @@ class SuccessPaymentScreen extends StatelessWidget {
           onTap: () => Navigation.rightToLeft((FailPaymentScreen(
             lastMinGameModel: lastMinGameModel,
           ))),
-          buttonPadding: EdgeInsets.symmetric(horizontal: AppConstants.appHorizontalPadding),
+          buttonMarginPadding: EdgeInsets.symmetric(horizontal: AppConstants.appHorizontalPadding),
         ),
       ],
     ));

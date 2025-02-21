@@ -75,7 +75,7 @@ class PaymentBottomView extends StatelessWidget {
               print("call this on error $e :: $st");
             }
           },
-          buttonPadding: EdgeInsets.all(AppConstants.appHorizontalPadding),
+          buttonMarginPadding: EdgeInsets.all(AppConstants.appHorizontalPadding),
         )
       ],
     );

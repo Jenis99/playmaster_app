@@ -69,7 +69,7 @@ class AppTextField extends StatefulWidget {
       this.onTapOutside,
       this.isTapOutsideEnable = false,
       this.textFieldOrder,
-      this.isBottomPaddingApply = true}) {
+      this.isBottomPaddingApply = false}) {
     isVisibility = (obscureText ?? false).obs;
   }
 
@@ -80,8 +80,6 @@ class AppTextField extends StatefulWidget {
 class _AppTextFieldState extends State<AppTextField> {
   @override
   Widget build(BuildContext context) {
-    // Color grayColor900 = AppColors.grayColor.shade900;
-    // Color grayColor500 = AppColors.grayColor.shade500;
     return Obx(
       () => TextField(
         controller: widget.controller,

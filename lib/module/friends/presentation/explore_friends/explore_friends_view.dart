@@ -47,7 +47,6 @@ class ExploreFriendsView extends StatelessWidget {
     return AppTextField(
       controller: friendsController.exploreFriendsController,
       color: AppColors.grey900Color2,
-      isBottomPaddingApply: false,
       prefixIcon: CachedNetworkImg(
         imgPath: AppAssets.searchIcon,
         isAssetImg: true,
@@ -55,6 +54,7 @@ class ExploreFriendsView extends StatelessWidget {
       ),
       hintText: AppString.searchFriendsHere,
       isTapOutsideEnable: true,
+      isBottomPaddingApply: true,
       textFieldOrder: OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(4.r)),
         borderSide: BorderSide(

@@ -1,7 +1,14 @@
 import 'package:playmaster_ui/dependency.dart';
 import 'package:playmaster_ui/resources/app_string.dart';
 
-enum GameType { pcGame, mobileGame }
+enum GameType {
+  pcGame(gameLabel: AppString.pcGame),
+  mobileGame(gameLabel: AppString.mobileGame);
+
+  const GameType({required this.gameLabel});
+
+  final String gameLabel;
+}
 
 enum TournamentStatus {
   joined(statusLabel: AppString.tournamentJoined),
@@ -11,14 +18,4 @@ enum TournamentStatus {
   const TournamentStatus({required this.statusLabel});
 
   final String statusLabel;
-}
-
-extension GameTypeTitle on GameType {
-  String getTitle(GameType gameType) {
-    if (gameType == GameType.pcGame) {
-      return AppString.pcGame;
-    } else {
-      return AppString.mobileGame;
-    }
-  }
 }

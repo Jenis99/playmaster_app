@@ -5,8 +5,9 @@ class TopGameModel {
   String? gameImg;
   int? tournamentCount;
   GameType? gameType;
+  RxBool? isGameSelected;
 
-  TopGameModel({this.gameName, this.gameImg, this.tournamentCount, this.gameType});
+  TopGameModel({this.gameName, this.gameImg, this.tournamentCount, this.gameType, this.isGameSelected});
 
   TopGameModel.fromJson(Map<String, dynamic> json) {
     gameName = json['gameName'];

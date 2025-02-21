@@ -22,7 +22,7 @@ class FailPaymentScreen extends StatelessWidget {
               textColor: AppColors.whiteColor,
               isBorderButton: true,
               buttonColor: AppColors.transparentClr,
-              buttonPadding: EdgeInsets.symmetric(horizontal: AppConstants.appHorizontalPadding),
+              buttonMarginPadding: EdgeInsets.symmetric(horizontal: AppConstants.appHorizontalPadding),
               onTap: () {
                 navigateToDetailScreen();
               },
@@ -31,7 +31,7 @@ class FailPaymentScreen extends StatelessWidget {
               text: AppString.tryAgain,
               textColor: AppColors.grey900Color2,
               buttonColor: AppColors.whiteColor,
-              buttonPadding: EdgeInsets.symmetric(horizontal: AppConstants.appHorizontalPadding, vertical: 16.h),
+              buttonMarginPadding: EdgeInsets.symmetric(horizontal: AppConstants.appHorizontalPadding, vertical: 16.h),
               onTap: () {
                 navigateToDetailScreen();
               },

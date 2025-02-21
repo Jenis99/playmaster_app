@@ -88,6 +88,12 @@ class AppString {
   static const successfully = "Successfully";
   static const pending = "Pending";
   static const allGames = "All Games";
+  static const saveTag = "Save";
+
+  // Dummy user
+
+  static const dummyUsername = "Noxious John";
+  static const userId = "@noxious_007";
 
   static const withdrawDescription = "Your amount will be withdrawn and credited to your bank account within 24 hours.";
 
@@ -105,6 +111,7 @@ class AppString {
 
   // Profile option
   static const accountTag = "Account";
+  static const editTag = "Edit";
   static const editProfile = "Edit Profile";
   static const securityOption = "Security";
   static const paymentOption = "Payment";
@@ -126,7 +133,7 @@ class AppString {
 
   // Game list
   static const valorantGame = "Valorant";
-  static const BGMIGame = "BGMI";
+  static const bGMIGame = "BGMI";
   static const fallGuys = "Fall guys";
   static const freeFire = "Free Fire";
   static const csgoTag = "CSGO";

@@ -8,7 +8,10 @@ class AuthTextFieldWithLabel extends StatelessWidget {
     required this.textFieldController,
     this.isPasswordField = false,
     this.isEmailField = false,
+    this.isTapOutsideEnable = false,
     this.isUsername = false,
+    this.isDoneField = false,
+    this.textFieldClr,
   }) : super(key: key);
 
   final String labelName;
@@ -16,6 +19,9 @@ class AuthTextFieldWithLabel extends StatelessWidget {
   final bool isPasswordField;
   final bool isEmailField;
   final bool isUsername;
+  final bool isTapOutsideEnable;
+  final bool isDoneField;
+  final Color? textFieldClr;
   final TextEditingController textFieldController;
 
   @override
@@ -32,12 +38,19 @@ class AuthTextFieldWithLabel extends StatelessWidget {
         8.h.verticalSpace,
         AppTextField(
           height: 64.h,
+          color: textFieldClr,
+          isBottomPaddingApply: true,
           hintText: hintText,
+          fontSize: 14.sp,
+          contentPadding: EdgeInsets.all(12.h),
           obscureText: isPasswordField,
+          isTapOutsideEnable: isTapOutsideEnable,
           controller: textFieldController,
           keyboardType: isEmailField ? TextInputType.emailAddress : TextInputType.text,
-          textInputAction: (isEmailField || isUsername) ? TextInputAction.next : TextInputAction.done,
-        )
+          textInputAction: (isEmailField || isUsername || isDoneField) ? TextInputAction.next : TextInputAction.done,
+        ),
+
+        /// Favourite game
       ],
     );
   }

@@ -1,25 +1,28 @@
 import 'package:playmaster_ui/dependency.dart';
 
 class UserTile extends StatelessWidget {
-  const UserTile(
-      {super.key,
-      this.userData,
-      this.isMyProfileData = false,
-      this.tileColor,
-      this.trailingIconClr,
-      this.onTap,
-      this.borderRadius,
-      this.imageSize,
-      this.isShowTrophy = false,
-      this.rankNumber,
-      this.playerID = "",
-      this.trailing,
-      this.titleText,
-      this.subtitleText,
-      this.profileImg,
-      this.isAssetImg = false,
-      this.titleFontSize,
-      this.subtitleFontSize});
+  const UserTile({
+    super.key,
+    this.userData,
+    this.isMyProfileData = false,
+    this.tileColor,
+    this.trailingIconClr,
+    this.onTap,
+    this.borderRadius,
+    this.imageSize,
+    this.isShowTrophy = false,
+    this.rankNumber,
+    this.playerID = "",
+    this.trailing,
+    this.titleText,
+    this.subtitleText,
+    this.profileImg,
+    this.isAssetImg = false,
+    this.titleFontSize,
+    this.subtitleFontSize,
+    this.minTileHeight,
+    this.isVerticalPadding = true,
+  });
 
   final ({String profileImg, String username, String userId})? userData;
   final bool isMyProfileData;
@@ -38,6 +41,8 @@ class UserTile extends StatelessWidget {
   final String? rankNumber;
   final double? titleFontSize;
   final double? subtitleFontSize;
+  final double? minTileHeight;
+  final bool isVerticalPadding;
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +51,7 @@ class UserTile extends StatelessWidget {
       child: ListTile(
         dense: true,
         onTap: onTap,
+        minTileHeight: minTileHeight,
         horizontalTitleGap: AppConstants.appHorizontalPadding,
         minLeadingWidth: 0,
         tileColor: tileColor ?? AppColors.grey900Color2,
@@ -76,12 +82,12 @@ class UserTile extends StatelessWidget {
             : isShowTrophy
                 ? TrophyView()
                 : AppText(
-          text: playerID.isNotEmpty ? "${AppString.playerId}: ${playerID}" : subtitleText ?? userData?.userId ?? "",
+                    text: playerID.isNotEmpty ? "${AppString.playerId}: ${playerID}" : subtitleText ?? userData?.userId ?? "",
                     color: AppColors.grey400Color,
                     fontSize: subtitleFontSize ?? 14.sp,
                   ),
       ),
-    ).paddingSymmetric(vertical: 5.h);
+    ).paddingSymmetric(vertical: isVerticalPadding ? 5.h : 0);
   }
 
   RichText playerIdView() {

@@ -48,7 +48,6 @@ class AddBalanceScreen extends StatelessWidget {
                     AppTextField(
                       controller: addAmountController,
                       contentPadding: EdgeInsets.only(top: 10.h),
-                      isBottomPaddingApply: false,
                       prefixIcon: Icon(
                         Icons.currency_rupee,
                         color: AppColors.greenClr,

@@ -44,6 +44,7 @@ class TournamentTitle extends StatelessWidget {
             ? GestureDetector(
                 onTap: onViewAll,
                 child: Container(
+                  padding: EdgeInsets.only(left: 10.w),
                   color: AppColors.transparentClr,
                   child: AppText(
                     text: subTitle ?? AppString.viewAll,

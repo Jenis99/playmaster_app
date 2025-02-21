@@ -1,5 +1,7 @@
 import 'package:playmaster_ui/dependency.dart';
+import 'package:playmaster_ui/module/friends/presentation/friends_detail/friends_detail_screen.dart';
 import 'package:playmaster_ui/module/home/home.dart';
+import 'package:playmaster_ui/module/profile/presentation/edit_profile_screen.dart';
 import 'package:playmaster_ui/module/profile/widget/profile_option_tile.dart';
 
 class ProfileTab extends StatelessWidget {
@@ -19,7 +21,13 @@ class ProfileTab extends StatelessWidget {
             profileTitleView(AppString.accountTag).paddingOnly(top: 32.h, bottom: 12.h),
 
             // Edit profile
-            ProfileOptionTile(imagePath: AppAssets.userProfileIcon, titleName: AppString.editProfile),
+            ProfileOptionTile(
+              imagePath: AppAssets.userProfileIcon,
+              titleName: AppString.editProfile,
+              onTap: () {
+                Navigation.rightToLeft(EditProfileScreen());
+              },
+            ),
             //Security
             ProfileOptionTile(imagePath: AppAssets.securityIcon, titleName: AppString.securityOption),
 
@@ -62,6 +70,13 @@ class ProfileTab extends StatelessWidget {
 
   Widget userProfileView() {
     return UserTile(
+      onTap: () {
+        Navigation.rightToLeft(FriendsDetailScreen(
+          friendName: AppString.dummyUsername,
+          isFromProfile: true,
+          // isFromMyFriends: true,
+        ));
+      },
       tileColor: AppColors.transparentClr,
       titleText: "Noxious John",
       imageSize: 60.h,
