@@ -1,6 +1,7 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:playmaster_ui/dependency.dart';
 import 'package:playmaster_ui/module/home/home.dart';
+import 'package:playmaster_ui/module/profile/presentation/profile_option/payment_history_screen.dart';
 import 'package:playmaster_ui/module/profile/presentation/profile_option/withdraw_screen.dart';
 import 'package:playmaster_ui/module/profile/profile.dart';
 
@@ -51,7 +52,14 @@ class WalletBottomView extends StatelessWidget {
         AppDivider(height: .7, color: AppColors.grey800Color),
 
         // Payment history
-        ProfileOptionTile(imagePath: AppAssets.paymentHistoryIcon, titleName: AppString.paymentHistory, tileColor: AppColors.transparentClr),
+        ProfileOptionTile(
+          onTap: () {
+            Navigation.push(PaymentHistoryScreen());
+          },
+          imagePath: AppAssets.paymentHistoryIcon,
+          titleName: AppString.paymentHistory,
+          tileColor: AppColors.transparentClr,
+        ),
         AppDivider(height: .7, color: AppColors.grey800Color),
         10.h.verticalSpace,
       ],
