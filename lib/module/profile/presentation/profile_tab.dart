@@ -1,6 +1,7 @@
 import 'package:playmaster_ui/dependency.dart';
 import 'package:playmaster_ui/module/friends/presentation/friends_detail/friends_detail_screen.dart';
 import 'package:playmaster_ui/module/home/home.dart';
+import 'package:playmaster_ui/module/profile/presentation/profile_option/payment_history_screen.dart';
 import 'package:playmaster_ui/module/profile/profile.dart';
 
 import 'profile_option/withdraw_screen.dart';
@@ -57,7 +58,13 @@ class ProfileTab extends StatelessWidget {
               titleName: AppString.withdrawal,
             ),
             // Payment history
-            ProfileOptionTile(imagePath: AppAssets.paymentHistoryIcon, titleName: AppString.paymentHistory),
+            ProfileOptionTile(
+              onTap: () {
+                Navigation.rightToLeft(PaymentHistoryScreen());
+              },
+              imagePath: AppAssets.paymentHistoryIcon,
+              titleName: AppString.paymentHistory,
+            ),
             // Tds
             ProfileOptionTile(imagePath: AppAssets.tdsIcon, titleName: AppString.tdsAndOther),
 
@@ -67,6 +74,9 @@ class ProfileTab extends StatelessWidget {
             ProfileOptionTile(imagePath: AppAssets.helpIcon, titleName: AppString.helpAndSupport),
             // Logout
             ProfileOptionTile(
+              onTap: () {
+                Navigation.replaceAll(AppRoutes.loginScreen);
+              },
               imagePath: AppAssets.logoutIcon,
               titleName: AppString.logoutTag,
               tileColor: AppColors.red20Opacity,

@@ -70,24 +70,11 @@ class PaymentHistoryScreen extends StatelessWidget {
                 ),
                 Expanded(
                   child: TabBarView(
-                    // physics: const NeverScrollableScrollPhysics(),
                     controller: paymentHistoryController.paymentHisTabController,
                     children: [
-                      Column(
-                        children: [
-                          PaymentCategoryView(),
-                        ],
-                      ),
-                      Center(
-                        child: AppText(
-                          text: AppString.withdrawal,
-                        ),
-                      ),
-                      Center(
-                        child: AppText(
-                          text: AppString.deposits,
-                        ),
-                      ),
+                      PaymentSubTabView(currentTab: 0),
+                      PaymentSubTabView(currentTab: 1),
+                      PaymentSubTabView(currentTab: 2),
                     ],
                   ),
                 ),

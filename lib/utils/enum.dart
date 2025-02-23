@@ -19,3 +19,24 @@ enum TournamentStatus {
 
   final String statusLabel;
 }
+
+enum TransactionStatus {
+  allType(statusLabel: "All type"),
+  failed(statusLabel: "Failed"),
+  successfully(statusLabel: "Successfully"),
+  pending(statusLabel: "Pending");
+
+  final String statusLabel;
+
+  const TransactionStatus({required this.statusLabel});
+}
+
+enum GamePlatformType {
+  allGames(platformLabel: "All Games"),
+  pcGames(platformLabel: "PC Games"),
+  mobileGame(platformLabel: "Mobile Games");
+
+  final String platformLabel;
+
+  const GamePlatformType({required this.platformLabel});
+}
