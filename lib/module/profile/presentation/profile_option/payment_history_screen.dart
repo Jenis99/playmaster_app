@@ -1,6 +1,7 @@
 import 'package:playmaster_ui/dependency.dart';
 import 'package:playmaster_ui/module/home/home.dart';
 import 'package:playmaster_ui/module/profile/controller/payment_history_controller.dart';
+import 'package:playmaster_ui/module/profile/widget/payment_filter_view.dart';
 
 class PaymentHistoryScreen extends StatelessWidget {
   PaymentHistoryScreen({Key? key}) : super(key: key);
@@ -72,10 +73,10 @@ class PaymentHistoryScreen extends StatelessWidget {
                     // physics: const NeverScrollableScrollPhysics(),
                     controller: paymentHistoryController.paymentHisTabController,
                     children: [
-                      Center(
-                        child: AppText(
-                          text: AppString.contests,
-                        ),
+                      Column(
+                        children: [
+                          PaymentCategoryView(),
+                        ],
                       ),
                       Center(
                         child: AppText(
