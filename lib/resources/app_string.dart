@@ -120,7 +120,7 @@ class AppString {
   static const securityOption = "Security";
   static const paymentOption = "Payment";
   static const walletTag = "Wallet";
-  static const withdrawIcon = "Withdraw";
+  static const withdrawTag = "Withdraw";
   static const paymentHistoryTag = "Payment History";
   static const tdsTag = "TDS";
   static const otherTag = "OTHER";

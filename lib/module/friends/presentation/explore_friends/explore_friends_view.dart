@@ -13,7 +13,6 @@ class ExploreFriendsView extends StatelessWidget {
     return Column(
       children: [
         searchField(),
-        10.h.horizontalSpace,
         Expanded(
           child: ListView.separated(
             itemCount: homeController.joinedPlayerList.length,
@@ -54,7 +53,7 @@ class ExploreFriendsView extends StatelessWidget {
       ),
       hintText: AppString.searchFriendsHere,
       isTapOutsideEnable: true,
-      isBottomPaddingApply: true,
+      isBottomPaddingApply: false,
       textFieldOrder: OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(4.r)),
         borderSide: BorderSide(

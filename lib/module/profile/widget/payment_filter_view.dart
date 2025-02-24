@@ -229,6 +229,9 @@ class PaymentSubTabView extends StatelessWidget {
           ),
         ),
         AppButton(
+          onTap: () {
+            Navigation.pop();
+          },
           text: AppString.saveTag,
           buttonMarginPadding: EdgeInsets.all(16.h),
         )
@@ -287,6 +290,9 @@ class PaymentSubTabView extends StatelessWidget {
           ),
         ),
         AppButton(
+          onTap: () {
+            Navigation.pop();
+          },
           text: AppString.saveTag,
           buttonMarginPadding: EdgeInsets.all(16.h),
         )

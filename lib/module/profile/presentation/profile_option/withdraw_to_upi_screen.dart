@@ -15,7 +15,7 @@ class WithdrawToUpiScreen extends StatelessWidget {
       appBar: HomeAppBar(
         isShowWallet: false,
         isAppLogo: false,
-        titleText: AppString.withdrawal,
+        titleText: AppString.withdrawTag,
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -22,7 +22,7 @@ class WithdrawScreen extends StatelessWidget {
       appBar: HomeAppBar(
         isShowWallet: false,
         isAppLogo: false,
-        titleText: AppString.withdrawal,
+        titleText: AppString.withdrawTag,
       ),
       body: LayoutBuilder(
         builder: (context, constraint) {
