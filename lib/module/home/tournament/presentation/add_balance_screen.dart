@@ -117,6 +117,7 @@ class AddBalanceScreen extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.5.h),
       borderType: BorderType.RRect,
       color: AppColors.grey900Color2,
+      dashPattern: [8, 3],
       radius: Radius.circular(AppConstants.borderRadius),
       // padding: EdgeInsets.all(6),
       child: ClipRRect(

@@ -212,6 +212,7 @@ class TournamentDetailScreen extends StatelessWidget {
             subtitleColor: AppColors.whiteColor,
             titleColor: AppColors.grey400Color,
           ),
+          16.h.verticalSpace,
           AppDivider(color: AppColors.grey700Color),
 
           /// Total amount

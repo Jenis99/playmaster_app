@@ -109,7 +109,7 @@ class AppString {
   static const tournamentJoined = "Tournament Joined";
 
   // My matches tabAll type
-  static const upcomingTab = "UpcoFailedming";
+  static const upcomingTab = "Upcoming";
   static const liveTab = "Live";
   static const completedTab = "Completed";
 
@@ -185,6 +185,8 @@ class AppString {
   static const backToTournament = "Back to tournament";
   static const tryAgain = "Try Again";
   static const goToYoutube = "Go to YouTube";
+  static const discordId = "Discord Id";
+  static const enterDiscordId = "Enter discord Id";
 
   static const bioDetail =
       "Hi, I am mainly looking for people to play FPS games with competitively. I mainly play Valorant and Apex feel free to add me!";

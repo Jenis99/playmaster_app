@@ -26,11 +26,20 @@ class EditProfileTab extends StatelessWidget {
             textFieldController: TextEditingController(),
           ).paddingSymmetric(horizontal: AppConstants.appHorizontalPadding),
 
-          /// Enter username
+          /// Enter Bio
           AuthTextFieldWithLabel(
             textFieldController: TextEditingController(text: AppString.bioDetail),
             hintText: AppString.bioTag,
             labelName: AppString.bioTag,
+            textFieldClr: AppColors.grey900Color2,
+            isTapOutsideEnable: true,
+          ).paddingSymmetric(horizontal: AppConstants.appHorizontalPadding),
+
+          /// Enter Discord id
+          AuthTextFieldWithLabel(
+            textFieldController: TextEditingController(),
+            hintText: AppString.enterDiscordId,
+            labelName: AppString.discordId,
             textFieldClr: AppColors.grey900Color2,
             isTapOutsideEnable: true,
           ).paddingSymmetric(horizontal: AppConstants.appHorizontalPadding),

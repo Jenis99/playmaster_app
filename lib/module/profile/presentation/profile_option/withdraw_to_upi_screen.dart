@@ -7,10 +7,10 @@ class WithdrawToUpiScreen extends StatelessWidget {
 
   final upiTextController = TextEditingController();
   final isVerified = false.obs;
+  final isTextFieldNotEmpty = false.obs;
 
   @override
   Widget build(BuildContext context) {
-    print("WithdrawToUpiScreen call ${isVerified.value} ${validateUpiID(upiTextController.text)}");
     return Scaffold(
       appBar: HomeAppBar(
         isShowWallet: false,
@@ -33,39 +33,37 @@ class WithdrawToUpiScreen extends StatelessWidget {
                 isDoneField: true,
                 onChanged: (p0) {
                   print("AuthTextFieldWithLabel call $p0");
+                  isTextFieldNotEmpty(p0.isNotEmpty);
                   isVerified.value = validateUpiID(p0).isEmpty;
                 },
               ),
               8.h.verticalSpace,
-
-              ///
-              Obx(
-                () => Row(
-                  children: [
-                    Icon(
-                      isVerified.isTrue ? Icons.verified_outlined : Icons.cancel_outlined,
-                      size: 16.sp,
-                      color: isVerified.isTrue ? AppColors.green500Clr : AppColors.red500Clr,
-                    ),
-                    5.w.horizontalSpace,
-                    AppText(
-                      text: isVerified.isTrue ? AppString.verified : AppString.invalid,
-                      fontSize: 14.sp,
-                      color: isVerified.isTrue ? AppColors.green500Clr : AppColors.red500Clr,
+              Obx(() => isTextFieldNotEmpty.isTrue && isVerified.isTrue
+                  ? Obx(
+                      () => Row(
+                        children: [
+                          Icon(
+                            isVerified.isTrue ? Icons.verified_outlined : Icons.cancel_outlined,
+                            size: 16.sp,
+                            color: isVerified.isTrue ? AppColors.green500Clr : AppColors.red500Clr,
+                          ),
+                          5.w.horizontalSpace,
+                          AppText(
+                            text: isVerified.isTrue ? AppString.verified : AppString.invalid,
+                            fontSize: 14.sp,
+                            color: isVerified.isTrue ? AppColors.green500Clr : AppColors.red500Clr,
+                          )
+                        ],
+                      ),
                     )
-                  ],
-                ),
-              )
+                  : SizedBox())
             ],
           ),
           Obx(
             () => AppButton(
               onTap: () async {
-                print("object");
                 if (isVerified.isTrue) {
-                  print("object 2");
                   await Get.to<dynamic>(() => SuccessPaymentScreen(isFromWithdraw: true), transition: Transition.rightToLeft);
-                  print("object 3");
                 }
               },
               text: AppString.withdrawal,
