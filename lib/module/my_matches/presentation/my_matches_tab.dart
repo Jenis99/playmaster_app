@@ -60,7 +60,7 @@ class MyMatchesTab extends StatelessWidget {
             ),
             Expanded(
               child: TabBarView(
-                // physics: const NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 controller: matchesController.matchTabController,
                 children: [
                   UpcomingTournamentScreen(),

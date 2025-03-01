@@ -56,7 +56,7 @@ class FriendsTab extends StatelessWidget {
             ),
             Expanded(
               child: TabBarView(
-                // physics: const NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 controller: friendsController.friendsTabController,
                 children: [
                   ExploreFriendsView(),

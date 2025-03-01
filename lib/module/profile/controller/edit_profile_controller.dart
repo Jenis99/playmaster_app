@@ -6,7 +6,7 @@ class EditProfileController extends GetxController with GetSingleTickerProviderS
 
   @override
   void onInit() {
-    profileTabController = TabController(vsync: this, length: 2);
+    profileTabController = TabController(vsync: this, length: 2, initialIndex: 0);
     listenTabController();
     super.onInit();
   }

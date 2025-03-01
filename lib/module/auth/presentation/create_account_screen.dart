@@ -36,7 +36,7 @@ class CreateAccountScreen extends StatelessWidget {
                       text: AppString.createProfileSubtitle,
                       fontWeight: FontWeight.w400,
                       color: AppColors.grey400Color,
-                      fontStyle: FontStyle.italic,
+                      // fontStyle: FontStyle.italic,
                       fontSize: 14.sp,
                     ),
                     48.h.verticalSpace,
@@ -66,9 +66,15 @@ class CreateAccountScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Expanded(child: AppDivider()),
+                        const Expanded(
+                            child: AppDivider(
+                          color: AppColors.grey700Color,
+                        )),
                         const AppText(text: AppString.orContinueWith).paddingSymmetric(horizontal: 10),
-                        const Expanded(child: AppDivider()),
+                        const Expanded(
+                            child: AppDivider(
+                          color: AppColors.grey700Color,
+                        )),
                       ],
                     ),
                     32.h.verticalSpace,

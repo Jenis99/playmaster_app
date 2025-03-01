@@ -13,7 +13,7 @@ class DashBoardScreen extends StatefulWidget {
 }
 
 class _DashBoardScreenState extends State<DashBoardScreen> with WidgetsBindingObserver {
-  final DashboardController _dashBoardController = Get.put(DashboardController());
+  final DashboardController _dashBoardController = Get.put(DashboardController())..selectedTabIndex.refresh();
   final MyMatchesController myMatchesController = Get.put(MyMatchesController());
   final FriendsController friendsController = Get.put(FriendsController());
 
@@ -21,6 +21,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> with WidgetsBindingOb
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    _dashBoardController.selectedTabIndex(0);
   }
 
   @override
@@ -52,29 +53,41 @@ class _DashBoardScreenState extends State<DashBoardScreen> with WidgetsBindingOb
                 image: DecorationImage(image: AssetImage(AppAssets.bottomBarShadow)),
               ),
               tabs: [
-                bottomNavigationBarElement(
-                  title: AppString.homeTab,
-                  icon: AppAssets.homeIcon,
-                  index: 0,
-                  onTap: _dashBoardController.onTabChange,
+                Obx(
+                  () => bottomNavigationBarElement(
+                    title: AppString.homeTab,
+                    icon: AppAssets.homeIcon,
+                    index: 0,
+                    selectedIndex: _dashBoardController.selectedTabIndex.value,
+                    onTap: _dashBoardController.onTabChange,
+                  ),
                 ),
-                bottomNavigationBarElement(
-                  title: AppString.myMatches,
-                  icon: AppAssets.myMatchesIcon,
-                  index: 1,
-                  onTap: _dashBoardController.onTabChange,
+                Obx(
+                  () => bottomNavigationBarElement(
+                    title: AppString.myMatches,
+                    icon: AppAssets.myMatchesIcon,
+                    index: 1,
+                    selectedIndex: _dashBoardController.selectedTabIndex.value,
+                    onTap: _dashBoardController.onTabChange,
+                  ),
                 ),
-                bottomNavigationBarElement(
-                  title: AppString.friends,
-                  icon: AppAssets.friendsIcon,
-                  index: 2,
-                  onTap: _dashBoardController.onTabChange,
+                Obx(
+                  () => bottomNavigationBarElement(
+                    title: AppString.friends,
+                    icon: AppAssets.friendsIcon,
+                    index: 2,
+                    selectedIndex: _dashBoardController.selectedTabIndex.value,
+                    onTap: _dashBoardController.onTabChange,
+                  ),
                 ),
-                bottomNavigationBarElement(
-                  title: AppString.profile,
-                  icon: AppAssets.profileIcon,
-                  index: 3,
-                  onTap: _dashBoardController.onTabChange,
+                Obx(
+                  () => bottomNavigationBarElement(
+                    title: AppString.profile,
+                    icon: AppAssets.profileIcon,
+                    index: 3,
+                    selectedIndex: _dashBoardController.selectedTabIndex.value,
+                    onTap: _dashBoardController.onTabChange,
+                  ),
                 ),
               ],
             ),
@@ -105,6 +118,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> with WidgetsBindingOb
     required final String icon,
     required final Function(int) onTap,
     required final int index,
+    required final int selectedIndex,
     // required final int titleSize,
   }) {
     return GestureDetector(
@@ -118,24 +132,20 @@ class _DashBoardScreenState extends State<DashBoardScreen> with WidgetsBindingOb
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             4.verticalSpace,
-            Obx(
-              () => CachedNetworkImg(
-                imgPath: icon,
-                imgSize: 24.h,
-                isAssetImg: true,
-                imgColor: _dashBoardController.selectedTabIndex.value == index ? AppColors.whiteColor : AppColors.grey400Color,
-              ),
+            CachedNetworkImg(
+              imgPath: icon,
+              imgSize: 24.h,
+              isAssetImg: true,
+              imgColor: selectedIndex == index ? AppColors.whiteColor : AppColors.grey400Color,
             ),
             4.verticalSpace,
-            Obx(
-              () => AppText(
-                text: title,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                fontSize: 11.sp,
-                fontWeight: _dashBoardController.selectedTabIndex.value == index ? FontWeight.w700 : FontWeight.w400,
-                color: _dashBoardController.selectedTabIndex.value == index ? AppColors.whiteColor : AppColors.grey400Color,
-              ),
+            AppText(
+              text: title,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              fontSize: 11.sp,
+              fontWeight: selectedIndex == index ? FontWeight.w700 : FontWeight.w400,
+              color: selectedIndex == index ? AppColors.whiteColor : AppColors.grey400Color,
             ),
           ],
         ),

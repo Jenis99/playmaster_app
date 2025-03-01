@@ -59,9 +59,15 @@ class LoginScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Expanded(child: AppDivider()),
-                        const AppText(text: AppString.orContinueWith).paddingSymmetric(horizontal: 10),
-                        const Expanded(child: AppDivider()),
+                        const Expanded(
+                            child: AppDivider(
+                          color: AppColors.grey700Color,
+                        )),
+                        const AppText(text: AppString.orContinueWith).paddingSymmetric(horizontal: 10.w),
+                        const Expanded(
+                            child: AppDivider(
+                          color: AppColors.grey700Color,
+                        )),
                       ],
                     ),
 

@@ -7,7 +7,7 @@ class FriendsDetailController extends GetxController with GetSingleTickerProvide
 
   @override
   void onInit() {
-    friendDetailTabController = TabController(vsync: this, length: 3);
+    friendDetailTabController = TabController(vsync: this, length: 3, initialIndex: 0);
     listenTabController();
     super.onInit();
   }

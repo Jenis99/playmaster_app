@@ -62,7 +62,7 @@ class EditProfileScreen extends StatelessWidget {
                 ),
                 Expanded(
                   child: TabBarView(
-                    // physics: const NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     controller: editProfileController.profileTabController,
                     children: [
                       EditProfileTab(),

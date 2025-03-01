@@ -70,6 +70,7 @@ class PaymentHistoryScreen extends StatelessWidget {
                 ),
                 Expanded(
                   child: TabBarView(
+                    physics: const NeverScrollableScrollPhysics(),
                     controller: paymentHistoryController.paymentHisTabController,
                     children: [
                       PaymentSubTabView(currentTab: 0),

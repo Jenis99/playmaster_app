@@ -6,7 +6,7 @@ class MyMatchesController extends GetxController with GetSingleTickerProviderSta
 
   @override
   void onInit() {
-    matchTabController = TabController(vsync: this, length: 3);
+    matchTabController = TabController(vsync: this, length: 3, initialIndex: 0);
     listenTabController();
     super.onInit();
   }

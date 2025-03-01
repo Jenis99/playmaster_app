@@ -30,7 +30,7 @@ class PaymentHistoryController extends GetxController with GetSingleTickerProvid
 
   @override
   void onInit() {
-    paymentHisTabController = TabController(vsync: this, length: 3);
+    paymentHisTabController = TabController(vsync: this, length: 3, initialIndex: 0);
     listenTabController();
     super.onInit();
   }
