@@ -8,61 +8,73 @@ class EditProfileTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          24.h.verticalSpace,
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      bottomNavigationBar: Container(
+        padding: EdgeInsets.symmetric(vertical: 16.h),
+        color: AppColors.grey900Color2,
+        child: AppButton(
+          text: AppString.saveTag,
+          buttonMarginPadding: EdgeInsets.symmetric(horizontal: AppConstants.appHorizontalPadding),
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            24.h.verticalSpace,
 
-          /// Enter username
-          AuthTextFieldWithLabel(
-            isUsername: true,
-            isEmailField: false,
-            isPasswordField: false,
-            isTapOutsideEnable: true,
-            labelName: AppString.usernameTag,
-            hintText: AppString.enterUsername,
-            textFieldClr: AppColors.grey900Color2,
-            textFieldController: TextEditingController(),
-          ).paddingSymmetric(horizontal: AppConstants.appHorizontalPadding),
+            /// Enter username
+            AuthTextFieldWithLabel(
+              isUsername: true,
+              isEmailField: false,
+              isPasswordField: false,
+              isTapOutsideEnable: true,
+              labelName: AppString.usernameTag,
+              hintText: AppString.enterUsername,
+              textFieldClr: AppColors.grey900Color2,
+              textFieldController: TextEditingController(),
+            ).paddingSymmetric(horizontal: AppConstants.appHorizontalPadding),
 
-          /// Enter Bio
-          AuthTextFieldWithLabel(
-            textFieldController: TextEditingController(text: AppString.bioDetail),
-            hintText: AppString.bioTag,
-            labelName: AppString.bioTag,
-            textFieldClr: AppColors.grey900Color2,
-            isTapOutsideEnable: true,
-          ).paddingSymmetric(horizontal: AppConstants.appHorizontalPadding),
+            /// Enter Bio
+            AuthTextFieldWithLabel(
+              textFieldController: TextEditingController(text: AppString.bioDetail),
+              hintText: AppString.bioTag,
+              labelName: AppString.bioTag,
+              textFieldClr: AppColors.grey900Color2,
+              isTapOutsideEnable: true,
+            ).paddingSymmetric(horizontal: AppConstants.appHorizontalPadding),
 
-          /// Enter Discord id
-          AuthTextFieldWithLabel(
-            textFieldController: TextEditingController(),
-            hintText: AppString.enterDiscordId,
-            labelName: AppString.discordId,
-            textFieldClr: AppColors.grey900Color2,
-            isTapOutsideEnable: true,
-          ).paddingSymmetric(horizontal: AppConstants.appHorizontalPadding),
+            /// Enter Discord id
+            AuthTextFieldWithLabel(
+              textFieldController: TextEditingController(),
+              hintText: AppString.enterDiscordId,
+              labelName: AppString.discordId,
+              textFieldClr: AppColors.grey900Color2,
+              isTapOutsideEnable: true,
+            ).paddingSymmetric(horizontal: AppConstants.appHorizontalPadding),
 
-          TournamentTitle(
-            title: AppString.favouriteGame,
-            subTitle: AppString.editTag,
-            onViewAll: () {
-              showModalBottomSheet(
-                context: context,
-                backgroundColor: AppColors.grey900Color2,
-                builder: (context) {
-                  return FavouriteGameBottomView();
-                },
-              );
-            },
-            subtitleFontSize: 14.sp,
-            subtitleFontWeight: FontWeight.w600,
-            titleFontSize: 14.sp,
-            titleColor: AppColors.grey400Color,
-          ).paddingOnly(top: 30.h, bottom: 24.h, left: 16.w, right: 16.w),
-          favouriteGameList(),
-        ],
+            TournamentTitle(
+              title: AppString.favouriteGame,
+              subTitle: AppString.editTag,
+              onViewAll: () {
+                showModalBottomSheet(
+                  context: context,
+                  backgroundColor: AppColors.grey900Color2,
+                  builder: (context) {
+                    return FavouriteGameBottomView();
+                  },
+                );
+              },
+              subtitleFontSize: 14.sp,
+              subtitleFontWeight: FontWeight.w600,
+              titleFontSize: 14.sp,
+              titleFontWeight: FontWeight.w400,
+              titleColor: AppColors.whiteColor,
+            ).paddingOnly(bottom: 24.h, left: 16.w, right: 16.w),
+            favouriteGameList(),
+          ],
+        ),
       ),
     );
   }

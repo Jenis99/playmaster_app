@@ -91,8 +91,7 @@ class WithdrawScreen extends StatelessWidget {
                       buttonColor: AppColors.whiteColor,
                       textColor: AppColors.grey900Color,
                       onTap: () {
-                        Get.to(() => WithdrawToUpiScreen());
-                        Navigation.push(WithdrawToUpiScreen());
+                        Get.to<dynamic>(() => WithdrawToUpiScreen(), transition: Transition.rightToLeft);
                       },
                     ),
                   ],
@@ -109,7 +108,7 @@ class WithdrawScreen extends StatelessWidget {
     return DottedBorder(
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.5.h),
       borderType: BorderType.RRect,
-      color: AppColors.grey900Color2,
+      color: AppColors.grey700Color,
       dashPattern: [8, 3],
       radius: Radius.circular(AppConstants.borderRadius),
       child: ClipRRect(

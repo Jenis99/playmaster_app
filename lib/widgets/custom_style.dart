@@ -58,12 +58,10 @@ class CustomStyle {
   //   );
   // }
 
-  static OutlineInputBorder commonBorder({Color? color}) {
+  static OutlineInputBorder commonBorder({Color? color, double? borderRadius}) {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(AppConstants.commonRadius),
-      borderSide: BorderSide(
-        color: color ?? AppColors.grey900Color,
-        width: 0.8),
+      borderRadius: BorderRadius.circular(borderRadius ?? AppConstants.commonRadius),
+      borderSide: BorderSide(color: color ?? AppColors.grey900Color, width: 0.8),
     );
   }
 }

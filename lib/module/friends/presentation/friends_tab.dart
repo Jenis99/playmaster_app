@@ -10,6 +10,7 @@ class FriendsTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: HomeAppBar(
           isFriendsRequest: true,
           onActionOnTap: () {
@@ -34,14 +35,14 @@ class FriendsTab extends StatelessWidget {
                 ),
                 tabs: [
                   Obx(
-                    () => tabBarElements(
+                        () => tabBarElements(
                         index: 0,
                         title: AppString.exploreFriends,
                         onTap: friendsController.onTabChange,
                         selectedIndex: friendsController.selectedFriendsTabIndex.value),
                   ),
                   Obx(
-                    () => tabBarElements(
+                        () => tabBarElements(
                         index: 1,
                         title: AppString.myFriends,
                         onTap: friendsController.onTabChange,

@@ -28,10 +28,12 @@ class SecurityScreen extends StatelessWidget {
                     labelName: AppString.currentPassword,
                     textFieldClr: AppColors.grey900Color2,
                     hintText: AppString.enterCurrentPassword,
+                    isPasswordField: true,
                     textFieldController: profileController.currentPasswordController,
                   ),
                   AuthTextFieldWithLabel(
                     isDoneField: false,
+                    isPasswordField: true,
                     isTapOutsideEnable: true,
                     labelName: AppString.newPassword,
                     hintText: AppString.enterNewPassword,
@@ -41,6 +43,7 @@ class SecurityScreen extends StatelessWidget {
                   AuthTextFieldWithLabel(
                     isDoneField: true,
                     isTapOutsideEnable: true,
+                    isPasswordField: true,
                     labelName: AppString.confirmPassword,
                     hintText: AppString.confirmPassword,
                     textFieldClr: AppColors.grey900Color2,

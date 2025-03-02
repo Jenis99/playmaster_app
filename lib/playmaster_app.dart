@@ -31,6 +31,7 @@ class PlaymasterApp extends StatelessWidget {
             textSelectionTheme: TextSelectionThemeData(cursorColor: AppColors.primaryColor)),
         initialBinding: AppBinding(),
         builder: (context, child) => Scaffold(
+          resizeToAvoidBottomInset: false,
           body: child,
         ),
       ),

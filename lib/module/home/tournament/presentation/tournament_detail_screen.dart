@@ -41,14 +41,14 @@ class TournamentDetailScreen extends StatelessWidget {
                     isFromPayment: isFromPayment,
                   ).paddingSymmetric(horizontal: AppConstants.appHorizontalPadding),
 
+                  if (isShowRankList) 30.h.verticalSpace,
+
                   /// Prize pool
                   if (isShowRankList)
                     const TournamentDetailTile(
                       icon: AppAssets.prizePoolIcon,
                       title: AppString.prizePool,
                     ).paddingSymmetric(horizontal: AppConstants.appHorizontalPadding),
-
-                  if (isShowRankList) 30.h.verticalSpace,
                   if (isShowRankList)
                     ListView.separated(
                       itemCount: homeController.rankPriceList.length,
@@ -98,7 +98,7 @@ class TournamentDetailScreen extends StatelessWidget {
           /// Join tournament button view
           if (!isFromPayment)
             Obx(
-              () => JoinTournamentButtonView(
+                  () => JoinTournamentButtonView(
                 balanceAmount: homeController.isShowAddBalance.value ? "100" : "2000",
                 buttonTitle: homeController.isShowAddBalance.value ? AppString.addBalanceToJoin : AppString.joinTournament,
                 entryFee: "500",
@@ -134,9 +134,9 @@ class TournamentDetailScreen extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AppText(text: AppString.goToYoutubeLiveStream).paddingSymmetric(horizontal: 16.w),
+                  AppText(text: AppString.goToYoutubeLiveStream).paddingSymmetric(horizontal: 16.w, vertical: 16.h),
                   AppButton(
-                      buttonMarginPadding: EdgeInsets.all(16.w),
+                      buttonMarginPadding: EdgeInsets.only(left: 16.w, right: 16.w, bottom: 16.h),
                       text: AppString.goToYoutube,
                       onTap: () {
                         _launchUrl();

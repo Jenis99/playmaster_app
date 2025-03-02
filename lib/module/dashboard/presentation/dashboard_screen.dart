@@ -34,6 +34,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> with WidgetsBindingOb
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.appBackgroundClr,
+      resizeToAvoidBottomInset: false,
       bottomNavigationBar: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         mainAxisSize: MainAxisSize.min,

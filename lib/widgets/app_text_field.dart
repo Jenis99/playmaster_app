@@ -5,6 +5,7 @@ class AppTextField extends StatefulWidget {
   final double? width;
   final double? height;
   final double? fontSize;
+  final double? borderRadius;
   final String? hintText;
   final bool? obscureText;
   final bool showBorder;
@@ -40,6 +41,7 @@ class AppTextField extends StatefulWidget {
       {super.key,
       required this.controller,
       this.obscureText,
+      this.borderRadius,
       this.onTap,
       this.hintStyle,
       this.prefixIcon,
@@ -116,8 +118,8 @@ class _AppTextFieldState extends State<AppTextField> {
                 fontWeight: FontWeight.w500,
                 // letterSpacing: 0.0,
               ),
-          focusedBorder: widget.textFieldOrder ?? CustomStyle.commonBorder(color: AppColors.grey900Color),
-          enabledBorder: widget.textFieldOrder ?? CustomStyle.commonBorder(color: AppColors.grey900Color),
+          focusedBorder: widget.textFieldOrder ?? CustomStyle.commonBorder(color: AppColors.grey900Color, borderRadius: widget.borderRadius),
+          enabledBorder: widget.textFieldOrder ?? CustomStyle.commonBorder(color: AppColors.grey900Color, borderRadius: widget.borderRadius),
           prefixIcon: widget.prefixIcon != null
               ? Padding(
                   padding: EdgeInsets.all(widget.prefixIconPadding ?? 15.w),

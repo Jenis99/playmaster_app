@@ -80,7 +80,7 @@ class PaymentSubTabView extends StatelessWidget {
             fontSize: 14.sp,
             fontWeight: FontWeight.w400,
             color: AppColors.grey400Color,
-          ),
+          ).paddingSymmetric(vertical: 3.h),
           AppText(
             text: AppUtils.getFormattedDate(dateOfTranslation),
             fontSize: 14.sp,

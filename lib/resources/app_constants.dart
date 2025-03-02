@@ -6,9 +6,9 @@ class AppConstants {
   static const double appScreenHeight = 812;
 
   // Border radius
-  static double borderRadius = 4.r;
+  static double borderRadius = 8.r;
 
   // App common padding
   static double appHorizontalPadding = 16.h;
-  static double commonRadius = 4.r;
+  static double commonRadius = 8.r;
 }

@@ -54,7 +54,7 @@ class AppButton extends StatelessWidget {
           isBorder: isBorderButton,
           isTransparent: isTransparentButton,
           borderWidth: 1,
-          radius: 4.r,
+          radius: AppConstants.borderRadius,
           borderColor: textColor,
         ),
         child: Center(

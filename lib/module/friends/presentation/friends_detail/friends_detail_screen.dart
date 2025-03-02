@@ -42,7 +42,7 @@ class FriendsDetailScreen extends StatelessWidget {
                     ),
                     tabs: [
                       Obx(
-                        () => CommonTabBarElement(
+                            () => CommonTabBarElement(
                           index: 0,
                           title: AppString.aboutTag,
                           onTap: friendsDetailController.onTabChange,
@@ -50,14 +50,14 @@ class FriendsDetailScreen extends StatelessWidget {
                         ),
                       ),
                       Obx(
-                        () => CommonTabBarElement(
+                            () => CommonTabBarElement(
                             index: 1,
                             title: AppString.pastGame,
                             onTap: friendsDetailController.onTabChange,
                             selectedIndex: friendsDetailController.selectedFriendsDetailTabIndex.value),
                       ),
                       Obx(
-                        () => CommonTabBarElement(
+                            () => CommonTabBarElement(
                             index: 2,
                             title: AppString.gameInfo,
                             onTap: friendsDetailController.onTabChange,
@@ -102,7 +102,7 @@ class FriendsDetailScreen extends StatelessWidget {
           isAssetImg: isFromProfile,
           titleText: AppString.dummyUsername,
           subtitleText: AppString.userId,
-          profileImg: AppAssets.appLauncherIcon,
+          profileImg: isFromProfile ? AppAssets.appLauncherIcon : null,
           tileColor: AppColors.transparentClr,
           borderRadius: isFromProfile ? 8.r : 100.r,
           // imageSize: 60.h,

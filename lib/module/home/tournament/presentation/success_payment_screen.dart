@@ -20,7 +20,11 @@ class SuccessPaymentScreen extends StatelessWidget {
             isFromWithdraw: isFromWithdraw,
           ),
           AppButton(
-            text: lastMinGameModel != null ? AppString.backToTournament : AppString.goBackToWallet,
+            text: isFromWithdraw
+                ? AppString.goBackToWithdraw
+                : lastMinGameModel != null
+                    ? AppString.backToTournament
+                    : AppString.goBackToWallet,
             textColor: AppColors.grey900Color2,
             buttonColor: AppColors.whiteColor,
             onTap: () {

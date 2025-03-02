@@ -10,6 +10,7 @@ class EditProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: HomeAppBar(
         appbarBgClr: AppColors.grey900Color2,
         titleText: AppString.editProfile,
@@ -39,7 +40,7 @@ class EditProfileScreen extends StatelessWidget {
                     ),
                     tabs: [
                       Obx(
-                        () => CommonTabBarElement(
+                            () => CommonTabBarElement(
                           index: 0,
                           title: AppString.profile,
                           onTap: editProfileController.onTabChange,
@@ -47,7 +48,7 @@ class EditProfileScreen extends StatelessWidget {
                         ),
                       ),
                       Obx(
-                        () => CommonTabBarElement(
+                            () => CommonTabBarElement(
                             index: 1,
                             title: AppString.gameInfo,
                             onTap: editProfileController.onTabChange,

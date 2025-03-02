@@ -93,6 +93,7 @@ class AppString {
   static const saveTag = "Save";
   static const closeTag = "Close";
   static const goBackToWallet = "Go back to wallet";
+  static const goBackToWithdraw = "Go back to withdraw";
 
   // Dummy user
 

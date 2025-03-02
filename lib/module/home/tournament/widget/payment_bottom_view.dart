@@ -50,7 +50,7 @@ class PaymentBottomView extends StatelessWidget {
           itemCount: listOsPaymentOpt.length,
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
-        ),
+        ).paddingOnly(top: 16.h),
 
         ///
         // Column(

@@ -84,7 +84,7 @@ class MyMatchTile extends StatelessWidget {
                     iconSize: 16.h,
                   )
               ],
-            ).paddingOnly(left: 12.w, right: 12.w, bottom: 4.h, top: 1.h),
+            ).paddingOnly(left: 12.w, right: 12.w, bottom: 7.h, top: 4.h),
           ],
         ),
       ),
