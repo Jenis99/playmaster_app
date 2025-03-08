@@ -4,6 +4,7 @@ import 'package:playmaster_ui/module/friends/friends.dart';
 import 'package:playmaster_ui/module/home/home.dart';
 import 'package:playmaster_ui/module/my_matches/my_matches.dart';
 import 'package:playmaster_ui/module/profile/profile.dart';
+import 'package:playmaster_ui/module/profile/widget/payment_bottom_view.dart';
 
 class DashBoardScreen extends StatefulWidget {
   const DashBoardScreen({super.key});
@@ -32,84 +33,103 @@ class _DashBoardScreenState extends State<DashBoardScreen> with WidgetsBindingOb
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.appBackgroundClr,
-      resizeToAvoidBottomInset: false,
-      bottomNavigationBar: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            height: 70.h,
-            decoration: BoxDecoration(
-              color: AppColors.appBackgroundClr,
-            ),
-            child: TabBar(
-              indicatorSize: TabBarIndicatorSize.tab,
-              controller: _dashBoardController.tabController,
-              padding: EdgeInsets.zero,
-              labelPadding: EdgeInsets.zero,
-              dividerHeight: 0,
-              indicator: const BoxDecoration(
-                image: DecorationImage(image: AssetImage(AppAssets.bottomBarShadow)),
+    return Obx(
+      () => Scaffold(
+        backgroundColor: AppColors.appBackgroundClr,
+        resizeToAvoidBottomInset: false,
+        appBar: _dashBoardController.selectedTabIndex.value != 3
+            ? HomeAppBar(
+                isFriendsRequest: _dashBoardController.selectedTabIndex.value == 2,
+                onActionOnTap: () {
+                  if (_dashBoardController.selectedTabIndex.value == 2) {
+                    Navigation.rightToLeft(FriendRequestScreen());
+                  } else {
+                    showModalBottomSheet(
+                      context: context,
+                      backgroundColor: AppColors.appBackgroundClr,
+                      builder: (context) {
+                        return WalletBottomView();
+                      },
+                    );
+                  }
+                })
+            : null,
+        bottomNavigationBar: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              height: 70.h,
+              decoration: BoxDecoration(
+                color: AppColors.grey900Color2,
               ),
-              tabs: [
-                Obx(
-                  () => bottomNavigationBarElement(
-                    title: AppString.homeTab,
-                    icon: AppAssets.homeIcon,
-                    index: 0,
-                    selectedIndex: _dashBoardController.selectedTabIndex.value,
-                    onTap: _dashBoardController.onTabChange,
-                  ),
+              child: TabBar(
+                indicatorSize: TabBarIndicatorSize.tab,
+                controller: _dashBoardController.tabController,
+                padding: EdgeInsets.zero,
+                labelPadding: EdgeInsets.zero,
+                dividerHeight: 0,
+                indicator: const BoxDecoration(
+                  image: DecorationImage(image: AssetImage(AppAssets.bottomBarShadow)),
                 ),
-                Obx(
-                  () => bottomNavigationBarElement(
-                    title: AppString.myMatches,
-                    icon: AppAssets.myMatchesIcon,
-                    index: 1,
-                    selectedIndex: _dashBoardController.selectedTabIndex.value,
-                    onTap: _dashBoardController.onTabChange,
+                tabs: [
+                  Obx(
+                    () => bottomNavigationBarElement(
+                      title: AppString.homeTab,
+                      icon: AppAssets.homeIcon,
+                      index: 0,
+                      selectedIndex: _dashBoardController.selectedTabIndex.value,
+                      onTap: _dashBoardController.onTabChange,
+                    ),
                   ),
-                ),
-                Obx(
-                  () => bottomNavigationBarElement(
-                    title: AppString.friends,
-                    icon: AppAssets.friendsIcon,
-                    index: 2,
-                    selectedIndex: _dashBoardController.selectedTabIndex.value,
-                    onTap: _dashBoardController.onTabChange,
+                  Obx(
+                    () => bottomNavigationBarElement(
+                      title: AppString.myMatches,
+                      icon: AppAssets.myMatchesIcon,
+                      index: 1,
+                      selectedIndex: _dashBoardController.selectedTabIndex.value,
+                      onTap: _dashBoardController.onTabChange,
+                    ),
                   ),
-                ),
-                Obx(
-                  () => bottomNavigationBarElement(
-                    title: AppString.profile,
-                    icon: AppAssets.profileIcon,
-                    index: 3,
-                    selectedIndex: _dashBoardController.selectedTabIndex.value,
-                    onTap: _dashBoardController.onTabChange,
+                  Obx(
+                    () => bottomNavigationBarElement(
+                      title: AppString.friends,
+                      icon: AppAssets.friendsIcon,
+                      index: 2,
+                      selectedIndex: _dashBoardController.selectedTabIndex.value,
+                      onTap: _dashBoardController.onTabChange,
+                    ),
                   ),
-                ),
-              ],
+                  Obx(
+                    () => bottomNavigationBarElement(
+                      title: AppString.profile,
+                      icon: AppAssets.profileIcon,
+                      index: 3,
+                      selectedIndex: _dashBoardController.selectedTabIndex.value,
+                      onTap: _dashBoardController.onTabChange,
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            child: TabBarView(
-              physics: const NeverScrollableScrollPhysics(),
-              controller: _dashBoardController.tabController,
-              children: [
-                HomeScreen(),
-                MyMatchesTab(),
-                FriendsTab(),
-                const ProfileTab(),
-              ],
+          ],
+        ),
+        body: Column(
+          children: [
+            Expanded(
+              child: TabBarView(
+                physics: const NeverScrollableScrollPhysics(),
+                controller: _dashBoardController.tabController,
+                children: [
+                  HomeScreen(),
+                  MyMatchesTab(),
+                  FriendsTab(),
+                  const ProfileTab(),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

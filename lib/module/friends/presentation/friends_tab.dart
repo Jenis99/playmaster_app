@@ -1,6 +1,5 @@
 import 'package:playmaster_ui/dependency.dart';
 import 'package:playmaster_ui/module/friends/friends.dart';
-import 'package:playmaster_ui/module/home/home.dart';
 
 class FriendsTab extends StatelessWidget {
   FriendsTab({super.key});
@@ -11,12 +10,12 @@ class FriendsTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         resizeToAvoidBottomInset: false,
-        appBar: HomeAppBar(
-          isFriendsRequest: true,
-          onActionOnTap: () {
-            Navigation.rightToLeft(FriendRequestScreen());
-          },
-        ),
+        // appBar: HomeAppBar(
+        //   isFriendsRequest: true,
+        //   onActionOnTap: () {
+        //     Navigation.rightToLeft(FriendRequestScreen());
+        //   },
+        // ),
         body: Column(
           children: [
             Container(

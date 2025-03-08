@@ -27,7 +27,7 @@ class BottomSheetView extends StatelessWidget {
           subTitle: AppString.cancelTag,
           onViewAll: () => Navigation.pop(),
         ).paddingSymmetric(horizontal: AppConstants.appHorizontalPadding),
-        20.h.verticalSpace,
+        28.h.verticalSpace,
         ListView.builder(
           padding: EdgeInsets.zero,
           itemCount: isFromPoolSize ? homeController.gamePoolSize.length : homeController.gameStartTimeList.length,

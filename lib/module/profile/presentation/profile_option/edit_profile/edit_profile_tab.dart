@@ -60,7 +60,7 @@ class EditProfileTab extends StatelessWidget {
               onViewAll: () {
                 showModalBottomSheet(
                   context: context,
-                  backgroundColor: AppColors.grey900Color2,
+                  backgroundColor: AppColors.appBackgroundClr,
                   builder: (context) {
                     return FavouriteGameBottomView();
                   },

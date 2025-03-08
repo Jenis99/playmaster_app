@@ -38,6 +38,7 @@ class TournamentDetailScreen extends StatelessWidget {
                   GameDetailCardTile(
                     lastMinGameModel: lastMinGameModel ?? LastMinGameModel(),
                     isFromTournament: true,
+                    isShowDivider: true,
                     isFromPayment: isFromPayment,
                   ).paddingSymmetric(horizontal: AppConstants.appHorizontalPadding),
 
@@ -186,7 +187,7 @@ class TournamentDetailScreen extends StatelessWidget {
             subTitle: AppString.cancelTag,
             onViewAll: () => Navigation.pop(),
           ),
-          20.h.verticalSpace,
+          28.h.verticalSpace,
 
           /// Tournament entry fee
           TournamentTitle(

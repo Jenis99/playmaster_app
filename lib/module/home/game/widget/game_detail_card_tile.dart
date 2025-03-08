@@ -2,11 +2,18 @@ import 'package:playmaster_ui/dependency.dart';
 import 'package:playmaster_ui/module/home/home.dart';
 
 class GameDetailCardTile extends StatelessWidget {
-  const GameDetailCardTile({super.key, required this.lastMinGameModel, this.isFromTournament = false, this.isFromPayment = false});
+  const GameDetailCardTile({
+    super.key,
+    required this.lastMinGameModel,
+    this.isFromTournament = false,
+    this.isFromPayment = false,
+    this.isShowDivider = false,
+  });
 
   final LastMinGameModel lastMinGameModel;
   final bool isFromTournament;
   final bool isFromPayment;
+  final bool isShowDivider;
 
   @override
   Widget build(BuildContext context) {
@@ -49,12 +56,19 @@ class GameDetailCardTile extends StatelessWidget {
                   )
               ],
             ),
-            16.h.verticalSpace,
+            if (isFromPayment) 16.h.verticalSpace,
 
             /// Tournament status view
             if (isFromPayment) tournamentStatusView(),
+            if (isShowDivider)
+              AppDivider(
+                color: AppColors.grey700Color,
+                height: 20.h,
+                thickness: 0.5,
+              ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 /// Entry fee
                 AppText(
@@ -67,6 +81,7 @@ class GameDetailCardTile extends StatelessWidget {
                 /// Price pool
                 Row(
                   mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     CachedNetworkImg(

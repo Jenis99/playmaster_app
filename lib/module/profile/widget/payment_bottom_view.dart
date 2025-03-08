@@ -67,43 +67,49 @@ class WalletBottomView extends StatelessWidget {
   }
 
   Widget balanceView() {
-    return DottedBorder(
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.5.h),
-      borderType: BorderType.RRect,
-      color: AppColors.grey700Color,
-      dashPattern: [8, 3],
-      radius: Radius.circular(AppConstants.borderRadius),
-      child: ClipRRect(
-        borderRadius: BorderRadius.all(Radius.circular(AppConstants.borderRadius)),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    CachedNetworkImg(
-                      imgPath: AppAssets.tournamentWalletIcon,
-                      isAssetImg: true,
-                      imgSize: 18.h,
-                    ),
-                    4.w.horizontalSpace,
-                    AppText(
-                      text: AppString.balanceTag,
-                      fontSize: 14.sp,
-                    ),
-                  ],
-                )
-              ],
-            ),
-            AppText(
-              text: "₹100",
-              color: AppColors.whiteColor,
-              fontWeight: FontWeight.w700,
-              fontSize: 16.sp,
-            )
-          ],
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColors.grey900Color2,
+        borderRadius: BorderRadius.circular(AppConstants.borderRadius),
+      ),
+      child: DottedBorder(
+        dashPattern: [8, 3],
+        borderType: BorderType.RRect,
+        color: AppColors.grey700Color,
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.5.h),
+        radius: Radius.circular(AppConstants.borderRadius),
+        child: ClipRRect(
+          borderRadius: BorderRadius.all(Radius.circular(AppConstants.borderRadius)),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      CachedNetworkImg(
+                        imgPath: AppAssets.tournamentWalletIcon,
+                        isAssetImg: true,
+                        imgSize: 18.h,
+                      ),
+                      4.w.horizontalSpace,
+                      AppText(
+                        text: AppString.balanceTag,
+                        fontSize: 14.sp,
+                      ),
+                    ],
+                  )
+                ],
+              ),
+              AppText(
+                text: "₹100",
+                color: AppColors.whiteColor,
+                fontWeight: FontWeight.w700,
+                fontSize: 16.sp,
+              )
+            ],
+          ),
         ),
       ),
     );

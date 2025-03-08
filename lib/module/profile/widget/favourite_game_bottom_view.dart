@@ -38,7 +38,7 @@ class FavouriteGameBottomView extends StatelessWidget {
                     image: (HomeController.find.topGameList[index].isGameSelected?.isTrue ?? false)
                         ? DecorationImage(image: AssetImage(AppAssets.bottomSheetShadow), fit: BoxFit.fill)
                         : null,
-                    color: AppColors.grey900Color2,
+                    color: AppColors.appBackgroundClr,
                   ),
                   child: UserTile(
                     onTap: () {

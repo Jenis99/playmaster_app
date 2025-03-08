@@ -16,11 +16,14 @@ class TopGameCard extends StatelessWidget {
       contentPadding: EdgeInsets.zero,
       minTileHeight: 80.h,
       // Game image
-      leading: CachedNetworkImg(
-        imgPath: topGameModel.gameImg ?? "",
-        borderRadius: AppConstants.borderRadius,
-        imgSize: 80.h,
-        fit: BoxFit.cover,
+      leading: AspectRatio(
+        aspectRatio: 1,
+        child: CachedNetworkImg(
+          imgPath: topGameModel.gameImg ?? "",
+          borderRadius: AppConstants.borderRadius,
+          imgSize: 80.h,
+          fit: BoxFit.cover,
+        ),
       ),
       // Game name
       title: AppText(

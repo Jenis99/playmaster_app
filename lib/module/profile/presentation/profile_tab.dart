@@ -90,7 +90,7 @@ class ProfileTab extends StatelessWidget {
 
   Widget profileTitleView(String title) {
     return AppText(
-      text: title,
+      text: title.toUpperCase(),
       color: AppColors.grey400Color,
       fontWeight: FontWeight.w500,
       fontSize: 14.sp,

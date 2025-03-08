@@ -18,8 +18,6 @@ class PlaymasterApp extends StatelessWidget {
         initialRoute: AppRoutes.splash,
         debugShowCheckedModeBanner: false,
         useInheritedMediaQuery: true,
-        // locale: DevicePreview.locale(context),
-        // builder: DevicePreview.appBuilder,
         theme: ThemeData(
             brightness: Brightness.dark,
             fontFamily: AppString.montserratFont,
@@ -28,7 +26,7 @@ class PlaymasterApp extends StatelessWidget {
             highlightColor: AppColors.transparentClr,
             scaffoldBackgroundColor: AppColors.appBackgroundClr,
             appBarTheme: AppBarTheme(backgroundColor: AppColors.appBackgroundClr),
-            textSelectionTheme: TextSelectionThemeData(cursorColor: AppColors.primaryColor)),
+            textSelectionTheme: TextSelectionThemeData(cursorColor: AppColors.whiteColor)),
         initialBinding: AppBinding(),
         builder: (context, child) => Scaffold(
           resizeToAvoidBottomInset: false,

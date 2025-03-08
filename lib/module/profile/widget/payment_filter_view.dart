@@ -197,13 +197,14 @@ class PaymentSubTabView extends StatelessWidget {
           subTitle: AppString.cancelTag,
           onViewAll: () => Navigation.pop(),
         ).paddingSymmetric(horizontal: AppConstants.appHorizontalPadding),
-        10.h.verticalSpace,
+        28.h.verticalSpace,
         Column(
           children: List.generate(
             paymentHistoryController.gamePlatformList.length,
             (index) {
               final platformType = paymentHistoryController.gamePlatformList[index];
               return ListTile(
+                visualDensity: VisualDensity(horizontal: 0, vertical: -4),
                 contentPadding: EdgeInsets.zero,
                 onTap: () {
                   paymentHistoryController.selectedGameType.value = platformType;
@@ -215,7 +216,7 @@ class PaymentSubTabView extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                 ),
                 leading: Obx(
-                  () => Radio<GamePlatformType>(
+                      () => Radio<GamePlatformType>(
                     value: platformType,
                     activeColor: AppColors.primaryColor,
                     groupValue: paymentHistoryController.selectedGameType.value,
@@ -258,7 +259,7 @@ class PaymentSubTabView extends StatelessWidget {
           subTitle: AppString.cancelTag,
           onViewAll: () => Navigation.pop(),
         ).paddingSymmetric(horizontal: AppConstants.appHorizontalPadding),
-        10.h.verticalSpace,
+        28.h.verticalSpace,
         Column(
           children: List.generate(
             paymentHistoryController.transactionStatusList.length,
@@ -266,6 +267,7 @@ class PaymentSubTabView extends StatelessWidget {
               final platformType = paymentHistoryController.transactionStatusList[index];
               return ListTile(
                 contentPadding: EdgeInsets.zero,
+                visualDensity: VisualDensity(horizontal: 0, vertical: -4),
                 onTap: () {
                   paymentHistoryController.selectedTransaction.value = platformType;
                 },

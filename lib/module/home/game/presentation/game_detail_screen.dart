@@ -6,6 +6,7 @@ class GameDetailScreen extends StatelessWidget {
 
   final String gameTitle;
   final HomeController homeController = Get.find();
+  final ScrollController scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -122,6 +123,7 @@ class GameDetailScreen extends StatelessWidget {
       height: 32.h,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
+        controller: scrollController,
         child: Row(
           children: List.generate(
             homeController.gameType.length,
@@ -139,6 +141,19 @@ class GameDetailScreen extends StatelessWidget {
   Widget gameCategoryBox(String gameType, int index) {
     return GestureDetector(
       onTap: () {
+        if ((index + 1) == homeController.gameType.length) {
+          scrollController.animateTo(
+            scrollController.position.maxScrollExtent,
+            duration: Duration(milliseconds: 500),
+            curve: Curves.linear,
+          );
+        } else if (index == 0) {
+          scrollController.animateTo(
+            scrollController.position.minScrollExtent,
+            duration: Duration(milliseconds: 500),
+            curve: Curves.linear,
+          );
+        }
         homeController.selectedGameType.value = index;
       },
       child: Obx(

@@ -43,26 +43,39 @@ class WithdrawScreen extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                     ),
                     10.h.verticalSpace,
-                    AppTextField(
-                      controller: addAmountController,
-                      contentPadding: EdgeInsets.only(top: 10.h),
-                      prefixIcon: Icon(
-                        Icons.currency_rupee,
-                        color: AppColors.greenClr,
-                        size: 22.sp,
-                      ),
-                      prefixIconPadding: 0,
-                      keyboardType: TextInputType.number,
-                      fontSize: 22.sp,
-                      isTapOutsideEnable: true,
-                      onChanged: (String? updatedValue) {
-                        enterAmount.value = "${(updatedValue?.isNotEmpty ?? false) ? "₹" : ""}${updatedValue ?? " "}";
-                      },
-                      color: AppColors.transparentClr,
-                      textFieldOrder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: AppColors.grey700Color),
-                      ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: Icon(
+                            Icons.currency_rupee,
+                            color: AppColors.greenClr,
+                            size: 20.sp,
+                          ).paddingOnly(top: 10.h),
+                        ),
+                        Expanded(
+                          flex: 9,
+                          child: AppTextField(
+                            controller: addAmountController,
+                            contentPadding: EdgeInsets.only(top: 10.h),
+                            prefixIconPadding: 0,
+                            keyboardType: TextInputType.number,
+                            fontSize: 22.sp,
+                            isTapOutsideEnable: true,
+                            onChanged: (String? updatedValue) {
+                              enterAmount.value = "${(updatedValue?.isNotEmpty ?? false) ? "₹" : ""}${updatedValue ?? " "}";
+                            },
+                            color: AppColors.transparentClr,
+                            textFieldOrder: InputBorder.none,
+                          ),
+                        ),
+                      ],
                     ),
+                    AppDivider(
+                      color: AppColors.grey700Color,
+                    ),
+
                     16.h.verticalSpace,
                     Row(
                       children: List.generate(
@@ -89,7 +102,7 @@ class WithdrawScreen extends StatelessWidget {
                     AppButton(
                       text: AppString.confirmTag,
                       buttonColor: AppColors.whiteColor,
-                      textColor: AppColors.grey900Color,
+                      textColor: AppColors.grey900Color2,
                       onTap: () {
                         Get.to<dynamic>(() => WithdrawToUpiScreen(), transition: Transition.rightToLeft);
                       },
@@ -105,43 +118,49 @@ class WithdrawScreen extends StatelessWidget {
   }
 
   Widget balanceView() {
-    return DottedBorder(
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.5.h),
-      borderType: BorderType.RRect,
-      color: AppColors.grey700Color,
-      dashPattern: [8, 3],
-      radius: Radius.circular(AppConstants.borderRadius),
-      child: ClipRRect(
-        borderRadius: BorderRadius.all(Radius.circular(AppConstants.borderRadius)),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    CachedNetworkImg(
-                      imgPath: AppAssets.tournamentWalletIcon,
-                      isAssetImg: true,
-                      imgSize: 18.h,
-                    ),
-                    4.w.horizontalSpace,
-                    AppText(
-                      text: AppString.availableForWithdraw,
-                      fontSize: 14.sp,
-                    ),
-                  ],
-                )
-              ],
-            ),
-            AppText(
-              text: "₹1200",
-              color: AppColors.greenClr,
-              fontWeight: FontWeight.w700,
-              fontSize: 16.sp,
-            )
-          ],
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColors.grey900Color2,
+        borderRadius: BorderRadius.circular(AppConstants.borderRadius),
+      ),
+      child: DottedBorder(
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.5.h),
+        borderType: BorderType.RRect,
+        color: AppColors.grey700Color,
+        dashPattern: [8, 3],
+        radius: Radius.circular(AppConstants.borderRadius),
+        child: ClipRRect(
+          borderRadius: BorderRadius.all(Radius.circular(AppConstants.borderRadius)),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      CachedNetworkImg(
+                        imgPath: AppAssets.tournamentWalletIcon,
+                        isAssetImg: true,
+                        imgSize: 18.h,
+                      ),
+                      4.w.horizontalSpace,
+                      AppText(
+                        text: AppString.availableForWithdraw,
+                        fontSize: 14.sp,
+                      ),
+                    ],
+                  )
+                ],
+              ),
+              AppText(
+                text: "₹1200",
+                color: AppColors.greenClr,
+                fontWeight: FontWeight.w700,
+                fontSize: 16.sp,
+              )
+            ],
+          ),
         ),
       ),
     );

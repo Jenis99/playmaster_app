@@ -1,5 +1,4 @@
 import 'package:playmaster_ui/dependency.dart';
-import 'package:playmaster_ui/module/home/home.dart';
 import 'package:playmaster_ui/module/my_matches/completed/completed_tournament_screen.dart';
 import 'package:playmaster_ui/module/my_matches/live/live_tournament_screen.dart';
 import 'package:playmaster_ui/module/my_matches/my_matches.dart';
@@ -12,7 +11,6 @@ class MyMatchesTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: HomeAppBar(),
         body: Column(
           children: [
             Container(
